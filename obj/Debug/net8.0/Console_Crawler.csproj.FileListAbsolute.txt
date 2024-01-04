@@ -1,0 +1,14 @@
+C:\Users\Phili\source\repos\Console_Crawler\Console_Crawler\bin\Debug\net8.0\Console_Crawler.exe
+C:\Users\Phili\source\repos\Console_Crawler\Console_Crawler\bin\Debug\net8.0\Console_Crawler.deps.json
+C:\Users\Phili\source\repos\Console_Crawler\Console_Crawler\bin\Debug\net8.0\Console_Crawler.runtimeconfig.json
+C:\Users\Phili\source\repos\Console_Crawler\Console_Crawler\bin\Debug\net8.0\Console_Crawler.dll
+C:\Users\Phili\source\repos\Console_Crawler\Console_Crawler\bin\Debug\net8.0\Console_Crawler.pdb
+C:\Users\Phili\source\repos\Console_Crawler\Console_Crawler\obj\Debug\net8.0\Console_Crawler.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Phili\source\repos\Console_Crawler\Console_Crawler\obj\Debug\net8.0\Console_Crawler.AssemblyInfoInputs.cache
+C:\Users\Phili\source\repos\Console_Crawler\Console_Crawler\obj\Debug\net8.0\Console_Crawler.AssemblyInfo.cs
+C:\Users\Phili\source\repos\Console_Crawler\Console_Crawler\obj\Debug\net8.0\Console_Crawler.csproj.CoreCompileInputs.cache
+C:\Users\Phili\source\repos\Console_Crawler\Console_Crawler\obj\Debug\net8.0\Console_Crawler.dll
+C:\Users\Phili\source\repos\Console_Crawler\Console_Crawler\obj\Debug\net8.0\refint\Console_Crawler.dll
+C:\Users\Phili\source\repos\Console_Crawler\Console_Crawler\obj\Debug\net8.0\Console_Crawler.pdb
+C:\Users\Phili\source\repos\Console_Crawler\Console_Crawler\obj\Debug\net8.0\Console_Crawler.genruntimeconfig.cache
+C:\Users\Phili\source\repos\Console_Crawler\Console_Crawler\obj\Debug\net8.0\ref\Console_Crawler.dll
