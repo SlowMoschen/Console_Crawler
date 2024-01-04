@@ -79,7 +79,7 @@ namespace Console_Crawler.GameCharacters
             }
             else
             {
-                Console.WriteLine("You don't have enough endurance to attack!");
+                Console.WriteLine(" You don't have enough endurance to attack!");
             }
         }
 
@@ -102,7 +102,7 @@ namespace Console_Crawler.GameCharacters
             }
             else
             {
-                Console.WriteLine("You don't have enough endurance to use a Kick Attack!");
+                Console.WriteLine(" You don't have enough endurance to use a Kick Attack!");
             }
         }
 
@@ -134,7 +134,7 @@ namespace Console_Crawler.GameCharacters
                 this.MaxHealth = LevelUpModifers.MaxHealth * this.Level;
                 this.Health = this.MaxHealth;
                 this.Endurance = this.MaxEndurance;
-                Console.WriteLine("You leveled up!");
+                Console.WriteLine(" You leveled up!");
             }
         }
 
@@ -166,16 +166,16 @@ namespace Console_Crawler.GameCharacters
                     {
                         this.Inventory.RemoveGold(item.Price);
                         this.Inventory.AddItem(item);
-                        Console.WriteLine("You bought a {0} for {1}!", item.Name, item.Price);
+                        Console.WriteLine(" You bought a {0} for {1}!", item.Name, item.Price);
                     }
                     else
                     {
-                        Console.WriteLine("You don't have enough gold to buy this item!");
+                        Console.WriteLine(" You don't have enough gold to buy this item!");
                     }
                 }
                 else
                 {
-                    Console.WriteLine("You can't carry any more of this item!");
+                    Console.WriteLine(" You can't carry any more of this item!");
                 }
             }
             else
@@ -184,11 +184,11 @@ namespace Console_Crawler.GameCharacters
                 {
                     this.Inventory.RemoveGold(item.Price);
                     this.Inventory.AddItem(item);
-                    Console.WriteLine("You bought a {0} for {1}!", item.Name, item.Price);
+                    Console.WriteLine(" You bought a {0} for {1}!", item.Name, item.Price);
                 }
                 else
                 {
-                    Console.WriteLine("You don't have enough gold to buy this item!");
+                    Console.WriteLine(" You don't have enough gold to buy this item!");
                 }
             }
         }
@@ -219,7 +219,42 @@ namespace Console_Crawler.GameCharacters
             }
             else
             {
-                Console.WriteLine("You don't have any of this potion!");
+                Console.WriteLine(" You don't have any of this potion!");
+            }
+        }
+
+        public void PrintInventory()
+        {
+            this.Inventory.DisplayInventory();
+        }
+
+        public override void PrintStats()
+        {
+            base.PrintStats();
+            Console.WriteLine($" Endurance: {this.Endurance}");
+            Console.WriteLine($" Level: {this.Level}");
+            Console.WriteLine($" EXP: {this.EXP}");
+            Console.WriteLine($" EXP to Next Level: {this.EXPToNextLevel}");
+        }
+
+        public override void PrintBattleStats()
+        {
+            base.PrintBattleStats();
+            Console.WriteLine($" Endurance: {this.Endurance}");
+
+            if(this.EffectTurns.strenghtBuffTurns > 0)
+            {
+                Console.WriteLine($" Strength is buffed for {this.EffectTurns.strenghtBuffTurns} turns");
+            }
+
+            if(this.Effects.IsPoisoned)
+            {
+                Console.WriteLine($" Poisoned for {this.EffectTurns.PoisonTurns} turns");
+            }
+
+            if(this.Effects.IsBurning)
+            {
+                Console.WriteLine($" Burning for {this.EffectTurns.BurnTurns} turns");
             }
         }
     }

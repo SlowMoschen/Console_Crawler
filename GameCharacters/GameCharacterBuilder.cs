@@ -104,7 +104,7 @@ namespace Console_Crawler.GameCharacters
             Console.WriteLine($" Armor: {this.Armor}");
         }
 
-        public void PrintStats()
+        public virtual void PrintStats()
         {
             Console.WriteLine($" Name: {this.Name}");
             Console.WriteLine($" Attack: {this.Attack}");
