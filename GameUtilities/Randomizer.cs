@@ -10,6 +10,10 @@ namespace Console_Crawler.GameUtilities
     {
         private static Random random = new Random();
 
+
+        // @param min: the minimum number to return
+        // @param max: the maximum number to return
+        // @return a random number between min and max
         public int GetRandomNumber(int min, int max)
         {
             return random.Next(min, max);

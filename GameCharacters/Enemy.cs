@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Console_Crawler.GameVariables.Statistics.PlayerStatistics;
+using Console_Crawler.GameVariables.Statistics.EnemyStatistics.Builder;
 
 namespace Console_Crawler.GameCharacters
 {
@@ -13,17 +15,39 @@ namespace Console_Crawler.GameCharacters
         Defend
     }
 
-    internal class Enemy : GameCharacterBuilder
+    internal class Enemy : GameCharacter
     {
         private static Random random = new Random();
         public int EXP { get; set; } = 0;
         public int Gold { get; set; } = 0;
         public List<(string Name, Action<Player> Attack)> ?SpecialAttacks { get; set; }
+        public EnemyStatistics EnemyStats { get; set; }
 
-        public Enemy(string name, int attack, int armor, double strength, int health, int EXP, int Gold) : base(name, attack, armor, strength, health)
+        public Enemy(string name, int EXP, int Gold, EnemyStatistics enemyStatistics) : base(name, 0, 0, 0, 0)
         {
+            this.EnemyStats = enemyStatistics;
             this.EXP = EXP;
             this.Gold = Gold;
+            this.SetStats();
+        }
+
+        public void SetStats()
+        {
+            this.Attack = CalculateStat(this.EnemyStats.BaseAttack, GameVariables.GameSettings.EnemyScaling.AttackScaling, GameVariables.GameSettings.EnemyScaling.ScalingIntervals.AttackInterval);
+
+            //This is commented out because I want to test the game without armor scaling
+            //this.Armor = CalculateStat(this.EnemyStats.BaseArmor, GameVariables.GameSettings.EnemyScaling.AttackScaling, GameVariables.GameSettings.EnemyScaling.ScalingIntervals.ArmorInterval);
+
+            this.Armor = this.EnemyStats.BaseArmor;
+            this.Strength = this.EnemyStats.Strength;
+            this.Health = CalculateStat(this.EnemyStats.BaseHealth, GameVariables.GameSettings.EnemyScaling.HealthScaling, GameVariables.GameSettings.EnemyScaling.ScalingIntervals.HealthInterval);
+            this.EXP = CalculateStat(this.EnemyStats.BaseEXP, GameVariables.GameSettings.EnemyScaling.EXPSScaling, GameVariables.GameSettings.EnemyScaling.ScalingIntervals.EXPInterval);
+        }
+
+        public static int CalculateStat(int baseStat, int scaleRating, int levelInterval = 0)
+        {
+            int level = PlayerStats.Level - 1 / levelInterval;
+            return baseStat + level * scaleRating;
         }
 
         public EnemyAction GetRandomAction()

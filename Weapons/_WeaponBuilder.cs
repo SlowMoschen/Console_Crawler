@@ -6,10 +6,12 @@ using System.Threading.Tasks;
 using Console_Crawler.GameCharacters;
 using Console_Crawler.GameUtilities;
 using Console_Crawler.GameVariables;
+using Console_Crawler.GameVariables.Statistics.PlayerStatistics;
+using Console_Crawler.GameVariables.Statistics.WeaponStatistics;
 
 namespace Console_Crawler.Weapons
 {
-    internal class WeaponBuilder
+    internal class Weapon
     {
         private static Random random = new Random();
         public WeaponStats WeaponStats { get; set; }
@@ -17,7 +19,7 @@ namespace Console_Crawler.Weapons
         public int SpecialAttackDamage { get; set; }
         public string WeaponName { get; set; }
 
-        public WeaponBuilder(WeaponStats weaponStats, string weaponName)
+        public Weapon(WeaponStats weaponStats, string weaponName)
         {
             this.WeaponStats = weaponStats;
             this.WeaponName = weaponName;
@@ -45,7 +47,7 @@ namespace Console_Crawler.Weapons
             return random.Next(min, max + 1);
         }
 
-        public void PerformSpecialAttack(Player player, GameCharacterBuilder target)
+        public void PerformSpecialAttack(Player player, GameCharacter target)
         {
             int damage = DamageCalculator.CalculateAttackDamage(this.AttackDamage, target.Armor, player.Strength, this.SpecialAttackDamage);
 

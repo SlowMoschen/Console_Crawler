@@ -7,12 +7,14 @@ using System.Threading.Tasks;
 using Console_Crawler.GameUtilities;
 using Console_Crawler.GameVariables;
 using Console_Crawler.Items;
+using Console_Crawler.GameVariables.Statistics.PlayerStatistics;
+using Console_Crawler.GameVariables.Statistics;
 
 namespace Console_Crawler.GameCharacters
 {
-    internal class Player : GameCharacterBuilder
+    internal class Player : GameCharacter
     {
-        public WeaponBuilder CurrentWeapon { get; set; } = new Fists();
+        public Weapon CurrentWeapon { get; set; } = new Fists();
         public int Level { get; set; } = PlayerStats.Level;
         public int MaxLevel { get; set; } = PlayerStats.MaxLevel;
         public int EXP { get; set; } = PlayerStats.EXP;
@@ -25,10 +27,13 @@ namespace Console_Crawler.GameCharacters
 
         public Player(string name, int attack, int armor, double strength, int health) : base(name, attack, armor, strength, health) { }
 
-        public void EquipWeapon(WeaponBuilder weapon)
+        public void EquipWeapon(Weapon weapon)
         {
             this.CurrentWeapon = weapon;
         }
+
+        //Method to calucalte 2 nums
+
 
         public void DecrementBuffTurns()
         {
@@ -60,7 +65,7 @@ namespace Console_Crawler.GameCharacters
             }
         }
 
-        public override void NormalAttack(GameCharacterBuilder target)
+        public override void NormalAttack(GameCharacter target)
         {
             int damage = DamageCalculator.CalculateAttackDamage(this.CurrentWeapon.AttackDamage, target.Armor, this.Strength);
 
@@ -83,7 +88,7 @@ namespace Console_Crawler.GameCharacters
             }
         }
 
-        public void KickAttack(GameCharacterBuilder target)
+        public void KickAttack(GameCharacter target)
         {
             int damage = DamageCalculator.CalculateAttackDamage(this.Attack, target.Armor, this.Strength);
 
@@ -106,7 +111,7 @@ namespace Console_Crawler.GameCharacters
             }
         }
 
-        public void UseSpecialAttack(GameCharacterBuilder target)
+        public void UseSpecialAttack(GameCharacter target)
         {
             if(this.CurrentWeapon != null)
             {

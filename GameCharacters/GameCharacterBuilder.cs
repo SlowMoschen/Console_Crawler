@@ -7,7 +7,7 @@ using Console_Crawler.GameUtilities;
 
 namespace Console_Crawler.GameCharacters
 {
-    internal class GameCharacterBuilder(string name, int attack, int armor, double strength, int health)
+    internal class GameCharacter(string name, int attack, int armor, double strength, int health)
     {
         public string Name { get; set; } = name;
         public int Attack { get; set; } = attack;
@@ -30,7 +30,7 @@ namespace Console_Crawler.GameCharacters
         public EffectsBools Effects { get; set; } = new EffectsBools();
         public AllEffectTurns EffectTurns { get; set; } = new AllEffectTurns();
 
-        public virtual void NormalAttack(GameCharacterBuilder target)
+        public virtual void NormalAttack(GameCharacter target)
         {
             int damage = DamageCalculator.CalculateAttackDamage(this.Attack, target.Armor, this.Strength);
 
@@ -50,13 +50,13 @@ namespace Console_Crawler.GameCharacters
             this.Effects.IsDefending = true;
         }
 
-       /* public void ApplyOverTimeEffects(GameCharacterBuilder enemy)
+       /* public void ApplyOverTimeEffects(GameCharacter enemy)
         {
             this.ApplyPoisonDamage(enemy);
             this.ApplyBurnDamage(enemy);
         }
 
-        public void ApplyPoisonDamage(GameCharacterBuilder enemy)
+        public void ApplyPoisonDamage(GameCharacter enemy)
         {
             if (this.EffectTurns.PoisonTurns > 0)
             {
@@ -77,7 +77,7 @@ namespace Console_Crawler.GameCharacters
             }
         }
 
-        public void ApplyBurnDamage(GameCharacterBuilder enemy)
+        public void ApplyBurnDamage(GameCharacter enemy)
         {
             if (this.EffectTurns.BurnTurns > 0)
             {
