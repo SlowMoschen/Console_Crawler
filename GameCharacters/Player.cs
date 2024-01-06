@@ -25,7 +25,10 @@ namespace Console_Crawler.GameCharacters
         public PlayerInventory Inventory { get; set; } = new PlayerInventory();
 
 
-        public Player(string name, int attack, int armor, double strength, int health) : base(name, attack, armor, strength, health) { }
+        public Player(string name, int attack, int armor, double strength, int health) : base(name, attack, armor, strength, health) 
+        { 
+            this.SetAttackOptions();
+        }
 
         public void EquipWeapon(Weapon weapon)
         {
@@ -43,7 +46,7 @@ namespace Console_Crawler.GameCharacters
 
                 if(this.EffectTurns.StrenghtBuffTurns == 0)
                 {
-                    this.Strength -= PlayerStats.InitialStrength;
+                    this.Strength = PlayerStats.InitialStrength;
                 }
             }
         }
@@ -132,7 +135,7 @@ namespace Console_Crawler.GameCharacters
             if(this.EXP >= this.EXPToNextLevel)
             {
                 this.Level++;
-                this.EXP -= 0;
+                this.EXP = 0;
                 this.EXPToNextLevel = this.Level * LevelUpModifers.EXPRating;
                 this.Attack += LevelUpModifers.Attack;
                 this.Armor += LevelUpModifers.Armor;

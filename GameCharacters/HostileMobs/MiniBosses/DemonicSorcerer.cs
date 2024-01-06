@@ -10,13 +10,13 @@ namespace Console_Crawler.GameCharacters.HostileMobs.MiniBosses
         public int HellFireBlastDamage { get; set; }
         public int BurnDamage { get; set; }
 
-        public DemonicSorcerer(string name, int EXP, int Gold, DemonicSorcererStatistics enemyStatistics) : base(name, EXP, Gold, enemyStatistics)
+        public DemonicSorcerer(string name, DemonicSorcererStatistics enemyStatistics) : base(name, enemyStatistics)
         {
             this.EnemyStats = enemyStatistics;
             this.SetStats();
             this.SpecialAttacks =
             [
-                ("Fireball", HellFireBlastAttack),
+                ("Hellfire Blast", HellFireBlastAttack),
                 ("Soulsteal", Soulsteal),
                 ("Dark Pact", DarkPact)
             ];

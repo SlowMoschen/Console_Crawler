@@ -7,10 +7,11 @@ namespace Console_Crawler.GameCharacters.HostileMobs
     {
         public int StealAmount { get; set; }
         public new GoblinStatistics EnemyStats { get; set; }
-        public Goblin(string name, int EXP, int Gold, GoblinStatistics enemyStatistics) : base(name, EXP, Gold, enemyStatistics)
+        public Goblin(string name, GoblinStatistics enemyStatistics) : base(name, enemyStatistics)
         {
             this.EnemyStats = enemyStatistics;
             this.StealAmount = enemyStatistics.StealAmount;
+            this.SetStats();
             this.SpecialAttacks =
             [
                 ("Steal", StealAttack)
@@ -25,14 +26,31 @@ namespace Console_Crawler.GameCharacters.HostileMobs
             if (target.Effects.IsDefending)
             {
                 target.Effects.IsDefending = false;
-                target.Inventory.RemoveGold(this.StealAmount);
+
+                if(target.Inventory.Gold >= this.StealAmount)
+                { 
+                    target.Inventory.RemoveGold(this.StealAmount);
+                }
+                else
+                {
+                    Console.WriteLine("The Goblin found no Gold to steal!");
+                }
+
                 return;
             }
             else
             {
                 target.Health -= damage;
-                target.Inventory.RemoveGold(this.StealAmount);
-                this.Gold += this.StealAmount;
+
+                if (target.Inventory.Gold >= this.StealAmount)
+                {
+                    target.Inventory.RemoveGold(this.StealAmount);
+                    this.Gold += this.StealAmount;
+                }
+                else
+                {
+                    Console.WriteLine("The Goblin found no Gold to steal!");
+                }
             }
         }
     }

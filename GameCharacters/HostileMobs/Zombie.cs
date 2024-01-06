@@ -5,8 +5,9 @@ namespace Console_Crawler.GameCharacters.HostileMobs
 {
     internal class Zombie : Enemy
     {
-        public Zombie(string name, int EXP, int Gold, EnemyStatistics enemyStatistics) : base(name, EXP, Gold, enemyStatistics) 
+        public Zombie(string name, EnemyStatistics enemyStatistics) : base(name, enemyStatistics) 
         {
+            this.SetStats();
             SpecialAttacks =
             [
                 ("Bite", BiteAttack),

@@ -8,8 +8,9 @@ namespace Console_Crawler.GameCharacters.HostileMobs.Bosses
         public int FireBreathDamage { get; set; }
         public int RockThrowDamage { get; set; }
         public int TailStrikeDamage { get; set; }
+        public int BurnDamage { get; set; }
         public new DragonStatistics EnemyStats { get; set; }
-        public Dragon(string name, int EXP, int Gold, DragonStatistics enemyStatistics) : base(name, EXP, Gold, enemyStatistics)
+        public Dragon(string name, DragonStatistics enemyStatistics) : base(name, enemyStatistics)
         {
             this.EnemyStats = enemyStatistics;
             this.SetStats();
@@ -27,6 +28,7 @@ namespace Console_Crawler.GameCharacters.HostileMobs.Bosses
             this.FireBreathDamage = this.EnemyStats.FireBreathDamage;
             this.RockThrowDamage = this.EnemyStats.RockThrowDamage;
             this.TailStrikeDamage = this.EnemyStats.TailStrikeDamage;
+            this.BurnDamage = this.EnemyStats.BurnDamage;
         }
 
         //Fire Breath - Has a chance to burn the player

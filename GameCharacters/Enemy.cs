@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Console_Crawler.GameVariables.Statistics.PlayerStatistics;
+﻿using Console_Crawler.GameVariables.Statistics.PlayerStatistics;
 using Console_Crawler.GameVariables.Statistics.EnemyStatistics.Builder;
 
 namespace Console_Crawler.GameCharacters
@@ -23,12 +18,10 @@ namespace Console_Crawler.GameCharacters
         public List<(string Name, Action<Player> Attack)> ?SpecialAttacks { get; set; }
         public EnemyStatistics EnemyStats { get; set; }
 
-        public Enemy(string name, int EXP, int Gold, EnemyStatistics enemyStatistics) : base(name, 0, 0, 0, 0)
+        public Enemy(string name, EnemyStatistics enemyStatistics) : base(name, 0, 0, 0, 0)
         {
             this.EnemyStats = enemyStatistics;
-            this.EXP = EXP;
-            this.Gold = Gold;
-            this.SetStats();
+            //this.SetStats();
         }
 
         public virtual void SetStats()
@@ -38,10 +31,11 @@ namespace Console_Crawler.GameCharacters
             //This is commented out because I want to test the game without armor scaling
             //this.Armor = CalculateStat(this.EnemyStats.BaseArmor, GameVariables.GameSettings.EnemyScaling.AttackScaling, GameVariables.GameSettings.EnemyScaling.ScalingIntervals.ArmorInterval);
 
-            this.Armor = this.EnemyStats.BaseArmor;
-            this.Strength = this.EnemyStats.Strength;
             this.Health = CalculateStat(this.EnemyStats.BaseHealth, GameVariables.GameSettings.EnemyScaling.HealthScaling, GameVariables.GameSettings.EnemyScaling.ScalingIntervals.HealthInterval);
             this.EXP = CalculateStat(this.EnemyStats.BaseEXP, GameVariables.GameSettings.EnemyScaling.EXPSScaling, GameVariables.GameSettings.EnemyScaling.ScalingIntervals.EXPInterval);
+            this.Armor = this.EnemyStats.BaseArmor;
+            this.Strength = this.EnemyStats.Strength;
+            this.Gold = this.EnemyStats.Gold;
         }
 
         public static int CalculateStat(int baseStat, int scaleRating, int levelInterval = 0)

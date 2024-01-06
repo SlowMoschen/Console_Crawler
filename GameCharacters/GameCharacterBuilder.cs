@@ -67,13 +67,14 @@ namespace Console_Crawler.GameCharacters
             if (this.EffectTurns.PoisonTurns > 0)
             {
 
-                if (enemy is GiantSpider)
+                if (enemy is GiantSpider giantSpider)
                 {
-                    this.Health -= AllEnemyStatistics.GiantSpider.BasePoisonDamage;
+                    this.Health -= giantSpider.PoisonDamage;
                 }
-                else
+                
+                if (enemy is Spider spider)
                 {
-                    this.Health -= AllEnemyStatistics.GiantSpider.BasePoisonDamage;
+                    this.Health -= spider.PoisonDamage;
                 }
                 this.EffectTurns.PoisonTurns--;
             }
@@ -87,13 +88,14 @@ namespace Console_Crawler.GameCharacters
         {
             if (this.EffectTurns.BurnTurns > 0)
             {
-                if (enemy is Dragon)
+                if (enemy is Dragon dragon)
                 {
-                    this.Health -= AllEnemyStatistics.Dragon.BurnDamage;
+                    this.Health -= dragon.BurnDamage;
                 }
-                else
+                
+                if(enemy is DemonicSorcerer sorcerer)
                 {
-                    this.Health -= AllEnemyStatistics.DemonicSorcerer.BurnDamage;
+                    this.Health -= sorcerer.BurnDamage;
                 }
                 this.EffectTurns.BurnTurns--;
             }

@@ -14,9 +14,9 @@ namespace Console_Crawler.GameUtilities
         // @param min: the minimum number to return
         // @param max: the maximum number to return
         // @return a random number between min and max
-        public static int GetRandomNumber(int min, int max)
+        public static int GetRandomNumber(int max, int min = 0)
         {
-            return random.Next(min, max + 1);
+            return random.Next(min, max);
         }
 
 

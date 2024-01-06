@@ -10,14 +10,14 @@ namespace Console_Crawler.GameCharacters.HostileMobs.MiniBosses
         public int PoisonDamage { get; set; }
         public int PoisonBiteDamage { get; set; }
         public int WebShotDamage { get; set; }
-        public GiantSpider(string name, int EXP, int Gold, GiantSpiderStatistics enemyStatistics) : base(name, EXP, Gold, enemyStatistics)
+        public GiantSpider(string name, GiantSpiderStatistics enemyStatistics) : base(name, enemyStatistics)
         {
             this.EnemyStats = enemyStatistics;
             this.SetStats();
             SpecialAttacks =
             [
                 ("Poison Bite", PoisonBiteAttack),
-                ("WebShot", WebShotAttack)
+                ("Webshot", WebShotAttack)
             ];
         }
 

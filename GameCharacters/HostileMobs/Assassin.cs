@@ -5,9 +5,10 @@ namespace Console_Crawler.GameCharacters.HostileMobs
 {
     internal class Assassin : Enemy
     {
-        public Assassin(string name, int EXP, int Gold, EnemyStatistics enemyStatistics) : base(name, EXP, Gold, enemyStatistics)
+        public Assassin(string name, EnemyStatistics enemyStatistics) : base(name, enemyStatistics)
         {
             this.EnemyStats = enemyStatistics;
+            this.SetStats();
             this.SpecialAttacks =
             [
                 ("Backstab", BackStabAttack)

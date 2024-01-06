@@ -6,16 +6,17 @@ namespace Console_Crawler.GameCharacters.HostileMobs
     internal class StoneGolem : Enemy
     {
         public new StoneGolemStatistics EnemyStats { get; set; }
-        public StoneGolem(string name, int EXP, int Gold, StoneGolemStatistics enemyStatistics) : base(name, EXP, Gold, enemyStatistics)
+        public StoneGolem(string name, StoneGolemStatistics enemyStatistics) : base(name, enemyStatistics)
         {
             EnemyStats = enemyStatistics;
+            this.SetStats();
             SpecialAttacks =
             [
                 ("Slam", SlamAttack)
             ];
         }
 
-        public void SlamAttack(Player target)
+        private void SlamAttack(Player target)
         {
             int damage = DamageCalculator.CalculateAttackDamage(Attack, target.Armor, Strength);
 

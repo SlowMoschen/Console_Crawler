@@ -2,9 +2,9 @@
 
 namespace Console_Crawler.Weapons
 {
-    internal class Fists : Weapon
+    internal class Axe : Weapon
     {
-        public Fists() : base(WeaponStats.Fists, "Fists")
+        public Axe() : base(WeaponStats.Axe, "Axe")
         {
             SetBaseAttackDamage();
             SetSpecialAttackDamage();

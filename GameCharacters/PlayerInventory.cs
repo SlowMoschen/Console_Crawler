@@ -70,7 +70,7 @@ namespace Console_Crawler.GameCharacters
             this.Gold += amount;
         }
 
-        public void RemoveGold(int amount)
+        public void RemoveGold(int amount = 0)
         {
             if(GameBools.RanAway)
             {
