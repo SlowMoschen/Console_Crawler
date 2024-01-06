@@ -31,7 +31,7 @@ namespace Console_Crawler.GameCharacters
             this.SetStats();
         }
 
-        public void SetStats()
+        public virtual void SetStats()
         {
             this.Attack = CalculateStat(this.EnemyStats.BaseAttack, GameVariables.GameSettings.EnemyScaling.AttackScaling, GameVariables.GameSettings.EnemyScaling.ScalingIntervals.AttackInterval);
 
@@ -80,9 +80,8 @@ namespace Console_Crawler.GameCharacters
 
         public string ExecuteAction(Player target, EnemyAction action)
         {
-            string move = "";
-
-            switch(action)
+            string move;
+            switch (action)
             {
                 case EnemyAction.NormalAttack:
                     this.NormalAttack(target);

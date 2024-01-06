@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Console_Crawler.GameUtilities;
+﻿using Console_Crawler.GameUtilities;
 using Console_Crawler.GameVariables.Statistics.EnemyStatistics.Builder;
 
 namespace Console_Crawler.GameCharacters.HostileMobs
@@ -12,11 +7,11 @@ namespace Console_Crawler.GameCharacters.HostileMobs
     {
         public Zombie(string name, int EXP, int Gold, EnemyStatistics enemyStatistics) : base(name, EXP, Gold, enemyStatistics) 
         {
-            SpecialAttacks = new List<(string Name, Action<Player> Attack)>
-            {
+            SpecialAttacks =
+            [
                 ("Bite", BiteAttack),
                 ("Thrash", ThrashAttack)
-            };
+            ];
         }
 
         // Bite Attack - Heals the zombie for half the damage dealt

@@ -8,14 +8,14 @@ namespace Console_Crawler.GameVariables.Statistics.EnemyStatistics.Builder
 {
     internal class GiantSpiderStatistics : SpiderStatistics
     {
-        int WebShotDamage { get; set; }
-        int StunChance { get; set; }
-        int PoisonBiteDamage { get; set; }
-        public GiantSpiderStatistics(int baseAttack, int baseArmor, double strength, int baseHealth, int baseEXP, int Gold, int poisonDamage, int poisonChance, int webShotDamage, int stunChance, int poisonBiteDamage) : base(baseAttack, baseArmor, strength, baseHealth, baseEXP, Gold, poisonDamage, poisonChance)
+        public int BaseWebShotDamage { get; set; }
+        public int StunChance { get; set; }
+        public int BasePoisonBiteDamage { get; set; }
+        public GiantSpiderStatistics(int baseAttack, int baseArmor, double strength, int baseHealth, int baseEXP, int Gold, int basePoisonDamage, int poisonChance, int baseWebShotDamage, int stunChance, int basePoisonBiteDamage) : base(baseAttack, baseArmor, strength, baseHealth, baseEXP, Gold, basePoisonDamage, poisonChance)
         {
-            WebShotDamage = webShotDamage;
+            BaseWebShotDamage = baseWebShotDamage;
             StunChance = stunChance;
-            PoisonBiteDamage = poisonBiteDamage;
+            BasePoisonBiteDamage = basePoisonBiteDamage;
         }
     }
 }

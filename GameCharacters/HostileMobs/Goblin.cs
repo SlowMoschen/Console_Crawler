@@ -1,38 +1,38 @@
 ﻿using Console_Crawler.GameUtilities;
 using Console_Crawler.GameVariables.Statistics.EnemyStatistics.Builder;
-using Console_Crawler.GameVariables.Statistics.EnemyStatistics;
 
 namespace Console_Crawler.GameCharacters.HostileMobs
 {
-    internal class Spider : Enemy
+    internal class Goblin : Enemy
     {
-        public new SpiderStatistics EnemyStats { get; set; }
-        public Spider(string name, int EXP, int Gold, SpiderStatistics enemyStatistics) : base(name, EXP, Gold, enemyStatistics)
+        public int StealAmount { get; set; }
+        public new GoblinStatistics EnemyStats { get; set; }
+        public Goblin(string name, int EXP, int Gold, GoblinStatistics enemyStatistics) : base(name, EXP, Gold, enemyStatistics)
         {
             this.EnemyStats = enemyStatistics;
+            this.StealAmount = enemyStatistics.StealAmount;
             this.SpecialAttacks =
             [
-                ("Spit", SpitAttack)
+                ("Steal", StealAttack)
             ];
         }
 
-        public void SpitAttack(Player target)
+        // Steal Attack - Steals gold from the player
+        private void StealAttack(Player target)
         {
             int damage = DamageCalculator.CalculateAttackDamage(this.Attack, target.Armor, this.Strength);
 
             if (target.Effects.IsDefending)
             {
                 target.Effects.IsDefending = false;
+                target.Inventory.RemoveGold(this.StealAmount);
                 return;
             }
             else
             {
                 target.Health -= damage;
-                if (Randomizer.GetChance(this.EnemyStats.PoisonChance))
-                {
-                    target.Effects.IsPoisoned = true;
-                    target.EffectTurns.PoisonTurns = 3;
-                }
+                target.Inventory.RemoveGold(this.StealAmount);
+                this.Gold += this.StealAmount;
             }
         }
     }

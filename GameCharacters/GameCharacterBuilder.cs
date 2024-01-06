@@ -4,6 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Console_Crawler.GameUtilities;
+using Console_Crawler.GameVariables;
+using Console_Crawler.GameVariables.Statistics.EnemyStatistics;
+using Console_Crawler.GameVariables.Statistics.EnemyStatistics.Builder;
+using Console_Crawler.GameCharacters.HostileMobs;
+using Console_Crawler.GameCharacters.HostileMobs.Bosses;
+using Console_Crawler.GameCharacters.HostileMobs.MiniBosses;
 
 namespace Console_Crawler.GameCharacters
 {
@@ -25,7 +31,7 @@ namespace Console_Crawler.GameCharacters
         {
             public int PoisonTurns { get; set; } = 0;
             public int BurnTurns { get; set; } = 0;
-            public int strenghtBuffTurns { get; set; } = 0;
+            public int StrenghtBuffTurns { get; set; } = 0;
         }
         public EffectsBools Effects { get; set; } = new EffectsBools();
         public AllEffectTurns EffectTurns { get; set; } = new AllEffectTurns();
@@ -50,7 +56,7 @@ namespace Console_Crawler.GameCharacters
             this.Effects.IsDefending = true;
         }
 
-       /* public void ApplyOverTimeEffects(GameCharacter enemy)
+        public void ApplyOverTimeEffects(GameCharacter enemy)
         {
             this.ApplyPoisonDamage(enemy);
             this.ApplyBurnDamage(enemy);
@@ -63,11 +69,11 @@ namespace Console_Crawler.GameCharacters
 
                 if (enemy is GiantSpider)
                 {
-                    this.Health -= GameSettings.General.PoisonDamage * GameSettings.General.GiantSpiderPoisonMultiplier;
+                    this.Health -= AllEnemyStatistics.GiantSpider.BasePoisonDamage;
                 }
                 else
                 {
-                    this.Health -= GameSettings.General.PoisonDamage;
+                    this.Health -= AllEnemyStatistics.GiantSpider.BasePoisonDamage;
                 }
                 this.EffectTurns.PoisonTurns--;
             }
@@ -83,11 +89,11 @@ namespace Console_Crawler.GameCharacters
             {
                 if (enemy is Dragon)
                 {
-                    this.Health -= GameSettings.General.BurnDamage * GameSettings.General.DragonBurnMultiplier;
+                    this.Health -= AllEnemyStatistics.Dragon.BurnDamage;
                 }
                 else
                 {
-                    this.Health -= GameSettings.General.BurnDamage;
+                    this.Health -= AllEnemyStatistics.DemonicSorcerer.BurnDamage;
                 }
                 this.EffectTurns.BurnTurns--;
             }
@@ -95,7 +101,7 @@ namespace Console_Crawler.GameCharacters
             {
                 this.Effects.IsBurning = false;
             }
-        }*/
+        }
 
         public virtual void PrintBattleStats()
         {

@@ -30,7 +30,7 @@ namespace Console_Crawler.GameVariables.Statistics.EnemyStatistics
             baseHealth: 110,
             baseEXP: 30,
             Gold: 10,
-            poisonDamage: 5,
+            basePoisonDamage: 5,
             poisonChance: 25
             );
 
@@ -74,11 +74,11 @@ namespace Console_Crawler.GameVariables.Statistics.EnemyStatistics
             baseHealth: 350,
             baseEXP: 200,
             Gold: 50,
-            poisonDamage: 10,
+            basePoisonDamage: 10,
             poisonChance: 25,
-            webShotDamage: 15,
+            baseWebShotDamage: 15,
             stunChance: 25,
-            poisonBiteDamage: 10
+            basePoisonBiteDamage: 10
             );
 
         public static DemonicSorcererStatistics DemonicSorcerer = new DemonicSorcererStatistics(
@@ -88,11 +88,11 @@ namespace Console_Crawler.GameVariables.Statistics.EnemyStatistics
             baseHealth: 500,
             baseEXP: 200,
             Gold: 50,
-            hellFireBlastDamage: 20,
+            baseHellFireBlastDamage: 20,
             burnChance: 15,
             burnDamage: 10,
             darkPacktAttackPercentage: 0.2,
-            darkPacktHealthPercentage: 0.3
+            darkPacktHealthPercentage: 0.1
             );
 
         //**

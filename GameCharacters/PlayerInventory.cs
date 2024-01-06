@@ -75,6 +75,7 @@ namespace Console_Crawler.GameCharacters
             if(GameBools.RanAway)
             {
                 this.Gold /= 2;
+                return;
             }
 
             if(this.Gold - amount >= 0)

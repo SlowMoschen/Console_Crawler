@@ -24,7 +24,7 @@ namespace Console_Crawler.Weapons.__tests__
         // Player.Level = 1
         // Result should be between 1 and 4
         [Test]
-        public void CalculateAttackDamage_WithMinDamage1MaxDamage2MinMultiplier1MaxMultiplier2_ReturnsRandomNumberBetween1And4()
+        public void CalculateAttackDamage_Test()
         {
             //Arrange
             int minDamage = 1;
@@ -44,7 +44,7 @@ namespace Console_Crawler.Weapons.__tests__
         // Player.Endurance = 100
         // Player.Endurance should be 95 after the attack
         [Test]
-        public void PerformSpecialAttack_WithPlayerEndurance10AndWeaponSpecialEnduranceCost5_ReturnsTrue()
+        public void PerformSpecialAttack_Test()
         {
             //Arrange
             Weapons.Weapon weapon = new Weapons.Weapon(new WeaponStats(1, 2, 1, 2, 1, 2, 1, 5, "special"), "TestWeapon");

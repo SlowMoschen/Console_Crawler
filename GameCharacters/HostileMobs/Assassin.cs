@@ -1,38 +1,33 @@
 ﻿using Console_Crawler.GameUtilities;
 using Console_Crawler.GameVariables.Statistics.EnemyStatistics.Builder;
-using Console_Crawler.GameVariables.Statistics.EnemyStatistics;
 
 namespace Console_Crawler.GameCharacters.HostileMobs
 {
-    internal class Spider : Enemy
+    internal class Assassin : Enemy
     {
-        public new SpiderStatistics EnemyStats { get; set; }
-        public Spider(string name, int EXP, int Gold, SpiderStatistics enemyStatistics) : base(name, EXP, Gold, enemyStatistics)
+        public Assassin(string name, int EXP, int Gold, EnemyStatistics enemyStatistics) : base(name, EXP, Gold, enemyStatistics)
         {
             this.EnemyStats = enemyStatistics;
             this.SpecialAttacks =
             [
-                ("Spit", SpitAttack)
+                ("Backstab", BackStabAttack)
             ];
         }
 
-        public void SpitAttack(Player target)
+        // Backstab Attack - Deals double damage if and ignores the player's defense if the player is defending
+        private void BackStabAttack(Player target)
         {
             int damage = DamageCalculator.CalculateAttackDamage(this.Attack, target.Armor, this.Strength);
 
             if (target.Effects.IsDefending)
             {
                 target.Effects.IsDefending = false;
+                target.Health -= damage * 2;
                 return;
             }
             else
             {
-                target.Health -= damage;
-                if (Randomizer.GetChance(this.EnemyStats.PoisonChance))
-                {
-                    target.Effects.IsPoisoned = true;
-                    target.EffectTurns.PoisonTurns = 3;
-                }
+                target.Health -= damage * 2;
             }
         }
     }

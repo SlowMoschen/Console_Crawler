@@ -37,11 +37,11 @@ namespace Console_Crawler.GameCharacters
 
         public void DecrementBuffTurns()
         {
-            if(this.EffectTurns.strenghtBuffTurns > 0)
+            if(this.EffectTurns.StrenghtBuffTurns > 0)
             {
-                this.EffectTurns.strenghtBuffTurns--;
+                this.EffectTurns.StrenghtBuffTurns--;
 
-                if(this.EffectTurns.strenghtBuffTurns == 0)
+                if(this.EffectTurns.StrenghtBuffTurns == 0)
                 {
                     this.Strength -= PlayerStats.InitialStrength;
                 }
@@ -247,9 +247,9 @@ namespace Console_Crawler.GameCharacters
             base.PrintBattleStats();
             Console.WriteLine($" Endurance: {this.Endurance}");
 
-            if(this.EffectTurns.strenghtBuffTurns > 0)
+            if(this.EffectTurns.StrenghtBuffTurns > 0)
             {
-                Console.WriteLine($" Strength is buffed for {this.EffectTurns.strenghtBuffTurns} turns");
+                Console.WriteLine($" Strength is buffed for {this.EffectTurns.StrenghtBuffTurns} turns");
             }
 
             if(this.Effects.IsPoisoned)
