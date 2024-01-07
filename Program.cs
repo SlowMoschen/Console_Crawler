@@ -1,4 +1,7 @@
-﻿using Console_Crawler.GameUtilities;
+﻿using Console_Crawler.GameCharacters;
+using Console_Crawler.GameUtilities;
+using Console_Crawler.GameUtilities.DisplayManager;
+using Console_Crawler.GameVariables;
 using System;
 using System.Diagnostics;
 using System.Linq;
@@ -9,14 +12,39 @@ class Program
     {
         RunDotNetCommand("run");
 
+        // Initialize the game
+        Player player = DisplayManager.InitializePlayerFromPreGameMenu();
+        GameBools.IsGameRunning = true;
+        GameBools.IsInMenu = true;
 
-        //Hello World
-        Console.WriteLine("Hello World!");
-        int armor = 20;
-        Console.WriteLine(DamageCalculator.CalculateDamageReduction(armor));
-        Console.ReadLine();
+        while (GameBools.IsInMenu)
+        {
+            string menuChoice = DisplayManager.DisplayMainMenu(player);
+
+            switch (menuChoice)
+            {
+                case "Enter Dungeon":
+                    GameBools.IsInMenu = false;
+                    GameBools.IsInBattle = true;
+                    BattleManger.StartDungeon(player);
+                    break;
+                case "Shop":
+                    Console.WriteLine("Entering Shop ...");
+                    break;
+                case "Inventory":
+                    Console.WriteLine("Entering Inventory ...");
+                    break;
+                case "Stats":
+                    Console.WriteLine("Entering Stats ...");
+                    break;
+                case "Game Infos":
+                    Console.WriteLine("Entering Game Infos ...");
+                    break;
+            }
+        }
     }
 
+    // Method to run a dotnet command and create a new CMD instance
     static void RunDotNetCommand(string command)
     {
         // Initialize a new CMD instance

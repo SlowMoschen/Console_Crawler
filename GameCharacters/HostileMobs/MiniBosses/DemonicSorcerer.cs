@@ -41,6 +41,7 @@ namespace Console_Crawler.GameCharacters.HostileMobs.MiniBosses
             }
             else
             {
+                this.DealtDamage = damage;
                 target.Health -= damage;
 
                 if (Randomizer.GetChance(this.EnemyStats.BurnChance))
@@ -63,6 +64,7 @@ namespace Console_Crawler.GameCharacters.HostileMobs.MiniBosses
             }
             else
             {
+                this.DealtDamage = damage;
                 target.Health -= damage;
                 this.Health += damage / 2;
             }

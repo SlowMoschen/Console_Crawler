@@ -6,18 +6,18 @@ using Console_Crawler.GameCharacters.HostileMobs;
 using Console_Crawler.GameCharacters.HostileMobs.Bosses;
 using Console_Crawler.GameCharacters.HostileMobs.MiniBosses;
 
-namespace Console_Crawler.Dungeon
+namespace Console_Crawler.DungeonBuilder
 {
     internal class Room
     {
         public int RoomNumber { get; set; }
-        public bool IsBossRoom { get; set; }
+        public bool IsLastRoom { get; set; }
         public Enemy[] Enemies { get; set; }
 
-        public Room(int roomNumber, string difficulty, bool isBossRoom = false)
+        public Room(int roomNumber, string difficulty, bool isLastRoom = false)
         {
             this.RoomNumber = roomNumber;
-            this.IsBossRoom = isBossRoom;
+            this.IsLastRoom = isLastRoom;
             this.Enemies = GenerateRoomEnemies(difficulty);
         }
 
@@ -33,8 +33,8 @@ namespace Console_Crawler.Dungeon
 
             for (int i = 0; i < enemyCount; i++)
             {
-                bool isMiniBoss = i == enemyCount - 1 && difficulty != "Easy" && this.IsBossRoom == false && Randomizer.GetChance(DungeonSettings.MiniBossSpawnRate);
-                bool isBoss = i == enemyCount - 1 && this.IsBossRoom == true;
+                bool isMiniBoss = i == enemyCount - 1 && difficulty != "Easy" && this.IsLastRoom == true && Randomizer.GetChance(DungeonSettings.MiniBossSpawnRate);
+                bool isBoss = i == enemyCount - 1 && difficulty == "Boss" && this.IsLastRoom == true;
 
                 if (isMiniBoss)
                 {

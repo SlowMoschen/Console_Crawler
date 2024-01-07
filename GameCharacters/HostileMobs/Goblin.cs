@@ -40,6 +40,7 @@ namespace Console_Crawler.GameCharacters.HostileMobs
             }
             else
             {
+                this.DealtDamage = damage;
                 target.Health -= damage;
 
                 if (target.Inventory.Gold >= this.StealAmount)

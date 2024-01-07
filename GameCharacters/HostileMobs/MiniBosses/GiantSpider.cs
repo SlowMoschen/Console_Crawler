@@ -40,6 +40,7 @@ namespace Console_Crawler.GameCharacters.HostileMobs.MiniBosses
             }
             else
             {
+                this.DealtDamage = damage;
                 target.Health -= damage;
 
                 if (Randomizer.GetChance(this.EnemyStats.PoisonChance))
@@ -61,6 +62,7 @@ namespace Console_Crawler.GameCharacters.HostileMobs.MiniBosses
             }
             else
             {
+                this.DealtDamage = damage;
                 target.Health -= damage;
                 
                 if (Randomizer.GetChance(this.EnemyStats.StunChance))

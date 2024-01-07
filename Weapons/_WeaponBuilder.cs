@@ -60,6 +60,7 @@ namespace Console_Crawler.Weapons
                 }
                 else
                 {
+                    target.Effects.IsDefending = true;
                     target.Health -= damage;
                     player.Endurance -= this.WeaponStats.SpecialEnduranceCost;
                 }

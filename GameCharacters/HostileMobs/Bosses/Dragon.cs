@@ -43,6 +43,7 @@ namespace Console_Crawler.GameCharacters.HostileMobs.Bosses
             }
             else
             {
+                this.DealtDamage = damage;
                 target.Health -= damage;
 
                 if (Randomizer.GetChance(this.EnemyStats.BurnChance))
@@ -65,6 +66,7 @@ namespace Console_Crawler.GameCharacters.HostileMobs.Bosses
             }
             else
             {
+                this.DealtDamage = damage;
                 target.Health -= damage;
 
                 if (Randomizer.GetChance(this.EnemyStats.StunChance))
@@ -78,6 +80,7 @@ namespace Console_Crawler.GameCharacters.HostileMobs.Bosses
         private void TailStrikeAttack(Player target)
         {
             int damage = DamageCalculator.CalculateAttackDamage(this.Attack, target.Armor, this.Strength, this.TailStrikeDamage);
+            this.DealtDamage = damage;
 
             if (target.Effects.IsDefending)
             {

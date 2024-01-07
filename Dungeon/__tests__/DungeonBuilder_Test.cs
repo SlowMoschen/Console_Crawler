@@ -1,11 +1,12 @@
 ﻿
 using Console_Crawler.GameCharacters;
 using Console_Crawler.GameCharacters.HostileMobs.Bosses;
+using Console_Crawler.GameCharacters.HostileMobs.MiniBosses;
 using Console_Crawler.Items;
 using Console_Crawler.Weapons;
 using NUnit.Framework;
 
-namespace Console_Crawler.Dungeon.__tests__
+namespace Console_Crawler.DungeonBuilder.__tests__
 {
     [TestFixture]
     internal class Dungeon_Test
@@ -30,6 +31,10 @@ namespace Console_Crawler.Dungeon.__tests__
                 Assert.That(dungeon.Chest?.Items, Is.EqualTo(null));
             }
             Assert.That(dungeon.Chest?.Weapons, Is.EqualTo(null).Or.AssignableTo<Weapon>());
+            Assert.That(dungeon.Rooms[0].IsLastRoom, Is.True);
+            Assert.That(dungeon.Rooms[0].Enemies[0], Is.Not.InstanceOf(typeof(Dragon)));
+            Assert.That(dungeon.Rooms[0].Enemies[0], Is.Not.InstanceOf(typeof(GiantSpider)));
+            Assert.That(dungeon.Rooms[0].Enemies[0], Is.Not.InstanceOf(typeof(DemonicSorcerer)));
         }
 
         [Test]
@@ -60,7 +65,7 @@ namespace Console_Crawler.Dungeon.__tests__
             Assert.That(dungeon.Chest?.Weapons, Is.EqualTo(null).Or.AssignableTo<Weapon>());
             
             // check if last room is boss room and if last enemy is dragon
-            Assert.That(dungeon.Rooms[dungeon.Rooms.Length - 1].IsBossRoom, Is.True);
+            Assert.That(dungeon.Rooms[dungeon.Rooms.Length - 1].IsLastRoom, Is.True);
             Assert.That(dungeon.Rooms[dungeon.Rooms.Length - 1].Enemies[dungeon.Rooms[dungeon.Rooms.Length - 1].Enemies.Length - 1], Is.AssignableTo<Dragon>());
         }
     }

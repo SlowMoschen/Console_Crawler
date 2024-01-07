@@ -54,6 +54,42 @@ namespace Console_Crawler.GameCharacters
             }
         }
 
+        public string[] GetAllItemsCount()
+        {
+            List<string> items = new List<string>();
+
+            foreach(var item in this.Items)
+            {
+                items.Add(GetItemQuantity(item.Type).ToString());
+            }
+
+            return items.ToArray();
+        }
+
+        public string[] GetAllItemsNames()
+        {
+            List<string> items = new List<string>();
+
+            foreach(var item in this.Items)
+            {
+                items.Add(item.Name);
+            }
+
+            return items.ToArray();
+        }
+
+        public string[] GetAllItemsTypes()
+        {
+            List<string> items = new List<string>();
+
+            foreach(var item in this.Items)
+            {
+                items.Add(item.Type);
+            }
+
+            return items.ToArray();
+        }
+
         public int GetItemQuantity(string itemType)
         {
             var existingItem = GetExistingItem(itemType);

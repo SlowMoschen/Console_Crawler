@@ -27,6 +27,7 @@ namespace Console_Crawler.GameCharacters.HostileMobs
             }
             else
             {
+                this.DealtDamage = damage;
                 target.Health -= damage;
                 this.Health += damage / 2;
             }
@@ -44,6 +45,7 @@ namespace Console_Crawler.GameCharacters.HostileMobs
             }
             else
             {
+                this.DealtDamage = damage;
                 target.Health -= damage;
                 this.Health -= damage / 4;
             }

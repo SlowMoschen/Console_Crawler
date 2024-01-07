@@ -27,6 +27,7 @@ namespace Console_Crawler.GameCharacters.HostileMobs
             }
             else
             {
+                this.DealtDamage = damage;
                 target.Health -= damage;
                 if (Randomizer.GetChance(EnemyStats.StunChance))
                 {

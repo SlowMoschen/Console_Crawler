@@ -1,7 +1,7 @@
 ﻿using Console_Crawler.GameCharacters.HostileMobs.Bosses;
 using NUnit.Framework;
 
-namespace Console_Crawler.Dungeon.__tests__
+namespace Console_Crawler.DungeonBuilder.__tests__
 {
     [TestFixture]
     internal class RoomBuilder_Test
@@ -12,7 +12,7 @@ namespace Console_Crawler.Dungeon.__tests__
             Room room = new Room(1, "Easy", false);
 
             Assert.That(room.RoomNumber, Is.EqualTo(1));
-            Assert.That(room.IsBossRoom, Is.False);
+            Assert.That(room.IsLastRoom, Is.False);
             Assert.That(room.Enemies.Length, Is.InRange(1, 3));
         }
 
@@ -22,7 +22,7 @@ namespace Console_Crawler.Dungeon.__tests__
             Room room = new Room(1, "Boss", true);
 
             Assert.That(room.RoomNumber, Is.EqualTo(1));
-            Assert.That(room.IsBossRoom, Is.True);
+            Assert.That(room.IsLastRoom, Is.True);
             Assert.That(room.Enemies.Length, Is.InRange(10, 20));
             Assert.That(room.Enemies[room.Enemies.Length - 1], Is.AssignableTo<Dragon>());
         }

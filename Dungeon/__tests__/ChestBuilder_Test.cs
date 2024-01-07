@@ -2,7 +2,7 @@
 using Console_Crawler.Weapons;
 using NUnit.Framework;
 
-namespace Console_Crawler.Dungeon.__tests__
+namespace Console_Crawler.DungeonBuilder.__tests__
 {
     [TestFixture]
     internal class ChestBuilder_Test

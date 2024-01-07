@@ -10,6 +10,7 @@ using Console_Crawler.Items;
 using Console_Crawler.GameVariables.Statistics.PlayerStatistics;
 using Console_Crawler.GameVariables.Statistics;
 using Console_Crawler.Items.Potions;
+using Console_Crawler.GameUtilities.DisplayManager;
 
 namespace Console_Crawler.GameCharacters
 {
@@ -34,6 +35,7 @@ namespace Console_Crawler.GameCharacters
         public void EquipWeapon(Weapon weapon)
         {
             this.CurrentWeapon = weapon;
+            this.SetAttackOptions();
         }
 
         //Method to calucalte 2 nums
@@ -82,6 +84,7 @@ namespace Console_Crawler.GameCharacters
                 }
                 else
                 {
+                    this.DealtDamage = damage;
                     target.Health -= damage;
                     this.Endurance -= this.CurrentWeapon.WeaponStats.EnduranceCost;
                 }
@@ -95,6 +98,7 @@ namespace Console_Crawler.GameCharacters
         public void KickAttack(GameCharacter target)
         {
             int damage = DamageCalculator.CalculateAttackDamage(this.Attack, target.Armor, this.Strength);
+            this.DealtDamage = damage;
 
             if(this.Endurance >= GameSettings.General.KickEnduranceCost)
             {
@@ -115,12 +119,31 @@ namespace Console_Crawler.GameCharacters
             }
         }
 
+
         public void UseSpecialAttack(GameCharacter target)
         {
             if(this.CurrentWeapon != null)
             {
                 this.CurrentWeapon.PerformSpecialAttack(this, target);
             }
+        }
+
+        public string ChooseAttack( Enemy target )
+        {
+            string attackChoice = DisplayManager.DisplayOptionsMenu(" What would you like to do?", MenuOptions.AttackOptions);
+
+            var attackActions = new Dictionary<string, Action<Enemy>> {
+                { "Normal Attack", this.NormalAttack },
+                { this.CurrentWeapon?.WeaponStats?.SpecialAttackName, this.UseSpecialAttack },
+                { "Kick Attack", this.KickAttack }
+            };
+
+            if (attackActions.TryGetValue(attackChoice, out var action))
+            {
+                action(target);
+            }
+
+            return attackChoice;
         }
 
         public void SetAttackOptions()
@@ -230,6 +253,30 @@ namespace Console_Crawler.GameCharacters
             {
                 Console.WriteLine(" You don't have any of this potion!");
             }
+        }
+
+        public string ChoosePotion()
+        {
+           string[] itemsCount = this.Inventory.GetAllItemsCount();
+           string[] itemNames = this.Inventory.GetAllItemsTypes();
+
+           return InputHandler.GetChoice(" Which potion would you like to use?", itemNames, itemsCount);
+        }
+
+        public void RunFromBattle()
+        {
+            Console.WriteLine(" Running away will end the fight, but you get no Rewards and lose half of your Gold.");
+            string input = InputHandler.GetChoice(" Do you want to run away?", new string[] { "Yes", "No" });
+
+            if(input == "Yes")
+            {
+                Console.WriteLine(" You ran away from the fight!");
+                this.Inventory.RemoveGold();
+                GameBools.IsInBattle = false;
+                GameBools.RanAway = true;
+                GameBools.IsInMenu = true;
+            }
+            return;
         }
 
         public void PrintInventory()

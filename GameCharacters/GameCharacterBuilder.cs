@@ -20,6 +20,7 @@ namespace Console_Crawler.GameCharacters
         public int Armor { get; set; } = armor;
         public double Strength { get; set; } = strength;
         public int Health { get; set; } = health;
+        public int DealtDamage { get; set; } = 0;
         public class EffectsBools
         {
             public bool IsDefending { get; set; } = false;
@@ -47,6 +48,7 @@ namespace Console_Crawler.GameCharacters
             }
             else 
             { 
+                this.DealtDamage = damage;
                 target.Health -= damage;
             }
         }

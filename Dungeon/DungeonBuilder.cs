@@ -1,6 +1,6 @@
 ﻿using Console_Crawler.GameVariables;
 
-namespace Console_Crawler.Dungeon
+namespace Console_Crawler.DungeonBuilder
 {
     internal class Dungeon
     {
@@ -8,6 +8,7 @@ namespace Console_Crawler.Dungeon
         public Chest Chest { get; set; }
         public bool IsBossDungeon { get; set; }
         public int TotalRooms { get; set; }
+        public int TotalEnemies { get; set; }
 
         public Dungeon(string difficulty)
         {
@@ -15,6 +16,7 @@ namespace Console_Crawler.Dungeon
             this.Chest = GenerateChest(difficulty);
             this.IsBossDungeon = difficulty == "Boss" ? true : false;
             this.TotalRooms = this.Rooms.Length;
+            this.TotalEnemies = this.Rooms.Sum(room => room.Enemies.Length);
         }
 
         private static int GetRoomCount(string difficulty)

@@ -1,11 +1,13 @@
-﻿using Console_Crawler.GameUtilities;
+﻿using Console_Crawler.GameCharacters;
+using Console_Crawler.GameUtilities;
+using Console_Crawler.GameUtilities.Generators;
 using Console_Crawler.GameVariables;
 using Console_Crawler.Items;
 using Console_Crawler.Items.Potions;
 using Console_Crawler.Weapons;
 
 
-namespace Console_Crawler.Dungeon
+namespace Console_Crawler.DungeonBuilder
 {
     internal class Chest
     {
@@ -17,7 +19,7 @@ namespace Console_Crawler.Dungeon
         {
             this.Gold = DungeonSettings.GetChestGold(diffficulty);
             this.Items = Randomizer.GetChance(100) ? GenerateChestItems(diffficulty) : null;
-            this.Weapons = Randomizer.GetChance(DungeonSettings.WeaponSpawnRate) ? GenerateChestWeapon(diffficulty) : null;
+            this.Weapons = Randomizer.GetChance(DungeonSettings.WeaponSpawnRate) ? GenerateChestWeapon() : null;
         }
 
         private static int GetChestItemsLength(string difficulty)
@@ -56,27 +58,15 @@ namespace Console_Crawler.Dungeon
             }
         }
 
-        private static Weapon GenerateChestWeapon(string difficulty)
+        private static Weapon GenerateChestWeapon()
         {
-            return GetChestWeapon();
+            return WeaponGenerator.GenerateRandomChestWeapon();
         }
 
-        private static Weapon GetChestWeapon()
+        public void OpenChest(Player player)
         {
-            string[] chestWeapons = DungeonSettings.ChestWeapons;
-            string chestWeapon = chestWeapons[Randomizer.GetRandomNumber(chestWeapons.Length)];
-
-            switch (chestWeapon)
-            {
-                case "Sword":
-                    return new Sword();
-                case "Axe":
-                    return new Axe();
-                case "Mace":
-                    return new Mace();
-                default:
-                    return new Sword();
-            }
+           Console.WriteLine(" You have found a chest!");
         }
+
     }
 }
