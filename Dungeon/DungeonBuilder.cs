@@ -1,9 +1,4 @@
 ﻿using Console_Crawler.GameVariables;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Console_Crawler.Dungeon
 {
@@ -17,7 +12,7 @@ namespace Console_Crawler.Dungeon
         public Dungeon(string difficulty)
         {
             this.Rooms = GenerateRooms(difficulty);
-            this.Chest = new Chest(difficulty);
+            this.Chest = GenerateChest(difficulty);
             this.IsBossDungeon = difficulty == "Boss" ? true : false;
             this.TotalRooms = this.Rooms.Length;
         }
@@ -27,7 +22,7 @@ namespace Console_Crawler.Dungeon
             return DungeonSettings.GetRoomCount(difficulty);
         }
 
-        private Room[] GenerateRooms(string difficulty)
+        private static Room[] GenerateRooms(string difficulty)
         {
             int roomCount = GetRoomCount(difficulty);
             Room[] rooms = new Room[roomCount];
@@ -38,6 +33,11 @@ namespace Console_Crawler.Dungeon
                 rooms[i] = new Room(i + 1, difficulty, isLastRoom);
             }
             return rooms;
+        }
+
+        private Chest GenerateChest(string difficulty)
+        {
+            return new Chest(difficulty);
         }
     }
 }

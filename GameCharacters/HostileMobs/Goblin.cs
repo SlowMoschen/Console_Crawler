@@ -33,7 +33,7 @@ namespace Console_Crawler.GameCharacters.HostileMobs
                 }
                 else
                 {
-                    Console.WriteLine("The Goblin found no Gold to steal!");
+                    Console.WriteLine(" The Goblin found no Gold to steal!");
                 }
 
                 return;
@@ -49,7 +49,7 @@ namespace Console_Crawler.GameCharacters.HostileMobs
                 }
                 else
                 {
-                    Console.WriteLine("The Goblin found no Gold to steal!");
+                    Console.WriteLine(" The Goblin found no Gold to steal!");
                 }
             }
         }

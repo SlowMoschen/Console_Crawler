@@ -14,6 +14,8 @@ namespace Console_Crawler.GameVariables
         public static string[] EnemyTypes { get; } = { "Zombie", "Spider", "Goblin", "Assassin", "Stone Golem" };
         public static string[] MiniBossTypes { get; } = { "Giant Spider", "Demonic Sorcerer" };
         public static int MiniBossSpawnRate { get; } = 25;
+        public static int ItemSpawnRate { get; } = 25;
+        public static int WeaponSpawnRate { get; } = 25;
         public static int GetRoomCount(string difficulty) => difficulty switch
         {
             "Easy" => 1,

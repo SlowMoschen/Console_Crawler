@@ -9,6 +9,7 @@ using Console_Crawler.GameVariables;
 using Console_Crawler.Items;
 using Console_Crawler.GameVariables.Statistics.PlayerStatistics;
 using Console_Crawler.GameVariables.Statistics;
+using Console_Crawler.Items.Potions;
 
 namespace Console_Crawler.GameCharacters
 {

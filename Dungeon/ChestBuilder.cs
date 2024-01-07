@@ -3,7 +3,6 @@ using Console_Crawler.GameVariables;
 using Console_Crawler.Items;
 using Console_Crawler.Items.Potions;
 using Console_Crawler.Weapons;
-using Microsoft.VisualStudio.TestPlatform.ObjectModel.Engine;
 
 
 namespace Console_Crawler.Dungeon
@@ -11,14 +10,14 @@ namespace Console_Crawler.Dungeon
     internal class Chest
     {
         public int Gold { get; set; }
-        public Item[] Items { get; set; }
-        public Weapon Weapons { get; set; }
+        public Item[]? Items { get; set; }
+        public Weapon? Weapons { get; set; }
 
         public Chest(string diffficulty)
         {
             this.Gold = DungeonSettings.GetChestGold(diffficulty);
-            this.Items = GenerateChestItems(diffficulty);
-            this.Weapons = GenerateChestWeapon(diffficulty);
+            this.Items = Randomizer.GetChance(100) ? GenerateChestItems(diffficulty) : null;
+            this.Weapons = Randomizer.GetChance(DungeonSettings.WeaponSpawnRate) ? GenerateChestWeapon(diffficulty) : null;
         }
 
         private static int GetChestItemsLength(string difficulty)

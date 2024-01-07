@@ -66,7 +66,7 @@ namespace Console_Crawler.Weapons
             }
             else
             {
-                Console.WriteLine("You don't have enough endurance to use your Special Attack!");
+                Console.WriteLine(" You don't have enough endurance to use your Special Attack!");
             }
         }
     }
