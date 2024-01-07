@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Console_Crawler.GameUtilities;
+using System;
 using System.Diagnostics;
 using System.Linq;
 
@@ -11,6 +12,8 @@ class Program
 
         //Hello World
         Console.WriteLine("Hello World!");
+        int armor = 20;
+        Console.WriteLine(DamageCalculator.CalculateDamageReduction(armor));
         Console.ReadLine();
     }
 

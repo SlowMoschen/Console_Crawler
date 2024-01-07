@@ -14,9 +14,10 @@ namespace Console_Crawler.GameUtilities
             return (int)((int)((attackDamage + specialAttackDamage) * strength) * (1 - CalculateDamageReduction(targetArmor)));
         }
 
+        // targetArmor and GameSettings.General.DamageReductionRate are both casted to double to avoid integer division
         public static double CalculateDamageReduction(int targetArmor)
         {
-            return (double)(targetArmor / (targetArmor + GameSettings.General.DamageReductionRate));
+            return Math.Round(((double)targetArmor / (targetArmor + (double)GameSettings.General.DamageReductionRate)), 2);
         }
     }
 }
