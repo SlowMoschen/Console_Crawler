@@ -26,13 +26,17 @@ class Program
                 case "Enter Dungeon":
                     GameBools.IsInMenu = false;
                     GameBools.IsInBattle = true;
-                    BattleManger.StartDungeon(player);
+                    DisplayManager.StartDungeon(player);
                     break;
                 case "Shop":
-                    Console.WriteLine("Entering Shop ...");
+                    GameBools.IsInMenu = false;
+                    GameBools.IsInShop = true;
+                    DisplayManager.DisplayShopMenu(player);
                     break;
                 case "Inventory":
-                    Console.WriteLine("Entering Inventory ...");
+                    GameBools.IsInMenu = false;
+                    GameBools.IsInInventory = true;
+                    DisplayManager.DisplayInventoryMenu(player);
                     break;
                 case "Stats":
                     Console.WriteLine("Entering Stats ...");

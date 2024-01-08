@@ -30,6 +30,7 @@ namespace Console_Crawler.GameCharacters
         public Player(string name, int attack, int armor, double strength, int health) : base(name, attack, armor, strength, health) 
         { 
             this.SetAttackOptions();
+            this.Inventory.AddGold(100);
         }
 
         public void EquipWeapon(Weapon weapon)

@@ -33,7 +33,7 @@ namespace Console_Crawler.DungeonBuilder
 
             for (int i = 0; i < enemyCount; i++)
             {
-                bool isMiniBoss = i == enemyCount - 1 && difficulty != "Easy" && this.IsLastRoom == true && Randomizer.GetChance(DungeonSettings.MiniBossSpawnRate);
+                bool isMiniBoss = i == enemyCount - 1 && difficulty != "Easy" && this.IsLastRoom == false && Randomizer.GetChance(DungeonSettings.MiniBossSpawnRate);
                 bool isBoss = i == enemyCount - 1 && difficulty == "Boss" && this.IsLastRoom == true;
 
                 if (isMiniBoss)

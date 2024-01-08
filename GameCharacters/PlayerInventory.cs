@@ -127,36 +127,36 @@ namespace Console_Crawler.GameCharacters
 
         public void DisplayInventory()
         {
-            Console.WriteLine("Gold: {0}", this.Gold);
+            Console.WriteLine("     Gold: {0}", this.Gold);
 
             foreach(var item in this.Items)
             {
-                Console.WriteLine("{0} x{1}", item.Name, item.Quantity);
+                Console.WriteLine("     {0} x{1}", item.Name, item.Quantity);
             }
         }
 
-        public string CalculateMaxPotionsPurchaseable(Potion potion)
+        public string CalculateMaxPotionsPurchaseable(Item item)
         {
-            int maxPotions = 0;
+            int maxItems = 0;
 
-            if(this.Gold >= potion.Price)
+            if(this.Gold >= item.Price)
             {
-                maxPotions = this.Gold / potion.Price;
+                maxItems = this.Gold / item.Price;
             }
 
-            if(maxPotions > potion.MaxQuantity)
+            if(maxItems > item.MaxQuantity)
             {
-                maxPotions = potion.MaxQuantity;
+                maxItems = item.MaxQuantity;
             }
 
-            int currentPotions = this.GetItemQuantity(potion.Type);
+            int currentPotions = this.GetItemQuantity(item.Type);
 
-            if(maxPotions > 0 && currentPotions + maxPotions > potion.MaxQuantity)
+            if(maxItems > 0 && currentPotions + maxItems > item.MaxQuantity)
             {
-                maxPotions = potion.MaxQuantity - currentPotions;
+                maxItems = item.MaxQuantity - currentPotions;
             }
 
-            return maxPotions.ToString();
+            return maxItems.ToString();
         }
     }
 }

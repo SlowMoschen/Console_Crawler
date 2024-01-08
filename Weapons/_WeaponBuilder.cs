@@ -70,5 +70,15 @@ namespace Console_Crawler.Weapons
                 Console.WriteLine(" You don't have enough endurance to use your Special Attack!");
             }
         }
+
+        public void DisplayWeaponStats()
+        {
+            Console.WriteLine();
+            Console.WriteLine($"    Weapon: {this.WeaponName}");
+            Console.WriteLine($"    Base Damage: {this.AttackDamage}");
+            Console.WriteLine($"    Special Damage: {this.SpecialAttackDamage}");
+            Console.WriteLine($"    Endurance Cost: {this.WeaponStats.EnduranceCost}");
+            Console.WriteLine($"    Special Endurance Cost: {this.WeaponStats.SpecialEnduranceCost}");
+        }
     }
 }

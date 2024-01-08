@@ -8,18 +8,18 @@ using Console_Crawler.GameCharacters.HostileMobs.Bosses;
 
 namespace Console_Crawler.GameUtilities.DisplayManager
 {
-    internal class BattleManger
+    internal partial class DisplayManager
     {
         public static void StartDungeon(Player player)
         {
-            DisplayManager.DisplayHeader("Dungeon Selection");
-            string dungeonChoice = DisplayManager.DisplayOptionsMenu(" Which dungeon would you like to enter?", MenuOptions.DifficultyOptions);
+            DisplayHeader("Dungeon Selection");
+            string dungeonChoice = DisplayOptionsMenu(" Which dungeon would you like to enter?", MenuOptions.DifficultyOptions);
 
             while (dungeonChoice == "Boss" && !GameBools.IsBossDungeonUnlocked)
             {
                 Console.WriteLine(" You have not unlocked the Boss Dungeon yet!");
-                DisplayManager.WaitForInput();
-                dungeonChoice = DisplayManager.DisplayOptionsMenu(" Which dungeon would you like to enter?", MenuOptions.DifficultyOptions);
+                WaitForInput();
+                dungeonChoice = DisplayOptionsMenu(" Which dungeon would you like to enter?", MenuOptions.DifficultyOptions);
             }
 
             Dungeon dungeon = new Dungeon(dungeonChoice);
@@ -85,7 +85,7 @@ namespace Console_Crawler.GameUtilities.DisplayManager
             DisplayBattleStats(player, enemy);
             Console.WriteLine();
 
-            string battleChoice = DisplayManager.DisplayOptionsMenu(" What would you like to do?", MenuOptions.BattleOptions);
+            string battleChoice = DisplayOptionsMenu(" What would you like to do?", MenuOptions.BattleOptions);
             string attackChoice = "";
 
             if(!player.Effects.IsStunned)
@@ -103,7 +103,7 @@ namespace Console_Crawler.GameUtilities.DisplayManager
                         if(player.Inventory.Items.Count == 0)
                          {
                             Console.WriteLine(" You don't have any potions!");
-                            DisplayManager.WaitForInput();
+                            WaitForInput();
                             break;
                          }
 
@@ -145,7 +145,7 @@ namespace Console_Crawler.GameUtilities.DisplayManager
             else
             {
                 DisplayRoundResults(player, enemy, battleChoice, attackChoice, enemyMove);
-                DisplayManager.WaitForInput();
+                WaitForInput();
                 Console.Clear();
             }
         }
@@ -354,13 +354,13 @@ namespace Console_Crawler.GameUtilities.DisplayManager
             Console.WriteLine($" You have defeated the {enemy.Name}!");
             Console.WriteLine($" You gained {enemy.EXP} experience.");
             Console.WriteLine($" The enemy dropped {enemy.Gold} gold.");
-            DisplayManager.WaitForInput();
+            WaitForInput();
         }
 
         private static void DisplayNewEncounter(Enemy enemy)
         {
             Console.Clear();
-            DisplayManager.DisplayHeader("New Encounter");
+            DisplayHeader("New Encounter");
             Console.WriteLine($" You have encountered a {enemy.Name}!");
         }
 
@@ -368,7 +368,7 @@ namespace Console_Crawler.GameUtilities.DisplayManager
         {
             Console.WriteLine();
             player.PrintBattleStats();
-            DisplayManager.DisplayHeader("VS");
+            DisplayHeader("VS");
             enemy.PrintBattleStats();
         }
 
@@ -377,10 +377,10 @@ namespace Console_Crawler.GameUtilities.DisplayManager
            string pluralOrSingular = totalEnemis > 1 ? "Enemies" : "Enemy";
            
            Console.Clear();
-           DisplayManager.DisplayHeader($"New Dungeon");
+           DisplayHeader($"New Dungeon");
            Console.WriteLine($" You have entered the {difficulty} Dungeon!");
            Console.WriteLine($" You have to defeat in total {totalEnemis} {pluralOrSingular} to get through this Dungeon.");
-           DisplayManager.WaitForInput();
+           WaitForInput();
         }
 
         private static void DiplayEnteredRoom(int roomNumber, int totalRooms, int enemiesCount)
@@ -388,18 +388,18 @@ namespace Console_Crawler.GameUtilities.DisplayManager
             bool isPlural = enemiesCount > 1;
 
             Console.Clear();
-            DisplayManager.DisplayHeader("New Room");
+            DisplayHeader("New Room");
             Console.WriteLine($" You have entered Room {roomNumber} of {totalRooms}.");
             Console.WriteLine($" There {(isPlural ? "are" : "is")} {enemiesCount} {(isPlural ? "Enemies" : "Enmey")} in this room.");
-            DisplayManager.WaitForInput();
+            WaitForInput();
         }
 
         private static void DisplayRoomVictory()
         {
             Console.Clear();
-            DisplayManager.DisplayHeader("Room Victory");
+            DisplayHeader("Room Victory");
             Console.WriteLine(" You have defeated all enemies in this room!");
-            DisplayManager.WaitForInput();
+            WaitForInput();
         }
 
         private static void DisplayDungeonVictory(Dungeon dungeon, Player player)
@@ -409,12 +409,12 @@ namespace Console_Crawler.GameUtilities.DisplayManager
             GameBools.IsDungeonCleared = false;
             GameStatistics.SurviedDungeons++;
             Console.Clear();
-            DisplayManager.DisplayHeader("Dungeon Victory");
+            DisplayHeader("Dungeon Victory");
             Console.WriteLine(" You have defeated all enemies in this dungeon!");
             Console.WriteLine();
-            DisplayManager.DisplayHeader("Rewards");
+            DisplayHeader("Rewards");
             dungeon.Chest.OpenChest(player);
-            DisplayManager.WaitForInput();
+            WaitForInput();
         }
 
         private static void DisplayGameVictory()
@@ -423,9 +423,9 @@ namespace Console_Crawler.GameUtilities.DisplayManager
             GameBools.IsInBattle = false;
             GameBools.IsDungeonCleared = false;
             Console.Clear();
-            DisplayManager.DisplayHeader("Game Victory");
+            DisplayHeader("Game Victory");
             Console.WriteLine(" You have defeated the Boss and won the game!");
-            DisplayManager.WaitForInput();
+            WaitForInput();
         }
     }
 }

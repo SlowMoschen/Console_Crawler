@@ -12,7 +12,7 @@ namespace Console_Crawler.DungeonBuilder.__tests__
     internal class Dungeon_Test
     {
         [Test]
-        public void Dungeon_Constructor_Test()
+        public void Dungeon_Constructor_EasyDungeon_Test()
         {
             Dungeon dungeon = new Dungeon("Easy");
             Enemy[] enemies = dungeon.Rooms[0].Enemies;
@@ -35,6 +35,68 @@ namespace Console_Crawler.DungeonBuilder.__tests__
             Assert.That(dungeon.Rooms[0].Enemies[0], Is.Not.InstanceOf(typeof(Dragon)));
             Assert.That(dungeon.Rooms[0].Enemies[0], Is.Not.InstanceOf(typeof(GiantSpider)));
             Assert.That(dungeon.Rooms[0].Enemies[0], Is.Not.InstanceOf(typeof(DemonicSorcerer)));
+        }
+
+        [Test]
+        public void Dungeon_Constructor_MediumDungeon_Test()
+        {
+            Dungeon dungeon = new Dungeon("Medium");
+
+            Assert.That(dungeon.Rooms.Length, Is.EqualTo(2));
+            
+            foreach(Room room in dungeon.Rooms)
+            {
+                Assert.That(room.Enemies.Length, Is.InRange(3, 5));
+            }
+
+            if(dungeon.Chest?.Items != null)
+            {
+                Assert.That(dungeon.Chest?.Items?.Length, Is.InRange(2, 3));
+                foreach(Item item in dungeon.Chest.Items)
+                {
+                    Assert.That(item, Is.InstanceOf(typeof(Item)));
+                }
+            }
+            else
+            {
+                Assert.That(dungeon.Chest?.Items, Is.EqualTo(null));
+            }
+
+            Assert.That(dungeon.Chest.Gold, Is.InRange(10, 20));
+            Assert.That(dungeon.Chest?.Weapons, Is.EqualTo(null).Or.AssignableTo<Weapon>());
+
+            Assert.That(dungeon.Rooms[dungeon.Rooms.Length - 1].IsLastRoom, Is.True);
+        }
+
+        [Test]
+        public void Dungeon_Constructor_HardDungeon_Test()
+        {
+            Dungeon dungeon = new Dungeon("Hard");
+            
+            Assert.That(dungeon.Rooms.Length, Is.EqualTo(3));
+
+            foreach(Room room in dungeon.Rooms)
+            {
+                Assert.That(room.Enemies.Length, Is.InRange(5, 10));
+            }
+
+            if(dungeon.Chest?.Items != null)
+            {
+                Assert.That(dungeon.Chest?.Items?.Length, Is.InRange(3, 4));
+                foreach(Item item in dungeon.Chest.Items)
+                {
+                    Assert.That(item, Is.InstanceOf(typeof(Item)));
+                }
+            }
+            else
+            {
+                Assert.That(dungeon.Chest?.Items, Is.EqualTo(null));
+            }
+
+            Assert.That(dungeon.Chest.Gold, Is.InRange(20, 30));
+            Assert.That(dungeon.Chest?.Weapons, Is.EqualTo(null).Or.AssignableTo<Weapon>());
+
+            Assert.That(dungeon.Rooms[dungeon.Rooms.Length - 1].IsLastRoom, Is.True);
         }
 
         [Test]
