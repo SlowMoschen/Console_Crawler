@@ -83,8 +83,8 @@ dotnet run
  
 or
 
-Download the Setup.Exe here
-Go here and click on "View Raw" - should result in downloading the Zip file
+Download the Setup.Exe here </br>
+Go here and click on "View Raw" - should result in downloading the Zip file </br>
 <a href="publish.zip" download="publish.zip">Download Zip File here</a>
 
 ### Contribution
