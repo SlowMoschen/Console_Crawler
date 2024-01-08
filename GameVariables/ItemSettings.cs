@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -20,6 +21,22 @@ namespace Console_Crawler.GameVariables
             public static int HealPotion { get; } = 15;
             public static int StrengthPotion { get; } = 35;
             public static int EndurancePotion { get; } = 25;
+
+            //Method to store all the prices in an array
+            public static string[] GetAllItemPrices()
+            {
+                PropertyInfo[] properties = typeof(ItemPrice).GetProperties();
+
+                List<string> prices = new List<string>();
+                foreach (PropertyInfo property in properties) {
+                   prices.Add(property.GetValue(null).ToString() + "G");
+                }
+
+                //Add empty String for the Exit option
+                prices.Add("");
+
+                return prices.ToArray();
+            }
         }
 
         internal class ItemEffect

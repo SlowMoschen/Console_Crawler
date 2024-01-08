@@ -16,9 +16,9 @@ namespace Console_Crawler.GameUtilities.DisplayManager
 
         public static void DisplayShopMenu(Player player)
         {
-            Console.Clear();
             while (GameBools.IsInShop)
             {
+                Console.Clear();
                 DisplayHeader("Shop");
                 string shopMenuChoice = DisplayOptionsMenu("What would you like to do?", MenuOptions.ShopMenuOptions);
 
@@ -34,6 +34,7 @@ namespace Console_Crawler.GameUtilities.DisplayManager
                         DisplayBuyingShop(player);
                         break;
                     case "Exit Shop":
+                        GameBools.IsInShop = false;
                         GameBools.IsInMenu = true;
                         break;
                 }

@@ -189,41 +189,8 @@ namespace Console_Crawler.GameCharacters
 
         public void BuyItem(Item item)
         {
-            var existingItem = this.Inventory.GetExistingItem(item.Type);
-
-            if(existingItem != null)
-            {
-                if(existingItem.Quantity < existingItem.MaxQuantity)
-                {
-                    if(this.Inventory.Gold >= item.Price)
-                    {
-                        this.Inventory.RemoveGold(item.Price);
-                        this.Inventory.AddItem(item);
-                        Console.WriteLine(" You bought a {0} for {1}!", item.Name, item.Price);
-                    }
-                    else
-                    {
-                        Console.WriteLine(" You don't have enough gold to buy this item!");
-                    }
-                }
-                else
-                {
-                    Console.WriteLine(" You can't carry any more of this item!");
-                }
-            }
-            else
-            {
-                if(this.Inventory.Gold >= item.Price)
-                {
-                    this.Inventory.RemoveGold(item.Price);
-                    this.Inventory.AddItem(item);
-                    Console.WriteLine(" You bought a {0} for {1}!", item.Name, item.Price);
-                }
-                else
-                {
-                    Console.WriteLine(" You don't have enough gold to buy this item!");
-                }
-            }
+            this.Inventory.RemoveGold(item.Price);
+            this.Inventory.AddItem(item);
         }
 
         public void UsePotion(string potionType)
@@ -240,12 +207,15 @@ namespace Console_Crawler.GameCharacters
                     {
                         case "Health Potion":
                             potion.UsePotion(this);
+                            Console.WriteLine($" You used a {potion.Type} and healed for {potion.EffectValue} health.");
                             break;
                         case "Strength Potion":
                             potion.UsePotion(this);
+                            Console.WriteLine($" You used a {potion.Type}, your next attacks will deal double the damage.");
                             break;
                         case "Endurance Potion":
                             potion.UsePotion(this);
+                            Console.WriteLine($" You used a {potion.Type} and restored {potion.EffectValue} endurance.");
                             break;
                     }
                 }

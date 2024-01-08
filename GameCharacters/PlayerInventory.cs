@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Console_Crawler.GameVariables;
+﻿using Console_Crawler.GameVariables;
 using Console_Crawler.Items;
-using Console_Crawler.Items.Potions;
 
 namespace Console_Crawler.GameCharacters
 {
@@ -127,11 +121,11 @@ namespace Console_Crawler.GameCharacters
 
         public void DisplayInventory()
         {
-            Console.WriteLine("     Gold: {0}", this.Gold);
+            Console.WriteLine($"     Gold: {this.Gold}");
 
             foreach(var item in this.Items)
             {
-                Console.WriteLine("     {0} x{1}", item.Name, item.Quantity);
+                Console.WriteLine($"     {item.Name}: {item.Quantity}");
             }
         }
 

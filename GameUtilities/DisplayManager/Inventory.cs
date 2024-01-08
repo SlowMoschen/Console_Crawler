@@ -30,6 +30,7 @@ namespace Console_Crawler.GameUtilities.DisplayManager
             }
 
             DisplayUsableItemsAndUseIt(player);
+            WaitForInput();
         }
 
         private static void DisplayUsableItemsAndUseIt(Player player)
@@ -38,7 +39,7 @@ namespace Console_Crawler.GameUtilities.DisplayManager
 
             switch (itemChoice)
             {
-                case "Heal Potion":
+                case "Health Potion":
                     player.UsePotion("Health Potion");
                     break;
                 case "Strength Potion":

@@ -1,10 +1,5 @@
 ﻿using Console_Crawler.GameVariables;
 using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Console_Crawler.Items.Potions.__tests__
 {
@@ -16,6 +11,7 @@ namespace Console_Crawler.Items.Potions.__tests__
         {
             HealPotion potion = new HealPotion();
 
+            Assert.That(potion.Quantity, Is.EqualTo(1));
             Assert.That(potion.EffectValue, Is.EqualTo(ItemSettings.ItemEffect.HealPotion));
             Assert.That(potion.MaxQuantity, Is.EqualTo(ItemSettings.ItemMaxQuantity.HealPotion));
             Assert.That(potion.Price, Is.EqualTo(ItemSettings.ItemPrice.HealPotion));

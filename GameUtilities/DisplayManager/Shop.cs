@@ -15,15 +15,26 @@ namespace Console_Crawler.GameUtilities.DisplayManager
             player.PrintInventory();
             Console.WriteLine();
             DisplayMaximumItemsQuantity();
-            Item itemChoice = GetItemChoice(player);
+
+            string itemChoice = GetItemChoice(player);
             int itemQuantityChoice = GetItemQuantityChoice(player, itemChoice);
 
-            for(int i = 0; i < itemQuantityChoice; i++)
+            for(int i = 1; i <= itemQuantityChoice; i++) 
             {
-                if(player.Inventory.Gold >= itemChoice.Price)
+                // create new Instance of Item to avoid to double the quantity of the item
+                Item item = GenerateItem(itemChoice);
+
+                int existingItemQuantity = player.Inventory.GetItemQuantity(item.Type);  
+                if(existingItemQuantity >= item.MaxQuantity)
                 {
-                    player.Inventory.AddItem(itemChoice);
-                    player.Inventory.Gold -= itemChoice.Price;
+                    Console.WriteLine($" You can't buy more than {item.MaxQuantity} {item.Name}s.");
+                    break;
+                }
+
+                if(player.Inventory.Gold >= item.Price)
+                {
+                    player.BuyItem(item);
+                    Console.WriteLine($" You bought a {item.Name} for {item.Price} gold.");
                 }
                 else
                 {
@@ -31,6 +42,7 @@ namespace Console_Crawler.GameUtilities.DisplayManager
                     break;
                 }
             }
+            WaitForInput();
         }
 
 
@@ -40,10 +52,14 @@ namespace Console_Crawler.GameUtilities.DisplayManager
             Console.WriteLine($" You can carry a maximum of {ItemSettings.ItemMaxQuantity.HealPotion} Heal and Endurance Potions.");    
         }
 
-        private static Item GetItemChoice(Player player)
+        private static string GetItemChoice(Player player)
         {
-            string itemChoice = DisplayOptionsMenu("What would you like to buy?", MenuOptions.ShopItems);
+            string[] allItemPrices = ItemSettings.ItemPrice.GetAllItemPrices();
+            return DisplayOptionsMenu("What would you like to buy?", MenuOptions.ShopItems, allItemPrices);
+        }
 
+        private static Item GenerateItem(string itemChoice)
+        {
             switch (itemChoice)
             {
                 case "Heal Potion":
@@ -52,21 +68,21 @@ namespace Console_Crawler.GameUtilities.DisplayManager
                     return new StrengthPotion();
                 case "Endurance Potion":
                     return new EndurancePotion();
-                case "Exit":
-                    DisplayShopMenu(player);
-                    return null;
                 default:
-                    return new HealPotion();
+                    return null;
             }
         }
 
-        private static int GetItemQuantityChoice(Player player, Item item)
+        private static int GetItemQuantityChoice(Player player, string itemChoice)
         {
             string itemQuantityChoice = DisplayOptionsMenu("How many would you like to buy?", new string[] { "1", "2", "3", "Maximum"});
+            Item item = GenerateItem(itemChoice);
             
             if(itemQuantityChoice == "Maximum")
             {
                 itemQuantityChoice = player.Inventory.CalculateMaxPotionsPurchaseable(item);
+                Console.WriteLine($" You will buy {itemQuantityChoice} of {item.Name}.");
+                WaitForInput();
             }
             
             return Int32.Parse(itemQuantityChoice);

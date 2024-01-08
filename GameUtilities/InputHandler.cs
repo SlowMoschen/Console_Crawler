@@ -18,7 +18,14 @@ namespace Console_Crawler.GameUtilities
                 int choiceNumber = i + 1;
                 if(numbers != null)
                 {
-                    Console.WriteLine(" " + choiceNumber + ". " + choices[i] + " - " + numbers[i]);
+                    if(numbers[i] != "")
+                    {
+                        Console.WriteLine(" " + choiceNumber + ". " + choices[i] + " - " + numbers[i]);
+                    }
+                    else
+                    {
+                        Console.WriteLine(" " + choiceNumber + ". " + choices[i]);
+                    }
                 }
                 else
                 {

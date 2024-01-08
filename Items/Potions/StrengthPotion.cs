@@ -4,10 +4,9 @@ namespace Console_Crawler.Items.Potions
 {
     internal class StrengthPotion : Potion
     {
-        public StrengthPotion() : base("", "", "", 0, 0, 0)
+        public StrengthPotion() : base("", "", "", 0, ItemSettings.ItemMaxQuantity.StrengthPotion, 0)
         {
             EffectValue = ItemSettings.ItemEffect.StrengthPotion;
-            MaxQuantity = ItemSettings.ItemMaxQuantity.StrengthPotion;
             Price = ItemSettings.ItemPrice.StrengthPotion;
             Name = "Strength Potion";
             Description = "Your next attacks will deal double the damage";
