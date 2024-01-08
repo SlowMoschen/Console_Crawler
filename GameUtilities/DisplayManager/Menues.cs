@@ -70,7 +70,7 @@ namespace Console_Crawler.GameUtilities.DisplayManager
             {
                 Console.Clear();
                 DisplayHeader("Stats");
-                player.PrintStats();
+
                 string statsMenuChoice = DisplayOptionsMenu("What would you like to do?", MenuOptions.StatsMenuOptions);
 
                 // The Stats Menu shows the chosen Players Name, so we have to change it back to the original so the switch statement works
@@ -80,6 +80,9 @@ namespace Console_Crawler.GameUtilities.DisplayManager
                 {
                     case "Player Stats":
                         DisplayPlayerStats(player);
+                        break;
+                    case "Game Statistics":
+                        DisplayGameStats();
                         break;
                     case "Exit Stats":
                         GameBools.IsInStatsMenu = false;

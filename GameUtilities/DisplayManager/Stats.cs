@@ -1,5 +1,6 @@
 ﻿using Console_Crawler.GameCharacters;
 using Console_Crawler.GameVariables.Statistics;
+using Console_Crawler.GameVariables.Statistics.PlayerStatistics;
 
 namespace Console_Crawler.GameUtilities.DisplayManager
 {
@@ -8,7 +9,7 @@ namespace Console_Crawler.GameUtilities.DisplayManager
         public static void DisplayPlayerStats(Player player)
         {
             Console.Clear();
-            DisplayHeader("Player Stats");
+            DisplayHeader($"{PlayerStats.Name} Stats");
             player.PrintStats();
             WaitForInput();
         }
@@ -22,6 +23,8 @@ namespace Console_Crawler.GameUtilities.DisplayManager
 
         private static void DisplayGameStatistics()
         {
+            Console.Clear();
+            DisplayHeader("Game Statistics");
             Console.WriteLine();
             Console.WriteLine($" Total Deaths: {GameStatistics.TotalDeaths}");
             Console.WriteLine();

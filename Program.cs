@@ -39,7 +39,9 @@ class Program
                     DisplayManager.DisplayInventoryMenu(player);
                     break;
                 case "Stats":
-                    Console.WriteLine("Entering Stats ...");
+                    GameBools.IsInMenu = false;
+                    GameBools.IsInStatsMenu = true;
+                    DisplayManager.DisplayStatsMenu(player);
                     break;
                 case "Game Infos":
                     Console.WriteLine("Entering Game Infos ...");
