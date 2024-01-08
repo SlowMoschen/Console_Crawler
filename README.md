@@ -84,7 +84,8 @@ dotnet run
 or
 
 Download the Setup.Exe here
-<a href="publish.zip" download="publish.zip">Download Zip File</a>
+Go here and click on "View Raw" - should result in downloading the Zip file
+<a href="publish.zip" download="publish.zip">Download Zip File here</a>
 
 ### Contribution
 If you want to contribute to the Project feel free to fork the Repo and make some changes.
