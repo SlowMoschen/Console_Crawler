@@ -84,7 +84,7 @@ dotnet run
 or
 
 Download the Setup.Exe here
-<a href="bin/publish/setup.exe" download="bin/publish/setup.exe">Download Setup.Exe from Publish Folder</a>
+<a href="publish.zip" download="publish.zip">Download Zip File</a>
 
 ### Contribution
 If you want to contribute to the Project feel free to fork the Repo and make some changes.
