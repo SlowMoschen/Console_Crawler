@@ -30,7 +30,6 @@ namespace Console_Crawler.GameCharacters
         public Player(string name, int attack, int armor, double strength, int health) : base(name, attack, armor, strength, health) 
         { 
             this.SetAttackOptions();
-            this.Inventory.AddGold(100);
         }
 
         public void EquipWeapon(Weapon weapon)
@@ -57,7 +56,8 @@ namespace Console_Crawler.GameCharacters
 
         public void Rest()
         {
-            
+            GameStatistics.AddTotalRest();
+            GameStatistics.AddTotalHealingDone(GameSettings.General.RestHealthRegen);
             this.Health += GameSettings.General.RestHealthRegen;
             this.Endurance += GameSettings.General.RestEnduranceRegen;
 
@@ -85,6 +85,7 @@ namespace Console_Crawler.GameCharacters
                 }
                 else
                 {
+                    GameStatistics.AddTotalDamageDealt(damage);
                     this.DealtDamage = damage;
                     target.Health -= damage;
                     this.Endurance -= this.CurrentWeapon.WeaponStats.EnduranceCost;
@@ -110,6 +111,7 @@ namespace Console_Crawler.GameCharacters
                 }
                 else
                 {
+                    GameStatistics.AddTotalDamageDealt(damage);
                     target.Health -= damage;
                     this.Endurance -= GameSettings.General.KickEnduranceCost;
                 }
@@ -179,7 +181,7 @@ namespace Console_Crawler.GameCharacters
             }
 
             this.EXP += exp;
-            GameStatistics.TotalEXP += exp;
+            GameStatistics.AddTotalEXP(exp);
             
             if(this.EXP >= this.EXPToNextLevel)
             {
@@ -191,6 +193,7 @@ namespace Console_Crawler.GameCharacters
         {
             this.Inventory.RemoveGold(item.Price);
             this.Inventory.AddItem(item);
+            GameStatistics.AddTotalItemBought();
         }
 
         public void UsePotion(string potionType)
@@ -207,6 +210,7 @@ namespace Console_Crawler.GameCharacters
                     {
                         case "Health Potion":
                             potion.UsePotion(this);
+                            GameStatistics.AddTotalHealingDone(potion.EffectValue);
                             Console.WriteLine($" You used a {potion.Type} and healed for {potion.EffectValue} health.");
                             break;
                         case "Strength Potion":

@@ -18,5 +18,6 @@ namespace Console_Crawler.GameVariables
         public static bool IsInTutorial { get; set; } = false;
         public static bool IsBossDungeonUnlocked { get; set; } = false;
         public static bool IsInInventory { get; set; } = false;
+        public static bool IsInStatsMenu { get; set; } = false;
     }
 }

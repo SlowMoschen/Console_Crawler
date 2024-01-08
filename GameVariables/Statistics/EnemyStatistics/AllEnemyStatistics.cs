@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Console_Crawler.GameVariables.Statistics.EnemyStatistics.Builder;
+﻿using Console_Crawler.GameVariables.Statistics.EnemyStatistics.Builder;
 
 namespace Console_Crawler.GameVariables.Statistics.EnemyStatistics
 {
     internal class AllEnemyStatistics
     {
-
         //**
         //** Normal Enemies
         //**

@@ -1,4 +1,6 @@
-﻿namespace Console_Crawler.GameVariables
+﻿using Console_Crawler.GameVariables.Statistics.PlayerStatistics;
+
+namespace Console_Crawler.GameVariables
 {
     internal class MenuOptions
     {
@@ -10,5 +12,6 @@
         public static string[] ShopMenuOptions { get; } = { "Buy", "Exit Shop" };
         public static string[] ShopItems { get; } = { "Heal Potion", "Strength Potion", "Endurance Potion", "Exit" };
         public static string[] InventoryMenuOptions { get; } = { "Use Item", "Exit Inventory" };
+        public static string[] StatsMenuOptions { get; } = { $"{PlayerStats.Name} Statistics", "Game Statistics", "Exit Stats" };
     }
 }

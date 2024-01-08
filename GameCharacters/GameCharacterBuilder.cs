@@ -10,6 +10,7 @@ using Console_Crawler.GameVariables.Statistics.EnemyStatistics.Builder;
 using Console_Crawler.GameCharacters.HostileMobs;
 using Console_Crawler.GameCharacters.HostileMobs.Bosses;
 using Console_Crawler.GameCharacters.HostileMobs.MiniBosses;
+using Console_Crawler.GameVariables.Statistics;
 
 namespace Console_Crawler.GameCharacters
 {
@@ -39,8 +40,8 @@ namespace Console_Crawler.GameCharacters
 
         public virtual void NormalAttack(GameCharacter target)
         {
+            Console.WriteLine($"{this.Attack} attack" );
             int damage = DamageCalculator.CalculateAttackDamage(this.Attack, target.Armor, this.Strength);
-
             if(target.Effects.IsDefending)
             {
                 target.Effects.IsDefending = false;
@@ -50,6 +51,9 @@ namespace Console_Crawler.GameCharacters
             { 
                 this.DealtDamage = damage;
                 target.Health -= damage;
+
+                // Add damage to statistics - only counts for enemies because the NormalAttack Method is overriden in Player.cs
+                GameStatistics.AddTotalDamageTaken(damage);
             }
         }
 
@@ -72,11 +76,13 @@ namespace Console_Crawler.GameCharacters
                 if (enemy is GiantSpider giantSpider)
                 {
                     this.Health -= giantSpider.PoisonDamage;
+                    GameStatistics.AddTotalDamageDealt(giantSpider.PoisonDamage);
                 }
                 
                 if (enemy is Spider spider)
                 {
                     this.Health -= spider.PoisonDamage;
+                    GameStatistics.AddTotalDamageDealt(spider.PoisonDamage);
                 }
                 this.EffectTurns.PoisonTurns--;
             }
@@ -93,11 +99,13 @@ namespace Console_Crawler.GameCharacters
                 if (enemy is Dragon dragon)
                 {
                     this.Health -= dragon.BurnDamage;
+                    GameStatistics.AddTotalDamageDealt(dragon.BurnDamage);
                 }
                 
                 if(enemy is DemonicSorcerer sorcerer)
                 {
                     this.Health -= sorcerer.BurnDamage;
+                    GameStatistics.AddTotalDamageDealt(sorcerer.BurnDamage);
                 }
                 this.EffectTurns.BurnTurns--;
             }

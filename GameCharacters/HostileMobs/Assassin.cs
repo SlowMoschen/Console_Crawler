@@ -1,4 +1,5 @@
 ﻿using Console_Crawler.GameUtilities;
+using Console_Crawler.GameVariables.Statistics;
 using Console_Crawler.GameVariables.Statistics.EnemyStatistics.Builder;
 
 namespace Console_Crawler.GameCharacters.HostileMobs
@@ -24,11 +25,14 @@ namespace Console_Crawler.GameCharacters.HostileMobs
             if (target.Effects.IsDefending)
             {
                 target.Effects.IsDefending = false;
+                this.DealtDamage = damage;
                 target.Health -= damage;
                 return;
             }
             else
             {
+                GameStatistics.AddTotalDamageDealt(damage);
+                this.DealtDamage = damage;
                 target.Health -= damage;
             }
         }

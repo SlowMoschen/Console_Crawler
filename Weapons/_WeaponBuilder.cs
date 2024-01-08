@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Console_Crawler.GameCharacters;
 using Console_Crawler.GameUtilities;
 using Console_Crawler.GameVariables;
+using Console_Crawler.GameVariables.Statistics;
 using Console_Crawler.GameVariables.Statistics.PlayerStatistics;
 using Console_Crawler.GameVariables.Statistics.WeaponStatistics;
 
@@ -60,6 +61,7 @@ namespace Console_Crawler.Weapons
                 }
                 else
                 {
+                    GameStatistics.AddTotalDamageDealt(damage);
                     target.Effects.IsDefending = true;
                     target.Health -= damage;
                     player.Endurance -= this.WeaponStats.SpecialEnduranceCost;

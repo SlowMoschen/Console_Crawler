@@ -1,5 +1,6 @@
 ﻿using Console_Crawler.GameCharacters.HostileMobs;
 using Console_Crawler.GameUtilities;
+using Console_Crawler.GameVariables.Statistics;
 using Console_Crawler.GameVariables.Statistics.EnemyStatistics;
 using Console_Crawler.GameVariables.Statistics.PlayerStatistics;
 using NUnit.Framework;
@@ -76,18 +77,33 @@ namespace Console_Crawler.GameCharacters.__tests__
 
             Assert.That(result, Is.Not.EqualTo(null));
             Assert.That(player.Health, Is.Not.EqualTo(player.MaxHealth));
+            Assert.That(GameStatistics.TotalDamageDealt, Is.GreaterThan(0));
         }
 
         [Test]
         public void Enemy_ExecuteAction_Test()
         {
-            Enemy enemy = new Enemy("Enemy", AllEnemyStatistics.Zombie);
+            Enemy enemy = new Zombie("Enemy", AllEnemyStatistics.Zombie);
             Player player = new Player("Player", PlayerStats.InitialAttack, PlayerStats.InitialArmor, PlayerStats.InitialStrength, PlayerStats.InitialHealth);
 
+            player.Effects.IsDefending = false;
             string result = enemy.ExecuteAction(player, EnemyAction.NormalAttack);
 
             Assert.That(result, Is.EqualTo("Normal Attack"));
-            Assert.That(player.Health, Is.LessThanOrEqualTo(player.MaxHealth));
+            Assert.That(player.Health, Is.Not.EqualTo(player.MaxHealth));
+            Assert.That(GameStatistics.TotalDamageTaken, Is.GreaterThan(0));
+        }
+
+        [Test]
+        public void Enemy_ExecuteAction_Defend_Test()
+        {
+            Enemy enemy = new Enemy("Enemy", AllEnemyStatistics.Zombie);
+            Player player = new Player("Player", PlayerStats.InitialAttack, PlayerStats.InitialArmor, PlayerStats.InitialStrength, PlayerStats.InitialHealth);
+
+            string result = enemy.ExecuteAction(player, EnemyAction.Defend);
+
+            Assert.That(result, Is.EqualTo("Defend"));
+            Assert.That(enemy.Effects.IsDefending, Is.EqualTo(true));
         }
 
     }

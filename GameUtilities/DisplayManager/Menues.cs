@@ -1,6 +1,7 @@
 ﻿
 using Console_Crawler.GameCharacters;
 using Console_Crawler.GameVariables;
+using Console_Crawler.GameVariables.Statistics.PlayerStatistics;
 
 namespace Console_Crawler.GameUtilities.DisplayManager
 {
@@ -57,6 +58,31 @@ namespace Console_Crawler.GameUtilities.DisplayManager
                         break;
                     case "Exit Inventory":
                         GameBools.IsInInventory = false;
+                        GameBools.IsInMenu = true;
+                        break;
+                }
+            }
+        }
+
+        public static void DisplayStatsMenu(Player player)
+        {
+            while (GameBools.IsInStatsMenu)
+            {
+                Console.Clear();
+                DisplayHeader("Stats");
+                player.PrintStats();
+                string statsMenuChoice = DisplayOptionsMenu("What would you like to do?", MenuOptions.StatsMenuOptions);
+
+                // The Stats Menu shows the chosen Players Name, so we have to change it back to the original so the switch statement works
+                statsMenuChoice = statsMenuChoice == $"{PlayerStats.Name} Statistics" ? "Player Stats" : statsMenuChoice;
+
+                switch (statsMenuChoice)
+                {
+                    case "Player Stats":
+                        DisplayPlayerStats(player);
+                        break;
+                    case "Exit Stats":
+                        GameBools.IsInStatsMenu = false;
                         GameBools.IsInMenu = true;
                         break;
                 }

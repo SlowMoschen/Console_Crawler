@@ -1,6 +1,9 @@
 ﻿using Console_Crawler.GameVariables.Statistics.PlayerStatistics;
 using Console_Crawler.GameVariables.Statistics.EnemyStatistics.Builder;
 
+// This is the base class for all game Enemies
+// Cannot be used directly - must be inherited from - because the stats will be set in the constructor of the inherited class
+
 namespace Console_Crawler.GameCharacters
 {
     public enum EnemyAction
