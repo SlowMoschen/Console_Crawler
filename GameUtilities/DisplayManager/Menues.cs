@@ -91,5 +91,45 @@ namespace Console_Crawler.GameUtilities.DisplayManager
                 }
             }
         }
+
+        public static void DisplayGameInfosMenu()
+        {
+            while (GameBools.IsInTutorial)
+            {
+                Console.Clear();
+                DisplayHeader("Game Infos");
+                
+                string gameInfosMenuChoice = DisplayOptionsMenu("What do you want to know more about?", MenuOptions.GameInfosMenuOptions);
+
+                switch (gameInfosMenuChoice)
+                {
+                    case "Gameplay":
+                        DisplayGameplayInfos();
+                        break;
+                    case "Battle":
+                        DisplayBattleInfos();
+                        break;
+                    case "Items":
+                        DisplayItemInfos();
+                        break;
+                    case "Weapons":
+                        DisplayWeaponInfos();
+                        break;
+                    case "Enemies":
+                        DisplayEnemyInfos();
+                        break;
+                    case "Credits":
+                        DisplayCredits();
+                        break;
+                        case "All":
+                        DisplayAllGameInfos();
+                        break;
+                    case "Exit Game Infos":
+                        GameBools.IsInTutorial = false;
+                        GameBools.IsInMenu = true;
+                        break;
+                }
+            }
+        }
     }
 }

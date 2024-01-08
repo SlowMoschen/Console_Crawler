@@ -44,7 +44,8 @@ class Program
                     DisplayManager.DisplayStatsMenu(player);
                     break;
                 case "Game Infos":
-                    Console.WriteLine("Entering Game Infos ...");
+                    GameBools.IsInMenu = false;
+                    GameBools.IsInTutorial = true;
                     break;
             }
         }

@@ -55,8 +55,7 @@ namespace Console_Crawler.GameUtilities.DisplayManager
             string input = InputHandler.GetChoice("Do you want to read the Tutorial?", new string[] { "Yes", "No" });
             if (input == "Yes")
             {
-                GameBools.IsInTutorial = true;
-                DisplayTutorial();
+                DisplayAllGameInfos();   
             }
         }
 
@@ -84,13 +83,6 @@ namespace Console_Crawler.GameUtilities.DisplayManager
             player.EquipWeapon(WeaponGenerator.GenerateWeaponByChoice(input));
             Console.WriteLine($" Your Hero will use a {player.CurrentWeapon.WeaponName}!");
             WaitForInput();
-        }
-
-        public static void DisplayTutorial()
-        {
-            Console.Clear();
-            DiplayGameLogo();
-            Console.WriteLine(" Welcome to the Tutorial!");
         }
     }
 }

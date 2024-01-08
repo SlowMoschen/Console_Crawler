@@ -13,5 +13,6 @@ namespace Console_Crawler.GameVariables
         public static string[] ShopItems { get; } = { "Heal Potion", "Strength Potion", "Endurance Potion", "Exit" };
         public static string[] InventoryMenuOptions { get; } = { "Use Item", "Exit Inventory" };
         public static string[] StatsMenuOptions { get; } = { $"{PlayerStats.Name} Statistics", "Game Statistics", "Exit Stats" };
+        public static string[] GameInfosMenuOptions { get; } = { "Gameplay", "Battle", "Items", "Weapons", "Enemies", "Credits", "All", "Exit Game Infos" };
     }
 }

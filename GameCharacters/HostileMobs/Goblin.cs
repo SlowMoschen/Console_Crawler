@@ -31,6 +31,7 @@ namespace Console_Crawler.GameCharacters.HostileMobs
                 if(target.Inventory.Gold >= this.StealAmount)
                 { 
                     target.Inventory.RemoveGold(this.StealAmount);
+                    this.Gold += this.StealAmount;
                 }
                 else
                 {

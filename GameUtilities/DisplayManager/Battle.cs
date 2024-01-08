@@ -5,6 +5,7 @@ using Console_Crawler.GameVariables.Statistics;
 using Console_Crawler.GameCharacters.HostileMobs;
 using Console_Crawler.GameCharacters.HostileMobs.MiniBosses;
 using Console_Crawler.GameCharacters.HostileMobs.Bosses;
+using Console_Crawler.GameVariables.Statistics.EnemyStatistics;
 
 namespace Console_Crawler.GameUtilities.DisplayManager
 {
@@ -138,7 +139,17 @@ namespace Console_Crawler.GameUtilities.DisplayManager
             {
                 GameStatistics.KilledEnemies++;
                 player.AddEXP(enemy.EXP);
-                player.Inventory.AddGold(enemy.Gold);
+                
+                // check if enemy is Goblin and get random number between Goblin Base Gold and the gold that the goblin has stolen
+                if(enemy is Goblin goblin)
+                {
+                    player.Inventory.AddGold(Randomizer.GetRandomNumber(AllEnemyStatistics.Goblin.Gold, goblin.Gold));
+                }
+                else
+                {
+                    player.Inventory.AddGold(enemy.Gold);
+                }
+
                 DisplayEnemyDeath(enemy);
                 return;
             }
