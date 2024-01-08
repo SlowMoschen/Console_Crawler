@@ -84,9 +84,7 @@ dotnet run
 or
 
 Download the Setup.Exe here
-```
-Content to come
-```
+<a href="bin/publish/setup.exe" download>Download Setup.Exe from Publish Folder</a>
 
 ### Contribution
 If you want to contribute to the Project feel free to fork the Repo and make some changes.
