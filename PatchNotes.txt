@@ -1,0 +1,3 @@
+Patch 1.0.8:
+	- Fixed a bug where the Player would not be revived correctly.
+	- Fixed a bug where the Attackchoice would not be printed out correctly.
