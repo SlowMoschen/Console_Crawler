@@ -29,31 +29,32 @@ namespace Console_Crawler.GameUtilities.DisplayManager
 
             foreach(Room room in dungeon.Rooms)
             {
-                bool allEnemiesDefeated = room.Enemies.All(enemy => enemy.Health <= 0);
-                bool allRoomsDefeated = dungeon.Rooms.All(room => room.Enemies.All(enemy => enemy.Health <= 0));
                 
                 if(GameBools.IsInMenu)
                 {
                     break;
                 }
 
-                if(allEnemiesDefeated)
-                {
-                    DisplayRoomVictory();
-                    GameStatistics.SurviedRooms++;
-                }
 
-                if(allRoomsDefeated)
-                {
-                    GameBools.IsDungeonCleared = true;
-                    break;
-                }
 
                 if(GameBools.IsInBattle)
                 {
                     DiplayEnteredRoom(room.RoomNumber, dungeon.TotalRooms, room.Enemies.Length);
                     EnterRoom(player, room);
                 }
+            }
+            
+            bool allEnemiesDefeated = dungeon.Rooms.All(room => room.Enemies.All(enemy => enemy.Health <= 0));
+            if(allEnemiesDefeated)
+            {
+                DisplayRoomVictory();
+                GameStatistics.SurviedRooms++;
+            }
+            
+            bool allRoomsDefeated = dungeon.Rooms.All(room => room.Enemies.All(enemy => enemy.Health <= 0));
+            if(allRoomsDefeated)
+            {
+                GameBools.IsDungeonCleared = true;
             }
 
             if(GameBools.IsDungeonCleared)
@@ -114,7 +115,7 @@ namespace Console_Crawler.GameUtilities.DisplayManager
                     case "Defend":
                         player.Defend();
                         break;
-                    case "Run":
+                    case "Run Away":
                         player.RunFromBattle();
                         break;
                 }
@@ -151,11 +152,14 @@ namespace Console_Crawler.GameUtilities.DisplayManager
                 }
 
                 DisplayEnemyDeath(enemy);
-                return;
+                //return;
             }
             else
             {
                 DisplayRoundResults(player, enemy, battleChoice, attackChoice, enemyMove);
+                player.RegenEndurance();
+                player.ClearDealtDamage();
+                enemy.ClearDealtDamage();
                 WaitForInput();
                 Console.Clear();
             }
@@ -178,17 +182,28 @@ namespace Console_Crawler.GameUtilities.DisplayManager
                     }
                     else
                     {
-                        if (playerAttackChoice == "Normal Attack")
+                        if(player.Endurance >= player.CurrentWeapon.WeaponStats.EnduranceCost)
                         {
-                            Console.WriteLine($" You attacked the enemy for {player.DealtDamage}");
+                            if (playerAttackChoice == "Normal Attack")
+                            {
+                                Console.WriteLine($" You attacked the enemy for {player.DealtDamage}");
+                            }
                         }
-                        if (playerAttackChoice == "Kick Attack")
+
+                        if(player.Endurance >= GameSettings.General.KickEnduranceCost)
                         {
-                            Console.WriteLine($" You kicked the enemy for {player.DealtDamage}");
+                            if (playerAttackChoice == "Kick Attack")
+                            {
+                                Console.WriteLine($" You kicked the enemy for {player.DealtDamage}");
+                            }
                         }
-                        if (playerAttackChoice == player.CurrentWeapon.WeaponStats.SpecialAttackName)
+
+                        if(player.Endurance >= player.CurrentWeapon.WeaponStats.SpecialEnduranceCost)
                         {
-                            Console.WriteLine($" You used {player.CurrentWeapon.WeaponStats.SpecialAttackName} and dealt {player.DealtDamage} damage!");
+                            if (playerAttackChoice == player.CurrentWeapon.WeaponStats.SpecialAttackName)
+                            {
+                                Console.WriteLine($" You used {player.CurrentWeapon.WeaponStats.SpecialAttackName} and dealt {player.DealtDamage} damage!");
+                            }
                         }
                     }
                     break;

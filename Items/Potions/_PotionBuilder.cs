@@ -1,9 +1,4 @@
 ﻿using Console_Crawler.GameCharacters;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Console_Crawler.Items.Potions
 {
@@ -25,12 +20,22 @@ namespace Console_Crawler.Items.Potions
                 {
                     case "Health Potion":
                         target.Health += EffectValue;
+
+                        if (target.Health > target.MaxHealth)
+                        {
+                            target.Health = target.MaxHealth;
+                        }
                         break;
                     case "Strength Potion":
                         target.Strength += EffectValue;
                         break;
                     case "Endurance Potion":
                         target.Endurance += EffectValue;
+
+                        if (target.Endurance > target.MaxEndurance)
+                        {
+                            target.Endurance = target.MaxEndurance;
+                        }
                         break;
                 }
             }

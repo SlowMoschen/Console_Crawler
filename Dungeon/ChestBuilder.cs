@@ -1,10 +1,12 @@
 ﻿using Console_Crawler.GameCharacters;
 using Console_Crawler.GameUtilities;
+using Console_Crawler.GameUtilities.DisplayManager;
 using Console_Crawler.GameUtilities.Generators;
 using Console_Crawler.GameVariables;
 using Console_Crawler.Items;
 using Console_Crawler.Items.Potions;
 using Console_Crawler.Weapons;
+using System.Numerics;
 
 
 namespace Console_Crawler.DungeonBuilder
@@ -66,6 +68,35 @@ namespace Console_Crawler.DungeonBuilder
         public void OpenChest(Player player)
         {
            Console.WriteLine(" You have found a chest!");
+           Console.WriteLine();
+           Console.WriteLine($" You found {this.Gold} Gold in this Chest!");
+           player.Inventory.AddGold(this.Gold);
+
+           if(this.Items != null)
+           {
+                ItemsFoundInChest(player);
+           }
+
+           if(this.Weapons != null)
+           {
+                WeaponFoundInChest(player);
+           }
+
+        }
+
+        private void ItemsFoundInChest(Player player)
+        {
+            Console.WriteLine(" You found some items in this chest!");
+            foreach (Item item in this.Items)
+            {
+                DisplayManager.AddChestItemsToInventory(player, item);
+            }
+        }
+
+        private void WeaponFoundInChest(Player player)
+        {
+            Console.WriteLine(" You found a weapon in this chest!");
+            DisplayManager.AskToEquipWeapon(player, this.Weapons);
         }
 
     }

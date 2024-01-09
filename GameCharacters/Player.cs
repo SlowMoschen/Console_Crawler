@@ -38,9 +38,6 @@ namespace Console_Crawler.GameCharacters
             this.SetAttackOptions();
         }
 
-        //Method to calucalte 2 nums
-
-
         public void DecrementBuffTurns()
         {
             if(this.EffectTurns.StrenghtBuffTurns > 0)
@@ -72,6 +69,16 @@ namespace Console_Crawler.GameCharacters
             }
         }
 
+        public void RegenEndurance()
+        {
+            this.Endurance += GameSettings.General.RoundEnduranceRegen;
+
+            if(this.Endurance > this.MaxEndurance)
+            {
+                this.Endurance = this.MaxEndurance;
+            }
+        }
+
         public override void NormalAttack(GameCharacter target)
         {
             int damage = DamageCalculator.CalculateAttackDamage(this.CurrentWeapon.AttackDamage, target.Armor, this.Strength);
@@ -85,10 +92,10 @@ namespace Console_Crawler.GameCharacters
                 }
                 else
                 {
-                    GameStatistics.AddTotalDamageDealt(damage);
-                    this.DealtDamage = damage;
                     target.Health -= damage;
                     this.Endurance -= this.CurrentWeapon.WeaponStats.EnduranceCost;
+                    this.DealtDamage = damage;
+                    GameStatistics.AddTotalDamageDealt(damage);
                 }
             }
             else

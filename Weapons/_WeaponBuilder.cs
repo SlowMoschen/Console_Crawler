@@ -61,10 +61,10 @@ namespace Console_Crawler.Weapons
                 }
                 else
                 {
-                    GameStatistics.AddTotalDamageDealt(damage);
-                    target.Effects.IsDefending = true;
                     target.Health -= damage;
                     player.Endurance -= this.WeaponStats.SpecialEnduranceCost;
+                    GameStatistics.AddTotalDamageDealt(damage);
+                    player.DealtDamage = damage;
                 }
             }
             else

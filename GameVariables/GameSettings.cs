@@ -8,7 +8,7 @@
         {
             public static int RestEnduranceRegen { get; } = 10;
             public static int RoundEnduranceRegen { get; } = 7;
-            public static int RestHealthRegen { get; } = 5;
+            public static int RestHealthRegen { get; } = 50;
             public static int DamageReductionRate { get; } = 100;
             public static int WeaponUpgradeInterval { get; } = 3;
             public static int KickEnduranceCost { get; } = 7;

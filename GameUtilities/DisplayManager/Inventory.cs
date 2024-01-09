@@ -1,4 +1,6 @@
 ﻿using Console_Crawler.GameCharacters;
+using Console_Crawler.Items;
+using Console_Crawler.Weapons;
 
 namespace Console_Crawler.GameUtilities.DisplayManager
 {
@@ -52,6 +54,40 @@ namespace Console_Crawler.GameUtilities.DisplayManager
                     DisplayInventoryMenu(player);
                     break;
             }
+        }
+
+        public static void AddChestItemsToInventory(Player player, Item item)
+        {
+            player.Inventory.AddItem(item);
+            Console.WriteLine($" You have added {item.Name} to your Inventory!");
+        }
+
+        public static void AskToEquipWeapon(Player player, Weapon weapon)
+        {
+            Console.WriteLine();
+            Console.WriteLine($" You have found a {weapon.WeaponName}!");
+            Console.WriteLine();
+            Console.WriteLine($" {weapon.WeaponName} Stats:");
+            Console.WriteLine();
+            weapon.DisplayWeaponStats();
+            Console.WriteLine();
+            Console.WriteLine(" Your current Weapon Stats:");
+            Console.WriteLine();
+            player.CurrentWeapon.DisplayWeaponStats();
+            Console.WriteLine();
+
+            string answer = InputHandler.GetChoice("Do you want to equip the found Weapon?", new string[] { "Yes", "No" });
+
+            if (answer == "Yes")
+            {
+                player.EquipWeapon(weapon);
+                Console.WriteLine($" You have equipped the {weapon.WeaponName}!");
+            }
+            else
+            {
+                Console.WriteLine(" You have left the Weapon in the Chest.");
+            }
+            
         }
     }
 }

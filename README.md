@@ -11,26 +11,26 @@
 
 ### Project Overview
 
-##### Tech Stack
+#### Tech Stack
 - C# .Net Core 8.0
 - NUnit for Unit-Tests
 
-##### Gameplay
+#### Gameplay
 The main objective of this little game is to survive the boss dungeon, which will be unlocked at level 20. 
 The dungeons are sparated into rooms in which there are different types of enemies. 
 In order to reach the end of a dungeon and collect the reward chest, all enemies must be defeated.
 
 >[!WARNING]
->***Game is currently unbalanced***
+>***Game is currently unbalanced and may have Bugs***
 
-##### Main Features
+#### Main Features
 - Turn based Battle System
 - text based Tutorial
 - Choose between 3 starter Weapons
 - Purchaseable Potions
 - in total 8 different Enemytypes with different Special Attacks
 
-##### Future Features
+#### Future Features
 new features probaly will need a while to be implemented
 - Posibility to save and load Gamescores
 - Extra Items
@@ -44,12 +44,12 @@ when I came across new keywords that I had never seen before in Javascript or wh
 
 As is the case with projects that are a lot of fun, the ideas just popped into my head. So the codebase that I built up in about 1 week quickly became illegible. That's why I decided to rewrite everything in Visual Studio 2022, with readability in mind. This turned out to be a very good decision that led to this final project.
 
-##### Examples of why i decided to do this:
+#### Examples of why i decided to do this:
 - The DisplayManager class, which is there to output things to the console, became very large and therefore very hard to read.
 - Much of the game logic has been moved to the DisplayManager class or to Global Variables (ex. Enemystat Calculation).
 - I used global variables to override the player instance properties.
 
-##### Examples of improvments:
+#### Examples of improvments:
 - **Unit tests have been added for all main classes.**
 - The whole project is now better suited for expansions.
 - The DisplayManager class is now a partial class that has been split into different files for better maintainablity.

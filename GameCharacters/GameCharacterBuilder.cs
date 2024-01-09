@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Console_Crawler.GameUtilities;
-using Console_Crawler.GameVariables;
-using Console_Crawler.GameVariables.Statistics.EnemyStatistics;
-using Console_Crawler.GameVariables.Statistics.EnemyStatistics.Builder;
+﻿using Console_Crawler.GameUtilities;
 using Console_Crawler.GameCharacters.HostileMobs;
 using Console_Crawler.GameCharacters.HostileMobs.Bosses;
 using Console_Crawler.GameCharacters.HostileMobs.MiniBosses;
@@ -55,6 +47,11 @@ namespace Console_Crawler.GameCharacters
                 // Add damage to statistics - only counts for enemies because the NormalAttack Method is overriden in Player.cs
                 GameStatistics.AddTotalDamageTaken(damage);
             }
+        }
+
+        public void ClearDealtDamage()
+        {
+            this.DealtDamage = 0;
         }
 
         public void Defend()

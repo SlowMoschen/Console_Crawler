@@ -1,7 +1,4 @@
-﻿
-using Microsoft.VisualStudio.TestPlatform.CommunicationUtilities;
-
-namespace Console_Crawler.GameUtilities.DisplayManager
+﻿namespace Console_Crawler.GameUtilities.DisplayManager
 {
     internal partial class DisplayManager
     {
