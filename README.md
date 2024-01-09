@@ -85,7 +85,7 @@ or
 
 Download the Setup.Exe here </br>
 Go here and click on "View Raw" - should result in downloading the Zip file </br>
-<a href="publish.zip" download="publish.zip">Download Zip File here</a>
+<a href="Console_Crawler.zip" download="publish.zip">Download Zip File here</a>
 
 ### Contribution
 If you want to contribute to the Project feel free to fork the Repo and make some changes.
