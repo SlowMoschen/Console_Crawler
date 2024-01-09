@@ -4,11 +4,6 @@ using Console_Crawler.GameVariables.Statistics;
 using Console_Crawler.GameVariables.Statistics.EnemyStatistics;
 using Console_Crawler.GameVariables.Statistics.PlayerStatistics;
 using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Console_Crawler.GameCharacters.__tests__
 {
@@ -35,7 +30,19 @@ namespace Console_Crawler.GameCharacters.__tests__
         {
             int baseStat = 10;
             int scaleRating = 10;
-            int levelInterval = 2;
+            int levelInterval = 1;
+
+            int result = Enemy.CalculateStat(baseStat, scaleRating, levelInterval);
+
+            Assert.That(result, Is.EqualTo(10));
+        }
+
+        [Test]
+        public void Enemy_CalculateStat_Test2()
+        {
+            int baseStat = 20;
+            int scaleRating = 15;
+            int levelInterval = 1;
 
             int result = Enemy.CalculateStat(baseStat, scaleRating, levelInterval);
 

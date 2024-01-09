@@ -177,6 +177,7 @@ namespace Console_Crawler.GameCharacters
         {
             if(this.EXP >= this.EXPToNextLevel)
             {
+                PlayerStats.Level++;
                 this.Level++;
                 this.EXP = 0;
                 this.EXPToNextLevel = this.Level * LevelUpModifers.EXPRating;

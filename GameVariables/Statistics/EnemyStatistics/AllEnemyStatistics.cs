@@ -9,7 +9,7 @@ namespace Console_Crawler.GameVariables.Statistics.EnemyStatistics
         //**
 
         public static Builder.EnemyStatistics Zombie = new Builder.EnemyStatistics(
-            baseAttack: 10,
+            baseAttack: 12,
             baseArmor: 10,
             strength: 1.0,
             baseHealth: 110,
@@ -18,7 +18,7 @@ namespace Console_Crawler.GameVariables.Statistics.EnemyStatistics
             );
 
         public static SpiderStatistics Spider = new SpiderStatistics(
-            baseAttack: 10,
+            baseAttack: 15,
             baseArmor: 20,
             strength: 1.0,
             baseHealth: 110,
@@ -29,7 +29,7 @@ namespace Console_Crawler.GameVariables.Statistics.EnemyStatistics
             );
 
         public static GoblinStatistics Goblin = new GoblinStatistics(
-            baseAttack: 5,
+            baseAttack: 10,
             baseArmor: 20,
             strength: 1.0,
             baseHealth: 120,

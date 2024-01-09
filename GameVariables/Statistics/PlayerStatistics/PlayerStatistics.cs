@@ -23,6 +23,8 @@ namespace Console_Crawler.GameVariables.Statistics.PlayerStatistics
         public static int InitialMaxHealth { get; set; } = 100;
         public static int EXP { get; set; } = 0;
         public static int EXPToNextLevel { get; set; } = 100;
+        
+        // Is used to Calculate Enemy and Weapon stats
         public static int Level { get; set; } = 1;
         public static int MaxLevel { get; set; } = 30;
     }

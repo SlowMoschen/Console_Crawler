@@ -168,6 +168,13 @@ namespace Console_Crawler.GameUtilities.DisplayManager
                         break;
                     }
                     string potionChoice = player.ChoosePotion();
+
+                    if(potionChoice == "Go Back")
+                    {
+                        EnemyBattle(player, enemy);
+                        break;
+                    }
+
                     player.UsePotion(potionChoice);
                     return potionChoice;
                 case "Defend":

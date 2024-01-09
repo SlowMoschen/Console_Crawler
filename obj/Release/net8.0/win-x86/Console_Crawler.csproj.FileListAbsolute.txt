@@ -267,7 +267,6 @@ C:\Users\Phili\source\repos\Console_Crawler\Console_Crawler\bin\Release\net8.0\w
 C:\Users\Phili\source\repos\Console_Crawler\Console_Crawler\bin\Release\net8.0\win-x86\hostfxr.dll
 C:\Users\Phili\source\repos\Console_Crawler\Console_Crawler\bin\Release\net8.0\win-x86\hostpolicy.dll
 C:\Users\Phili\source\repos\Console_Crawler\Console_Crawler\bin\Release\net8.0\win-x86\mscordaccore.dll
-C:\Users\Phili\source\repos\Console_Crawler\Console_Crawler\bin\Release\net8.0\win-x86\mscordaccore_x86_x86_8.0.23.53103.dll
 C:\Users\Phili\source\repos\Console_Crawler\Console_Crawler\bin\Release\net8.0\win-x86\mscordbi.dll
 C:\Users\Phili\source\repos\Console_Crawler\Console_Crawler\bin\Release\net8.0\win-x86\mscorrc.dll
 C:\Users\Phili\source\repos\Console_Crawler\Console_Crawler\bin\Release\net8.0\win-x86\msquic.dll
@@ -289,3 +288,4 @@ C:\Users\Phili\source\repos\Console_Crawler\Console_Crawler\bin\Release\net8.0\w
 C:\Users\Phili\source\repos\Console_Crawler\Console_Crawler\obj\Release\net8.0\win-x86\Console_Crawler.genpublishdeps.cache
 C:\Users\Phili\source\repos\Console_Crawler\Console_Crawler\obj\Release\net8.0\win-x86\Console_Crawler.dll.manifest
 C:\Users\Phili\source\repos\Console_Crawler\Console_Crawler\obj\Release\net8.0\win-x86\Console_Crawler.application
+C:\Users\Phili\source\repos\Console_Crawler\Console_Crawler\bin\Release\net8.0\win-x86\mscordaccore_x86_x86_8.0.123.58001.dll

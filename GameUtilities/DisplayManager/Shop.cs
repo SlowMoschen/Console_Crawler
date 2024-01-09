@@ -16,7 +16,14 @@ namespace Console_Crawler.GameUtilities.DisplayManager
             Console.WriteLine();
             DisplayMaximumItemsQuantity();
 
-            string itemChoice = GetItemChoice(player);
+            string itemChoice = GetShopItemChoice(player);
+
+            if(itemChoice == "Go Back")
+            {
+                DisplayShopMenu(player);
+                return;
+            }
+
             int itemQuantityChoice = GetItemQuantityChoice(player, itemChoice);
 
             for(int i = 1; i <= itemQuantityChoice; i++) 
@@ -43,6 +50,7 @@ namespace Console_Crawler.GameUtilities.DisplayManager
                 }
             }
             WaitForInput();
+            DisplayBuyingShop(player);
         }
 
 
@@ -52,7 +60,7 @@ namespace Console_Crawler.GameUtilities.DisplayManager
             Console.WriteLine($" You can carry a maximum of {ItemSettings.ItemMaxQuantity.HealPotion} Heal and Endurance Potions.");    
         }
 
-        private static string GetItemChoice(Player player)
+        private static string GetShopItemChoice(Player player)
         {
             string[] allItemPrices = ItemSettings.ItemPrice.GetAllItemPrices();
             return DisplayOptionsMenu("What would you like to buy?", MenuOptions.ShopItems, allItemPrices);

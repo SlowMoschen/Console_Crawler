@@ -2,11 +2,6 @@
 using Console_Crawler.Items;
 using Console_Crawler.Items.Potions;
 using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Console_Crawler.GameCharacters.__tests__
 {

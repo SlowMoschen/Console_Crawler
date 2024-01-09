@@ -40,9 +40,9 @@ namespace Console_Crawler.GameCharacters
             this.Gold = this.EnemyStats.Gold;
         }
 
-        public static int CalculateStat(int baseStat, int scaleRating, int levelInterval = 0)
+        public static int CalculateStat(int baseStat, int scaleRating, int levelInterval = 1)
         {
-            int level = PlayerStats.Level - 1 / levelInterval;
+            int level = (PlayerStats.Level - 1) / levelInterval;
             return baseStat + level * scaleRating;
         }
 

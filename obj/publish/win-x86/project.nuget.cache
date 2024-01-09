@@ -1,11 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "D6IbXvHXus+cqDUK5yIo+/j7sptmEZfsmhPK8yk7H7YpTrnYU5UilqTwBVS5QxtWg8L0JyE1fNNm6q/iTEX/vw==",
+  "dgSpecHash": "kpxIZMqA6txMMSxxX7ogi06z304MC2abtte2/bIvpvehBTo/SKL5IRH/SaZ0sZhgeQbMsHiqgEfnNOfimGHY7w==",
   "success": true,
   "projectFilePath": "C:\\Users\\Phili\\source\\repos\\Console_Crawler\\Console_Crawler\\Console_Crawler.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Phili\\.nuget\\packages\\microsoft.codecoverage\\17.8.0\\microsoft.codecoverage.17.8.0.nupkg.sha512",
-    "C:\\Users\\Phili\\.nuget\\packages\\microsoft.net.illink.tasks\\8.0.0\\microsoft.net.illink.tasks.8.0.0.nupkg.sha512",
+    "C:\\Users\\Phili\\.nuget\\packages\\microsoft.net.illink.tasks\\8.0.1\\microsoft.net.illink.tasks.8.0.1.nupkg.sha512",
     "C:\\Users\\Phili\\.nuget\\packages\\microsoft.net.test.sdk\\17.8.0\\microsoft.net.test.sdk.17.8.0.nupkg.sha512",
     "C:\\Users\\Phili\\.nuget\\packages\\microsoft.testplatform.objectmodel\\17.8.0\\microsoft.testplatform.objectmodel.17.8.0.nupkg.sha512",
     "C:\\Users\\Phili\\.nuget\\packages\\microsoft.testplatform.testhost\\17.8.0\\microsoft.testplatform.testhost.17.8.0.nupkg.sha512",
@@ -14,9 +14,9 @@
     "C:\\Users\\Phili\\.nuget\\packages\\nunit\\4.0.1\\nunit.4.0.1.nupkg.sha512",
     "C:\\Users\\Phili\\.nuget\\packages\\nunit3testadapter\\4.5.0\\nunit3testadapter.4.5.0.nupkg.sha512",
     "C:\\Users\\Phili\\.nuget\\packages\\system.reflection.metadata\\1.6.0\\system.reflection.metadata.1.6.0.nupkg.sha512",
-    "C:\\Users\\Phili\\.nuget\\packages\\microsoft.netcore.app.runtime.win-x86\\8.0.0\\microsoft.netcore.app.runtime.win-x86.8.0.0.nupkg.sha512",
-    "C:\\Users\\Phili\\.nuget\\packages\\microsoft.windowsdesktop.app.runtime.win-x86\\8.0.0\\microsoft.windowsdesktop.app.runtime.win-x86.8.0.0.nupkg.sha512",
-    "C:\\Users\\Phili\\.nuget\\packages\\microsoft.aspnetcore.app.runtime.win-x86\\8.0.0\\microsoft.aspnetcore.app.runtime.win-x86.8.0.0.nupkg.sha512"
+    "C:\\Users\\Phili\\.nuget\\packages\\microsoft.netcore.app.runtime.win-x86\\8.0.1\\microsoft.netcore.app.runtime.win-x86.8.0.1.nupkg.sha512",
+    "C:\\Users\\Phili\\.nuget\\packages\\microsoft.windowsdesktop.app.runtime.win-x86\\8.0.1\\microsoft.windowsdesktop.app.runtime.win-x86.8.0.1.nupkg.sha512",
+    "C:\\Users\\Phili\\.nuget\\packages\\microsoft.aspnetcore.app.runtime.win-x86\\8.0.1\\microsoft.aspnetcore.app.runtime.win-x86.8.0.1.nupkg.sha512"
   ],
   "logs": []
 }

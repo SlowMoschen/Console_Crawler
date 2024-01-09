@@ -106,6 +106,8 @@ namespace Console_Crawler.GameUtilities.DisplayManager
             Console.WriteLine();
             Console.WriteLine("     Health Potion:");
             Console.WriteLine();
+            Console.WriteLine($"        The healing is scaling with the Playerlevel.");
+            Console.WriteLine();
             Console.WriteLine($"        Heals you for {ItemSettings.ItemEffect.HealPotion} health.");
             Console.WriteLine($"        Costs {ItemSettings.ItemPrice.HealPotion} gold.");
             Console.WriteLine();

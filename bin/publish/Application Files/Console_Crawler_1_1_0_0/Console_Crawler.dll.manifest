@@ -53,13 +53,13 @@
       </hash>
     </dependentAssembly>
   </dependency>
-  <file name="Console_Crawler.exe" size="67153322">
+  <file name="Console_Crawler.exe" size="66952786">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>QJkTAGS97xaFAAmYS+gKd/4vKRviV8JP+qgyXbt/Qa8=</dsig:DigestValue>
+      <dsig:DigestValue>CQltEEQbNdr5BSvVeJwWCasO5Ausrvh8K+SNOvCdWGU=</dsig:DigestValue>
     </hash>
   </file>
   <file name="NUnit3.TestAdapter.pdb" size="52800">
@@ -71,13 +71,13 @@
       <dsig:DigestValue>UotnuPg5+uPz8+3CbB+gfeqR6uMRr/rxzT0D4zYX7j8=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="PatchNotes.txt" size="550">
+  <file name="PatchNotes.txt" size="1202">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>sJSe4BPxj0nH3L90EkEO6Hkzx1rkAGBFRZ480j2BBeM=</dsig:DigestValue>
+      <dsig:DigestValue>LzwIqzbdq42QPJgrK0c1JSm95OM0lY2sAJ/QxbpxXnA=</dsig:DigestValue>
     </hash>
   </file>
   <file name="testhost.x86.exe" size="140328">
