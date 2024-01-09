@@ -87,47 +87,23 @@ namespace Console_Crawler.GameUtilities.DisplayManager
             DisplayBattleStats(player, enemy);
             Console.WriteLine();
 
-            string battleChoice = DisplayOptionsMenu(" What would you like to do?", MenuOptions.BattleOptions);
+            string battleChoice;
             string optionChoice = "";
             string enemyMove = "";
 
+            // Check if player is stunned and skip turn if true
             if(!player.Effects.IsStunned)
             {
-                switch(battleChoice)
-                {
-                    case "Attack":
-                        optionChoice = player.ChooseAttack(enemy);
-                        break;
-                    case "Rest":
-                        player.Rest();
-                        break;
-                    case "Use Potion":
-                         
-                        if(player.Inventory.Items.Count == 0)
-                         {
-                            Console.WriteLine(" You don't have any potions!");
-                            WaitForInput();
-                            break;
-                         }
-
-                        optionChoice = player.ChoosePotion();
-                        player.UsePotion(optionChoice);
-                        break;
-                    case "Defend":
-                        player.Defend();
-                        break;
-                    case "Run Away":
-                        player.RunFromBattle();
-                        break;
-                }
+                battleChoice = GetPlayerBattleChoice();
+                optionChoice = HandlePlayerBattleChoice(battleChoice, player, enemy);
             }
             else
             {
-                Console.WriteLine(" You are stunned and can't do anything!");
-                player.Effects.IsStunned = false;
                 battleChoice = "Stunned";
+                player.Effects.IsStunned = false;
             }
 
+            // Quit if player is dead or has run away
             if(!GameBools.IsInBattle)
             {
                 return;
@@ -136,38 +112,84 @@ namespace Console_Crawler.GameUtilities.DisplayManager
             player.DecrementBuffTurns();
             player.ApplyOverTimeEffects(enemy);
 
-            if(enemy.Health >= 0)
+            // Only execute enemy move if enemy is alive
+            if (enemy.Health >= 0)
             {
                 enemyMove = enemy.ExecuteAction(player, enemy.GetRandomAction());
             }
 
+            // Check if enemy is dead and handle death or continue battle
             if(enemy.Health <= 0)
             {
-                GameStatistics.KilledEnemies++;
-                player.AddEXP(enemy.EXP);
-                
-                // check if enemy is Goblin and get random number between Goblin Base Gold and the gold that the goblin has stolen
-                if(enemy is Goblin goblin)
-                {
-                    player.Inventory.AddGold(Randomizer.GetRandomNumber(AllEnemyStatistics.Goblin.Gold, goblin.Gold));
-                }
-                else
-                {
-                    player.Inventory.AddGold(enemy.Gold);
-                }
-
-                DisplayEnemyDeath(enemy);
-                //return;
+                HandleEnemyDeath(player, enemy);           
             }
             else
             {
-                DisplayRoundResults(player, enemy, battleChoice, optionChoice, enemyMove);
-                player.RegenEndurance();
-                player.ClearDealtDamage();
-                enemy.ClearDealtDamage();
-                WaitForInput();
-                Console.Clear();
+                HandleBattleTurn(player, enemy, battleChoice, optionChoice, enemyMove);
             }
+        }
+
+        private static string GetPlayerBattleChoice()
+        {
+            return DisplayOptionsMenu(" What would you like to do?", MenuOptions.BattleOptions);
+        }
+
+        private static string HandlePlayerBattleChoice(string choice, Player player, Enemy enemy)
+        {
+            switch (choice)
+            {
+                case "Attack":
+                    return player.ChooseAttack(enemy);
+                case "Rest":
+                    player.Rest();
+                    break;
+                case "Use Item":
+                    if(player.Inventory.Items.Count == 0)
+                    {
+                        Console.WriteLine(" You don't have any potions!");
+                        WaitForInput();
+                        break;
+                    }
+                    string potionChoice = player.ChoosePotion();
+                    player.UsePotion(potionChoice);
+                    return potionChoice;
+                case "Defend":
+                    player.Defend();
+                    break;
+                case "Run Away":
+                    player.RunFromBattle();
+                    break;
+            }
+
+            return "";
+        }
+
+        private static void HandleEnemyDeath(Player player, Enemy enemy)
+        {
+            GameStatistics.KilledEnemies++;
+            player.AddEXP(enemy.EXP);
+
+            // check if enemy is Goblin and get random number between Goblin Base Gold and the gold that the goblin has stolen
+            if (enemy is Goblin goblin)
+            {
+                player.Inventory.AddGold(Randomizer.GetRandomNumber(AllEnemyStatistics.Goblin.Gold, goblin.Gold));
+            }
+            else
+            {
+                player.Inventory.AddGold(enemy.Gold);
+            }
+
+            DisplayEnemyDeath(enemy);
+        }
+
+        private static void HandleBattleTurn(Player player, Enemy enemy, string battleChoice, string optionChoice, string enemyMove)
+        {
+            DisplayRoundResults(player, enemy, battleChoice, optionChoice, enemyMove);
+            player.RegenEndurance();
+            player.ClearDealtDamage();
+            enemy.ClearDealtDamage();
+            WaitForInput();
+            Console.Clear();
         }
 
         private static void DisplayRoundResults(Player player, Enemy enemy, string playerMove, string optionChoice, string enemyMove)
