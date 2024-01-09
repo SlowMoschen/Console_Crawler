@@ -51,6 +51,13 @@ namespace Console_Crawler.GameCharacters
             }
         }
 
+        public void Revive()
+        {
+            this.Health = this.MaxHealth;
+            this.Endurance = this.MaxEndurance;
+            GameBools.IsDead = false;
+        }
+
         public void Rest()
         {
             GameStatistics.AddTotalRest();
@@ -96,6 +103,7 @@ namespace Console_Crawler.GameCharacters
                     this.Endurance -= this.CurrentWeapon.WeaponStats.EnduranceCost;
                     this.DealtDamage = damage;
                     GameStatistics.AddTotalDamageDealt(damage);
+                    Console.WriteLine($" You attacked {target.Name} for {damage} damage.");
                 }
             }
             else
@@ -121,6 +129,7 @@ namespace Console_Crawler.GameCharacters
                     GameStatistics.AddTotalDamageDealt(damage);
                     target.Health -= damage;
                     this.Endurance -= GameSettings.General.KickEnduranceCost;
+                    Console.WriteLine($" You kicked {target.Name} for {damage} damage.");
                 }
             }
             else

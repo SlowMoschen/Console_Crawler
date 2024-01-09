@@ -65,6 +65,7 @@ namespace Console_Crawler.Weapons
                     player.Endurance -= this.WeaponStats.SpecialEnduranceCost;
                     GameStatistics.AddTotalDamageDealt(damage);
                     player.DealtDamage = damage;
+                    Console.WriteLine($" You used {this.WeaponStats.SpecialAttackName} to deal {damage} damage to the enemy!");
                 }
             }
             else

@@ -203,6 +203,8 @@ namespace Console_Crawler.GameUtilities.DisplayManager
         {
             GameBools.IsInBattle = false;
             GameBools.IsInMenu = true;
+            GameBools.IsDead = true;
+            GameStatistics.TotalDeaths++;
             DisplayPlayerDeath();
             WaitForInput();
         }

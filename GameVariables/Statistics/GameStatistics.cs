@@ -2,7 +2,7 @@
 {
     internal class GameStatistics
     {
-        public static string Version { get; } = "1.0.7";
+        public static string Version { get; } = "1.0.7.01";
         public static int SurviedRooms { get; set; } = 0;
         public static int SurviedDungeons { get; set; } = 0;
         public static int KilledEnemies { get; set; } = 0;

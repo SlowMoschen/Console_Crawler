@@ -19,6 +19,11 @@ class Program
 
         while (GameBools.IsInMenu)
         {
+            if(GameBools.IsDead)
+            {
+                player.Revive();
+            }
+
             string menuChoice = DisplayManager.DisplayMainMenu(player);
 
             switch (menuChoice)

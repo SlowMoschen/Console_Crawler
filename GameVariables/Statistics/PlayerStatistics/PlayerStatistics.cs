@@ -19,7 +19,7 @@ namespace Console_Crawler.GameVariables.Statistics.PlayerStatistics
         public static int InitialAttack { get; set; } = 10;
         public static double InitialStrength { get; set; } = 1.0;
         public static int InitialArmor { get; set; } = 10;
-        public static int InitialHealth { get; set; } = 100;
+        public static int InitialHealth { get; set; } = 10;
         public static int InitialMaxHealth { get; set; } = 100;
         public static int EXP { get; set; } = 0;
         public static int EXPToNextLevel { get; set; } = 100;

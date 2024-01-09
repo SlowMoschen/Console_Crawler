@@ -5,6 +5,7 @@ using Console_Crawler.GameVariables;
 using Console_Crawler.GameCharacters.HostileMobs.Bosses;
 using Console_Crawler.GameCharacters.HostileMobs.MiniBosses;
 using Console_Crawler.GameCharacters.HostileMobs;
+using System.Numerics;
 
 namespace Console_Crawler.GameUtilities.DisplayManager
 {
@@ -25,32 +26,6 @@ namespace Console_Crawler.GameUtilities.DisplayManager
                     if (enemyMove == "Defend")
                     {
                         Console.WriteLine($" You tried to attack the {enemy.Name} but it defended!");
-                    }
-                    else
-                    {
-                        if (player.Endurance >= player.CurrentWeapon.WeaponStats.EnduranceCost)
-                        {
-                            if (optionChoice == "Normal Attack")
-                            {
-                                Console.WriteLine($" You attacked the enemy for {player.DealtDamage}");
-                            }
-                        }
-
-                        if (player.Endurance >= GameSettings.General.KickEnduranceCost)
-                        {
-                            if (optionChoice == "Kick Attack")
-                            {
-                                Console.WriteLine($" You kicked the enemy for {player.DealtDamage}");
-                            }
-                        }
-
-                        if (player.Endurance >= player.CurrentWeapon.WeaponStats.SpecialEnduranceCost)
-                        {
-                            if (optionChoice == player.CurrentWeapon.WeaponStats.SpecialAttackName)
-                            {
-                                Console.WriteLine($" You used {player.CurrentWeapon.WeaponStats.SpecialAttackName} and dealt {player.DealtDamage} damage!");
-                            }
-                        }
                     }
                     break;
                 case "Rest":
@@ -130,6 +105,7 @@ namespace Console_Crawler.GameUtilities.DisplayManager
                 case "Steal":
                     if (enemy is Goblin goblin)
                     {
+                        Console.WriteLine($" The {goblin.Name} dealt {goblin.DealtDamage} damage!");
                         if (player.Inventory.Gold > 0)
                         {
                             Console.WriteLine($" The {goblin.Name} stole {goblin.StealAmount} gold from you!");
