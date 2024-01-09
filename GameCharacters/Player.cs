@@ -279,18 +279,22 @@ namespace Console_Crawler.GameCharacters
         {
             base.PrintBattleStats();
             Console.WriteLine($" Endurance: {this.Endurance}");
+            PrintEffectStatuses();
+        }
 
-            if(this.EffectTurns.StrenghtBuffTurns > 0)
+        private void PrintEffectStatuses()
+        {
+            if (this.EffectTurns.StrenghtBuffTurns > 0)
             {
                 Console.WriteLine($" Strength is buffed for {this.EffectTurns.StrenghtBuffTurns} turns");
             }
 
-            if(this.Effects.IsPoisoned)
+            if (this.Effects.IsPoisoned && this.EffectTurns.PoisonTurns > 0)
             {
                 Console.WriteLine($" Poisoned for {this.EffectTurns.PoisonTurns} turns");
             }
 
-            if(this.Effects.IsBurning)
+            if (this.Effects.IsBurning && this.EffectTurns.BurnTurns > 0)
             {
                 Console.WriteLine($" Burning for {this.EffectTurns.BurnTurns} turns");
             }

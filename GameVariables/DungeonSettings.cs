@@ -22,6 +22,7 @@ namespace Console_Crawler.GameVariables
             "Medium" => 2,
             "Hard" => 3,
             "Boss" => 5,
+            "Dev" => 1,
             _ => 0
         };
         public static int GetRoomEnemiesCount(string difficulty) => difficulty switch
@@ -30,6 +31,7 @@ namespace Console_Crawler.GameVariables
             "Medium" => random.Next(3, 6),
             "Hard" => random.Next(5, 11),
             "Boss" => random.Next(10, 21),
+            "Dev" => 1,
             _ => 0
         };
         public static int GetChestItemsLength(string difficulty) => difficulty switch
@@ -38,6 +40,7 @@ namespace Console_Crawler.GameVariables
             "Medium" => random.Next(2, 4),
             "Hard" => random.Next(3, 5),
             "Boss" => random.Next(4, 6),
+            "Dev" => 5,
             _ => 0
         };
         public static int GetChestGold(string difficulty) => difficulty switch
@@ -46,6 +49,7 @@ namespace Console_Crawler.GameVariables
             "Medium" => random.Next(10, 21),
             "Hard" => random.Next(20, 31),
             "Boss" => random.Next(30, 81),
+            "Dev" => 1000,
             _ => 0
         };
         public static string[] ChestItems { get; } = { "Heal Potion", "Strength Potion", "Endurance Potion" };

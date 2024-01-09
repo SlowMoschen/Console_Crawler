@@ -88,14 +88,15 @@ namespace Console_Crawler.GameUtilities.DisplayManager
             Console.WriteLine();
 
             string battleChoice = DisplayOptionsMenu(" What would you like to do?", MenuOptions.BattleOptions);
-            string attackChoice = "";
+            string optionChoice = "";
+            string enemyMove = "";
 
             if(!player.Effects.IsStunned)
             {
                 switch(battleChoice)
                 {
                     case "Attack":
-                        attackChoice = player.ChooseAttack(enemy);
+                        optionChoice = player.ChooseAttack(enemy);
                         break;
                     case "Rest":
                         player.Rest();
@@ -109,8 +110,8 @@ namespace Console_Crawler.GameUtilities.DisplayManager
                             break;
                          }
 
-                        battleChoice = player.ChoosePotion();
-                        player.UsePotion(battleChoice);
+                        optionChoice = player.ChoosePotion();
+                        player.UsePotion(optionChoice);
                         break;
                     case "Defend":
                         player.Defend();
@@ -132,9 +133,13 @@ namespace Console_Crawler.GameUtilities.DisplayManager
                 return;
             }
 
-            string enemyMove = enemy.ExecuteAction(player, enemy.GetRandomAction());
             player.DecrementBuffTurns();
             player.ApplyOverTimeEffects(enemy);
+
+            if(enemy.Health >= 0)
+            {
+                enemyMove = enemy.ExecuteAction(player, enemy.GetRandomAction());
+            }
 
             if(enemy.Health <= 0)
             {
@@ -156,7 +161,7 @@ namespace Console_Crawler.GameUtilities.DisplayManager
             }
             else
             {
-                DisplayRoundResults(player, enemy, battleChoice, attackChoice, enemyMove);
+                DisplayRoundResults(player, enemy, battleChoice, optionChoice, enemyMove);
                 player.RegenEndurance();
                 player.ClearDealtDamage();
                 enemy.ClearDealtDamage();
@@ -165,13 +170,13 @@ namespace Console_Crawler.GameUtilities.DisplayManager
             }
         }
 
-        private static void DisplayRoundResults(Player player, Enemy enemy, string playerMove, string playerAttackChoice, string enemyMove)
+        private static void DisplayRoundResults(Player player, Enemy enemy, string playerMove, string optionChoice, string enemyMove)
         {
-            DisplayPlayerMove(player, enemy, playerMove, playerAttackChoice, enemyMove);
+            DisplayPlayerMove(player, enemy, playerMove, optionChoice, enemyMove);
             DisplayEnemyMove(player, enemy, enemyMove);
         }
 
-        private static void DisplayPlayerMove(Player player, Enemy enemy, string playerMove, string playerAttackChoice, string enemyMove)
+        private static void DisplayPlayerMove(Player player, Enemy enemy, string playerMove, string optionChoice, string enemyMove)
         {
             switch (playerMove)
             {
@@ -184,7 +189,7 @@ namespace Console_Crawler.GameUtilities.DisplayManager
                     {
                         if(player.Endurance >= player.CurrentWeapon.WeaponStats.EnduranceCost)
                         {
-                            if (playerAttackChoice == "Normal Attack")
+                            if (optionChoice == "Normal Attack")
                             {
                                 Console.WriteLine($" You attacked the enemy for {player.DealtDamage}");
                             }
@@ -192,7 +197,7 @@ namespace Console_Crawler.GameUtilities.DisplayManager
 
                         if(player.Endurance >= GameSettings.General.KickEnduranceCost)
                         {
-                            if (playerAttackChoice == "Kick Attack")
+                            if (optionChoice == "Kick Attack")
                             {
                                 Console.WriteLine($" You kicked the enemy for {player.DealtDamage}");
                             }
@@ -200,7 +205,7 @@ namespace Console_Crawler.GameUtilities.DisplayManager
 
                         if(player.Endurance >= player.CurrentWeapon.WeaponStats.SpecialEnduranceCost)
                         {
-                            if (playerAttackChoice == player.CurrentWeapon.WeaponStats.SpecialAttackName)
+                            if (optionChoice == player.CurrentWeapon.WeaponStats.SpecialAttackName)
                             {
                                 Console.WriteLine($" You used {player.CurrentWeapon.WeaponStats.SpecialAttackName} and dealt {player.DealtDamage} damage!");
                             }
@@ -211,16 +216,16 @@ namespace Console_Crawler.GameUtilities.DisplayManager
                     Console.WriteLine($" You rested and gained {GameSettings.General.RestHealthRegen} health and {GameSettings.General.RestEnduranceRegen + GameSettings.General.RoundEnduranceRegen} endurance!");
                     break;
                 case "Use Potion":
-                    Console.WriteLine($" You used a {playerMove}!");
-                    if (playerMove == "Health Potion")
+                    Console.WriteLine($" You used a {optionChoice}!");
+                    if (optionChoice == "Health Potion")
                     {
                         Console.WriteLine($" You gained {ItemSettings.ItemEffect.HealPotion} health!");
                     }
-                    if (playerMove == "Strength Potion")
+                    if (optionChoice == "Strength Potion")
                     {
                         Console.WriteLine(" Your next attacks will deal double the damage!");
                     }
-                    if (playerMove == "Endurance Potion")
+                    if (optionChoice == "Endurance Potion")
                     {
                         Console.WriteLine($" You gained {ItemSettings.ItemEffect.EndurancePotion} endurance!");
                     }
@@ -273,7 +278,7 @@ namespace Console_Crawler.GameUtilities.DisplayManager
                         if(player.Effects.IsPoisoned)
                         {
                             Console.WriteLine($" The {spider.Name} spit at you for {spider.DealtDamage} damage and poisoned you!");
-                            Console.WriteLine($" You took {spider.PoisonDamage} damage from the poison!");
+                            //Console.WriteLine($" You took {spider.PoisonDamage} damage from the poison!");
                             Console.WriteLine($" You are poisoned for the next {player.EffectTurns.PoisonTurns} turns!");
                         }
                         else

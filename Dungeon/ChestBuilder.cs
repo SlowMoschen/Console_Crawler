@@ -20,7 +20,7 @@ namespace Console_Crawler.DungeonBuilder
         public Chest(string diffficulty)
         {
             this.Gold = DungeonSettings.GetChestGold(diffficulty);
-            this.Items = Randomizer.GetChance(100) ? GenerateChestItems(diffficulty) : null;
+            this.Items = Randomizer.GetChance(DungeonSettings.ItemSpawnRate) ? GenerateChestItems(diffficulty) : null;
             this.Weapons = Randomizer.GetChance(DungeonSettings.WeaponSpawnRate) ? GenerateChestWeapon() : null;
         }
 

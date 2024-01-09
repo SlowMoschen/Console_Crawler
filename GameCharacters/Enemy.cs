@@ -93,6 +93,7 @@ namespace Console_Crawler.GameCharacters
                     break;
                 default:
                     move = "Nothing Happend";
+                    Console.WriteLine(" The Enemy did nothing.");
                     break;
             }
             return move;

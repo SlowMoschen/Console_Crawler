@@ -33,6 +33,14 @@ namespace Console_Crawler.DungeonBuilder
 
             for (int i = 0; i < enemyCount; i++)
             {
+                
+                if(difficulty == "Dev")
+                {
+                    enemies.Add(GetNormalEnemy("Spider"));
+                    break;
+                }
+
+
                 bool isMiniBoss = i == enemyCount - 1 && difficulty != "Easy" && this.IsLastRoom == false && Randomizer.GetChance(DungeonSettings.MiniBossSpawnRate);
                 bool isBoss = i == enemyCount - 1 && difficulty == "Boss" && this.IsLastRoom == true;
 
@@ -53,10 +61,15 @@ namespace Console_Crawler.DungeonBuilder
             return enemies.ToArray();
         }
 
-        private static Enemy GetNormalEnemy()
+        // @param enemyType: If specified, the method will return an enemy of the specified type - used for testing
+        private static Enemy GetNormalEnemy(string enemyType = "")
         {
-            string[] enemyTypes = DungeonSettings.EnemyTypes;
-            string enemyType = enemyTypes[Randomizer.GetRandomNumber(enemyTypes.Length)];
+            // If no enemyType is specified, get a random enemyType
+            if(enemyType == "")
+            {
+                string[] enemyTypes = DungeonSettings.EnemyTypes;
+                enemyType = enemyTypes[Randomizer.GetRandomNumber(enemyTypes.Length)];
+            }
 
             switch (enemyType)
             {

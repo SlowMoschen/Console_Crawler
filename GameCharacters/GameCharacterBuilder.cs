@@ -59,26 +59,27 @@ namespace Console_Crawler.GameCharacters
             this.Effects.IsDefending = true;
         }
 
-        public void ApplyOverTimeEffects(GameCharacter enemy)
+        public void ApplyOverTimeEffects(GameCharacter? enemy = null)
         {
             this.ApplyPoisonDamage(enemy);
             this.ApplyBurnDamage(enemy);
         }
 
-        public void ApplyPoisonDamage(GameCharacter enemy)
+        public void ApplyPoisonDamage( GameCharacter? enemy = null )
         {
             if (this.EffectTurns.PoisonTurns > 0)
             {
-
                 if (enemy is GiantSpider giantSpider)
                 {
                     this.Health -= giantSpider.PoisonDamage;
+                    Console.WriteLine($" You took {giantSpider.PoisonDamage} poison damage.");
                     GameStatistics.AddTotalDamageDealt(giantSpider.PoisonDamage);
                 }
                 
                 if (enemy is Spider spider)
                 {
                     this.Health -= spider.PoisonDamage;
+                    Console.WriteLine($" You took {spider.PoisonDamage} poison damage.");
                     GameStatistics.AddTotalDamageDealt(spider.PoisonDamage);
                 }
                 this.EffectTurns.PoisonTurns--;
@@ -89,19 +90,21 @@ namespace Console_Crawler.GameCharacters
             }
         }
 
-        public void ApplyBurnDamage(GameCharacter enemy)
+        public void ApplyBurnDamage(GameCharacter? enemy = null)
         {
             if (this.EffectTurns.BurnTurns > 0)
             {
                 if (enemy is Dragon dragon)
                 {
                     this.Health -= dragon.BurnDamage;
+                    Console.WriteLine($" You took {dragon.BurnDamage} burn damage.");
                     GameStatistics.AddTotalDamageDealt(dragon.BurnDamage);
                 }
                 
                 if(enemy is DemonicSorcerer sorcerer)
                 {
                     this.Health -= sorcerer.BurnDamage;
+                    Console.WriteLine($" You took {sorcerer.BurnDamage} burn damage.");
                     GameStatistics.AddTotalDamageDealt(sorcerer.BurnDamage);
                 }
                 this.EffectTurns.BurnTurns--;
