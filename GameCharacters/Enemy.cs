@@ -24,7 +24,6 @@ namespace Console_Crawler.GameCharacters
         public Enemy(string name, EnemyStatistics enemyStatistics) : base(name, 0, 0, 0, 0)
         {
             this.EnemyStats = enemyStatistics;
-            //this.SetStats();
         }
 
         public virtual void SetStats()

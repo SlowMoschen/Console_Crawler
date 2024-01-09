@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "KSeocV1PqQ0Nqpb6MXb5q1USwhbJe0zB31cr2xNGWI+E8YHmusUuI4FkjthA99BC4blZe3o2SmmMuOfmxfJePg==",
+  "dgSpecHash": "D6IbXvHXus+cqDUK5yIo+/j7sptmEZfsmhPK8yk7H7YpTrnYU5UilqTwBVS5QxtWg8L0JyE1fNNm6q/iTEX/vw==",
   "success": true,
   "projectFilePath": "C:\\Users\\Phili\\source\\repos\\Console_Crawler\\Console_Crawler\\Console_Crawler.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Phili\\.nuget\\packages\\microsoft.codecoverage\\17.8.0\\microsoft.codecoverage.17.8.0.nupkg.sha512",
+    "C:\\Users\\Phili\\.nuget\\packages\\microsoft.net.illink.tasks\\8.0.0\\microsoft.net.illink.tasks.8.0.0.nupkg.sha512",
     "C:\\Users\\Phili\\.nuget\\packages\\microsoft.net.test.sdk\\17.8.0\\microsoft.net.test.sdk.17.8.0.nupkg.sha512",
     "C:\\Users\\Phili\\.nuget\\packages\\microsoft.testplatform.objectmodel\\17.8.0\\microsoft.testplatform.objectmodel.17.8.0.nupkg.sha512",
     "C:\\Users\\Phili\\.nuget\\packages\\microsoft.testplatform.testhost\\17.8.0\\microsoft.testplatform.testhost.17.8.0.nupkg.sha512",

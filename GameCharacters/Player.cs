@@ -239,6 +239,7 @@ namespace Console_Crawler.GameCharacters
                             Console.WriteLine($" You used a {potion.Type} and restored {potion.EffectValue} endurance.");
                             break;
                     }
+                    this.Inventory.RemoveItem(potion);
                 }
             }
             else
@@ -290,6 +291,13 @@ namespace Console_Crawler.GameCharacters
             base.PrintBattleStats();
             Console.WriteLine($" Endurance: {this.Endurance}");
             PrintEffectStatuses();
+        }
+
+        public void PrintCoreStats()
+        {
+            Console.WriteLine($" Health: {this.Health}");
+            Console.WriteLine($" Endurance: {this.Endurance}");
+            Console.WriteLine($" Strength: {this.Strength}");
         }
 
         private void PrintEffectStatuses()

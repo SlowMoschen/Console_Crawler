@@ -69,6 +69,7 @@ namespace Console_Crawler.DungeonBuilder
         {
            Console.WriteLine(" You have found a chest!");
            Console.WriteLine();
+           DisplayManager.DisplaySubHeader("Gold");
            Console.WriteLine($" You found {this.Gold} Gold in this Chest!");
            player.Inventory.AddGold(this.Gold);
 
@@ -86,6 +87,7 @@ namespace Console_Crawler.DungeonBuilder
 
         private void ItemsFoundInChest(Player player)
         {
+            DisplayManager.DisplaySubHeader("Items");
             Console.WriteLine(" You found some items in this chest!");
             foreach (Item item in this.Items)
             {
@@ -95,6 +97,7 @@ namespace Console_Crawler.DungeonBuilder
 
         private void WeaponFoundInChest(Player player)
         {
+            DisplayManager.DisplaySubHeader("Weapon");
             Console.WriteLine(" You found a weapon in this chest!");
             DisplayManager.AskToEquipWeapon(player, this.Weapons);
         }

@@ -24,7 +24,7 @@ namespace Console_Crawler.GameUtilities.DisplayManager
         private static void DisplayGameStatistics()
         {
             Console.Clear();
-            DisplayHeader("Game Statistics");
+            DisplaySubHeader("Game Statistics:");
             Console.WriteLine();
             Console.WriteLine($" Total Deaths: {GameStatistics.TotalDeaths}");
             Console.WriteLine();

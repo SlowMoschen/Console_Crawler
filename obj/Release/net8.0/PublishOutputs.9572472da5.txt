@@ -1,3 +1,4 @@
+C:\Users\Phili\source\repos\Console_Crawler\Console_Crawler\bin\Release\net8.0\app.publish\PatchNotes.txt
 C:\Users\Phili\source\repos\Console_Crawler\Console_Crawler\bin\Release\net8.0\app.publish\Console_Crawler.exe
 C:\Users\Phili\source\repos\Console_Crawler\Console_Crawler\bin\Release\net8.0\app.publish\testhost.exe
 C:\Users\Phili\source\repos\Console_Crawler\Console_Crawler\bin\Release\net8.0\app.publish\testhost.dll

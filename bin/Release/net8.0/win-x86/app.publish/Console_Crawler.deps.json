@@ -9,6 +9,7 @@
     ".NETCoreApp,Version=v8.0/win-x86": {
       "Console_Crawler/1.0.0": {
         "dependencies": {
+          "Microsoft.NET.ILLink.Tasks": "8.0.0",
           "Microsoft.NET.Test.Sdk": "17.8.0",
           "NUnit": "4.0.1",
           "NUnit3TestAdapter": "4.5.0",
@@ -692,50 +693,6 @@
             "assemblyVersion": "2.1.0.0",
             "fileVersion": "8.0.23.53103"
           }
-        },
-        "native": {
-          "Microsoft.DiaSymReader.Native.x86.dll": {
-            "fileVersion": "14.29.30152.0"
-          },
-          "System.IO.Compression.Native.dll": {
-            "fileVersion": "8.0.23.53103"
-          },
-          "clretwrc.dll": {
-            "fileVersion": "8.0.23.53103"
-          },
-          "clrgc.dll": {
-            "fileVersion": "8.0.23.53103"
-          },
-          "clrjit.dll": {
-            "fileVersion": "8.0.23.53103"
-          },
-          "coreclr.dll": {
-            "fileVersion": "8.0.23.53103"
-          },
-          "createdump.exe": {
-            "fileVersion": "8.0.23.53103"
-          },
-          "hostfxr.dll": {
-            "fileVersion": "8.0.23.53103"
-          },
-          "hostpolicy.dll": {
-            "fileVersion": "8.0.23.53103"
-          },
-          "mscordaccore.dll": {
-            "fileVersion": "8.0.23.53103"
-          },
-          "mscordaccore_x86_x86_8.0.23.53103.dll": {
-            "fileVersion": "8.0.23.53103"
-          },
-          "mscordbi.dll": {
-            "fileVersion": "8.0.23.53103"
-          },
-          "mscorrc.dll": {
-            "fileVersion": "8.0.23.53103"
-          },
-          "msquic.dll": {
-            "fileVersion": "2.2.3.0"
-          }
         }
       },
       "Microsoft.CodeCoverage/17.8.0": {
@@ -746,6 +703,7 @@
           }
         }
       },
+      "Microsoft.NET.ILLink.Tasks/8.0.0": {},
       "Microsoft.NET.Test.Sdk/17.8.0": {
         "dependencies": {
           "Microsoft.CodeCoverage": "17.8.0",
@@ -1048,6 +1006,13 @@
       "sha512": "sha512-KC8SXWbGIdoFVdlxKk9WHccm0llm9HypcHMLUUFabRiTS3SO2fQXNZfdiF3qkEdTJhbRrxhdRxjL4jbtwPq4Ew==",
       "path": "microsoft.codecoverage/17.8.0",
       "hashPath": "microsoft.codecoverage.17.8.0.nupkg.sha512"
+    },
+    "Microsoft.NET.ILLink.Tasks/8.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-B3etT5XQ2nlWkZGO2m/ytDYrOmSsQG1XNBaM6ZYlX5Ch/tDrMFadr0/mK6gjZwaQc55g+5+WZMw4Cz3m8VEF7g==",
+      "path": "microsoft.net.illink.tasks/8.0.0",
+      "hashPath": "microsoft.net.illink.tasks.8.0.0.nupkg.sha512"
     },
     "Microsoft.NET.Test.Sdk/17.8.0": {
       "type": "package",

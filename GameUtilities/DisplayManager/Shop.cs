@@ -10,7 +10,7 @@ namespace Console_Crawler.GameUtilities.DisplayManager
         public static void DisplayBuyingShop(Player player)
         {
             Console.Clear();
-            DisplayHeader("Shop");
+            DisplaySubHeader("Shop");
             Console.WriteLine(" Inventory:");
             player.PrintInventory();
             Console.WriteLine();

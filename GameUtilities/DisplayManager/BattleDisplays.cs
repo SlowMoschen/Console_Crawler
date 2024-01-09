@@ -196,11 +196,11 @@ namespace Console_Crawler.GameUtilities.DisplayManager
             }
         }
 
-        private static void DisplayEnemyDeath( Enemy enemy )
+        private static void DisplayEnemyDeath( Enemy enemy, int goldAmount )
         {
             Console.WriteLine($" You have defeated the {enemy.Name}!");
             Console.WriteLine($" You gained {enemy.EXP} experience.");
-            Console.WriteLine($" The enemy dropped {enemy.Gold} gold.");
+            Console.WriteLine($" The enemy dropped {goldAmount} gold.");
             WaitForInput();
         }
 
@@ -222,7 +222,7 @@ namespace Console_Crawler.GameUtilities.DisplayManager
         {
             Console.WriteLine();
             player.PrintBattleStats();
-            DisplayHeader("VS");
+            DisplaySubHeader("VS");
             enemy.PrintBattleStats();
         }
 
@@ -231,7 +231,7 @@ namespace Console_Crawler.GameUtilities.DisplayManager
             string pluralOrSingular = totalEnemis > 1 ? "Enemies" : "Enemy";
 
             Console.Clear();
-            DisplayHeader($"New Dungeon");
+            DisplayHeader("New Dungeon");
             Console.WriteLine($" You have entered the {difficulty} Dungeon!");
             Console.WriteLine($" You have to defeat in total {totalEnemis} {pluralOrSingular} to get through this Dungeon.");
             WaitForInput();

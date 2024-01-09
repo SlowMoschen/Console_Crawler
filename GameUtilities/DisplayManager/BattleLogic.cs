@@ -185,18 +185,20 @@ namespace Console_Crawler.GameUtilities.DisplayManager
         {
             GameStatistics.KilledEnemies++;
             player.AddEXP(enemy.EXP);
+            int goldAmount = enemy.Gold;
 
             // check if enemy is Goblin and get random number between Goblin Base Gold and the gold that the goblin has stolen
             if (enemy is Goblin goblin)
             {
-                player.Inventory.AddGold(Randomizer.GetRandomNumber(AllEnemyStatistics.Goblin.Gold, goblin.Gold));
+                goldAmount = Randomizer.GetRandomNumber(goblin.Gold, AllEnemyStatistics.Goblin.Gold);
+                player.Inventory.AddGold(goldAmount);
             }
             else
             {
-                player.Inventory.AddGold(enemy.Gold);
+                player.Inventory.AddGold(goldAmount);
             }
 
-            DisplayEnemyDeath(enemy);
+            DisplayEnemyDeath(enemy, goldAmount);
         }
 
         private static void HandlePlayerDeath()

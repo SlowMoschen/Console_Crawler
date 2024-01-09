@@ -11,6 +11,8 @@ namespace Console_Crawler.GameUtilities.DisplayManager
         {
             Console.Clear();
             DisplayHeader("Main Menu");
+            Console.WriteLine();
+            player.PrintCoreStats();
             DisplayLevelProgressBar(player.Level, player.EXP, player.EXPToNextLevel);
             return DisplayOptionsMenu("What would you like to do?", MenuOptions.MainMenuOptions);
         }
@@ -48,6 +50,9 @@ namespace Console_Crawler.GameUtilities.DisplayManager
             {
                 Console.Clear();
                 DisplayHeader("Inventory");
+                Console.WriteLine(" Player:");
+                Console.WriteLine();
+                player.PrintCoreStats();
                 DisplayCurrentInventory(player);
                 string inventoryMenuChoice = DisplayOptionsMenu("What would you like to do?", MenuOptions.InventoryMenuOptions);
 

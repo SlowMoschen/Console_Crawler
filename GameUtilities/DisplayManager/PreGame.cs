@@ -27,14 +27,7 @@ namespace Console_Crawler.GameUtilities.DisplayManager
         public static void DiplayGameLogo()
         {
             Console.Clear();
-            Console.WriteLine(" ---------------------------");
-            Console.WriteLine(" |                         |");
-            Console.WriteLine(" |     Console_Crawler     |");
-            Console.WriteLine(" |                         |");
-            Console.WriteLine(" |    A simple console     |");
-            Console.WriteLine(" |     Dungeon Crawler     |");
-            Console.WriteLine(" |                         |");
-            Console.WriteLine(" ---------------------------");
+            DisplayHeader("Console_Crawler", "A simple console Dungeon Crawler");
             Console.WriteLine(" Version: " + GameStatistics.Version);
             Console.WriteLine();
         }

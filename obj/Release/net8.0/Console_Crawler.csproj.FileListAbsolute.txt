@@ -100,3 +100,4 @@ C:\Users\Phili\source\repos\Console_Crawler\Console_Crawler\obj\Release\net8.0\r
 C:\Users\Phili\source\repos\Console_Crawler\Console_Crawler\obj\Release\net8.0\Console_Crawler.pdb
 C:\Users\Phili\source\repos\Console_Crawler\Console_Crawler\obj\Release\net8.0\Console_Crawler.genruntimeconfig.cache
 C:\Users\Phili\source\repos\Console_Crawler\Console_Crawler\obj\Release\net8.0\ref\Console_Crawler.dll
+C:\Users\Phili\source\repos\Console_Crawler\Console_Crawler\bin\Release\net8.0\PatchNotes.txt

@@ -36,7 +36,7 @@ namespace Console_Crawler.DungeonBuilder
                 
                 if(difficulty == "Dev")
                 {
-                    enemies.Add(GetNormalEnemy("Spider"));
+                    enemies.Add(GetNormalEnemy("Goblin"));
                     break;
                 }
 

@@ -1,5 +1,6 @@
 ﻿using Console_Crawler.GameVariables;
 using Console_Crawler.Items;
+using Console_Crawler.Items.Potions;
 
 namespace Console_Crawler.GameCharacters
 {
@@ -12,6 +13,7 @@ namespace Console_Crawler.GameCharacters
         {
             Items = new List<Item>();
             Gold = 0;
+            this.Items.Add(new HealPotion());
         }
 
         public Item? GetExistingItem(string itemType)

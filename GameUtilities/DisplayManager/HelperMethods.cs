@@ -9,7 +9,30 @@
             Console.ReadKey();
         }
 
-        public static void DisplayHeader( string message )
+
+        public static void DisplayHeader( string title, string subtitle = "" )
+        {
+            int width = Math.Max(title.Length, subtitle.Length) + 27; // Calculate the width of the box
+            string border = new string('-', width); // Create the border string
+
+            Console.WriteLine(border);
+            Console.WriteLine("|" + new string(' ', width - 2) + "|");
+            int leftPadding = (width - title.Length) / 2 - 1;
+            int rightPadding = leftPadding + ((width - title.Length) % 2 == 0 ? 0 : 1);
+            Console.WriteLine("|" + new string(' ', leftPadding) + title + new string(' ', rightPadding) + "|");
+            Console.WriteLine("|" + new string(' ', width - 2) + "|");
+            if (!string.IsNullOrEmpty(subtitle))
+            {
+                leftPadding = (width - subtitle.Length) / 2 - 1;
+                rightPadding = leftPadding + ((width - subtitle.Length) % 2 == 0 ? 0 : 1);
+                Console.WriteLine("|" + new string(' ', leftPadding) + subtitle + new string(' ', rightPadding) + "|");
+                Console.WriteLine("|" + new string(' ', width - 2) + "|");
+            }
+            Console.WriteLine(border);
+        }
+
+
+        public static void DisplaySubHeader( string message )
         {
             Console.WriteLine();
             Console.WriteLine("---------------------------");
@@ -35,7 +58,7 @@
             int progressBarLength = 20;
             int progressBars = (int)(progress * progressBarLength);
 
-            Console.Write($"Progress to LVL {currentLevel + 1} [");
+            Console.Write($" Progress to LVL {currentLevel + 1} [");
             Console.Write(new string('#', progressBars));
             Console.Write(new string('.', progressBarLength - progressBars));
             Console.Write("]\n");

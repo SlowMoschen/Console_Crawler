@@ -9,8 +9,6 @@ C:\Users\Phili\source\repos\Console_Crawler\Console_Crawler\bin\Release\net8.0\w
 C:\Users\Phili\source\repos\Console_Crawler\Console_Crawler\bin\Release\net8.0\win-x86\nunit.engine.core.dll
 C:\Users\Phili\source\repos\Console_Crawler\Console_Crawler\bin\Release\net8.0\win-x86\testcentric.engine.metadata.dll
 C:\Users\Phili\source\repos\Console_Crawler\Console_Crawler\bin\Release\net8.0\win-x86\Console_Crawler.exe
-C:\Users\Phili\source\repos\Console_Crawler\Console_Crawler\bin\Release\net8.0\win-x86\Console_Crawler.dll.manifest
-C:\Users\Phili\source\repos\Console_Crawler\Console_Crawler\bin\Release\net8.0\win-x86\Console_Crawler.application
 C:\Users\Phili\source\repos\Console_Crawler\Console_Crawler\bin\Release\net8.0\win-x86\Console_Crawler.dll
 C:\Users\Phili\source\repos\Console_Crawler\Console_Crawler\bin\Release\net8.0\win-x86\Console_Crawler.pdb
 C:\Users\Phili\source\repos\Console_Crawler\Console_Crawler\bin\Release\net8.0\win-x86\Microsoft.VisualStudio.CodeCoverage.Shim.dll
@@ -280,10 +278,14 @@ C:\Users\Phili\source\repos\Console_Crawler\Console_Crawler\obj\Release\net8.0\w
 C:\Users\Phili\source\repos\Console_Crawler\Console_Crawler\obj\Release\net8.0\win-x86\Console_Crawler.csproj.CoreCompileInputs.cache
 C:\Users\Phili\source\repos\Console_Crawler\Console_Crawler\obj\Release\net8.0\win-x86\Console_Crawler.sourcelink.json
 C:\Users\Phili\source\repos\Console_Crawler\Console_Crawler\obj\Release\net8.0\win-x86\Console_Crawler.genruntimeconfig.cache
-C:\Users\Phili\source\repos\Console_Crawler\Console_Crawler\obj\Release\net8.0\win-x86\Console_Crawler.dll.manifest
-C:\Users\Phili\source\repos\Console_Crawler\Console_Crawler\obj\Release\net8.0\win-x86\Console_Crawler.application
 C:\Users\Phili\source\repos\Console_Crawler\Console_Crawler\obj\Release\net8.0\win-x86\Console_Crawler.csproj.CopyComplete
 C:\Users\Phili\source\repos\Console_Crawler\Console_Crawler\obj\Release\net8.0\win-x86\Console_Crawler.dll
 C:\Users\Phili\source\repos\Console_Crawler\Console_Crawler\obj\Release\net8.0\win-x86\refint\Console_Crawler.dll
 C:\Users\Phili\source\repos\Console_Crawler\Console_Crawler\obj\Release\net8.0\win-x86\Console_Crawler.pdb
 C:\Users\Phili\source\repos\Console_Crawler\Console_Crawler\obj\Release\net8.0\win-x86\ref\Console_Crawler.dll
+C:\Users\Phili\source\repos\Console_Crawler\Console_Crawler\bin\Release\net8.0\win-x86\PatchNotes.txt
+C:\Users\Phili\source\repos\Console_Crawler\Console_Crawler\bin\Release\net8.0\win-x86\Console_Crawler.dll.manifest
+C:\Users\Phili\source\repos\Console_Crawler\Console_Crawler\bin\Release\net8.0\win-x86\Console_Crawler.application
+C:\Users\Phili\source\repos\Console_Crawler\Console_Crawler\obj\Release\net8.0\win-x86\Console_Crawler.genpublishdeps.cache
+C:\Users\Phili\source\repos\Console_Crawler\Console_Crawler\obj\Release\net8.0\win-x86\Console_Crawler.dll.manifest
+C:\Users\Phili\source\repos\Console_Crawler\Console_Crawler\obj\Release\net8.0\win-x86\Console_Crawler.application

@@ -20,7 +20,7 @@ namespace Console_Crawler.GameUtilities.DisplayManager
         public static void DisplayUsingInventory(Player player)
         {
             Console.Clear();
-            DisplayHeader("Use Item");
+            DisplaySubHeader("Use Item");
             player.PrintStats();
 
             if(player.Inventory.Items.Count == 0)

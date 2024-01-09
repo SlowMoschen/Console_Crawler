@@ -14,8 +14,6 @@ namespace Console_Crawler.Items.Potions
         {
             if (Quantity > 0)
             {
-                Quantity--;
-
                 switch (Type)
                 {
                     case "Health Potion":
