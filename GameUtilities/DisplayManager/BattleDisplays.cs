@@ -1,204 +1,23 @@
-﻿using Console_Crawler.GameCharacters;
-using Console_Crawler.GameVariables;
-using Console_Crawler.DungeonBuilder;
+﻿using Console_Crawler.DungeonBuilder;
+using Console_Crawler.GameCharacters;
 using Console_Crawler.GameVariables.Statistics;
-using Console_Crawler.GameCharacters.HostileMobs;
-using Console_Crawler.GameCharacters.HostileMobs.MiniBosses;
+using Console_Crawler.GameVariables;
 using Console_Crawler.GameCharacters.HostileMobs.Bosses;
-using Console_Crawler.GameVariables.Statistics.EnemyStatistics;
+using Console_Crawler.GameCharacters.HostileMobs.MiniBosses;
+using Console_Crawler.GameCharacters.HostileMobs;
 
 namespace Console_Crawler.GameUtilities.DisplayManager
 {
     internal partial class DisplayManager
     {
-        public static void StartDungeon(Player player)
-        {
-            DisplayHeader("Dungeon Selection");
-            string dungeonChoice = DisplayOptionsMenu(" Which dungeon would you like to enter?", MenuOptions.DifficultyOptions);
 
-            while (dungeonChoice == "Boss" && !GameBools.IsBossDungeonUnlocked)
-            {
-                Console.WriteLine(" You have not unlocked the Boss Dungeon yet!");
-                WaitForInput();
-                dungeonChoice = DisplayOptionsMenu(" Which dungeon would you like to enter?", MenuOptions.DifficultyOptions);
-            }
-
-            Dungeon dungeon = new Dungeon(dungeonChoice);
-
-            DisplayEnteredDungeon(dungeonChoice, dungeon.TotalEnemies);
-
-            foreach(Room room in dungeon.Rooms)
-            {
-                
-                if(GameBools.IsInMenu)
-                {
-                    break;
-                }
-
-
-
-                if(GameBools.IsInBattle)
-                {
-                    DiplayEnteredRoom(room.RoomNumber, dungeon.TotalRooms, room.Enemies.Length);
-                    EnterRoom(player, room);
-                }
-            }
-            
-            bool allEnemiesDefeated = dungeon.Rooms.All(room => room.Enemies.All(enemy => enemy.Health <= 0));
-            if(allEnemiesDefeated)
-            {
-                DisplayRoomVictory();
-                GameStatistics.SurviedRooms++;
-            }
-            
-            bool allRoomsDefeated = dungeon.Rooms.All(room => room.Enemies.All(enemy => enemy.Health <= 0));
-            if(allRoomsDefeated)
-            {
-                GameBools.IsDungeonCleared = true;
-            }
-
-            if(GameBools.IsDungeonCleared)
-            {
-                DisplayDungeonVictory(dungeon, player);
-
-                if(dungeon.IsBossDungeon)
-                {
-                    DisplayGameVictory();
-                }
-            }
-
-        }
-        
-        public static void EnterRoom(Player player, Room room)
-        {
-            foreach(Enemy enemy in room.Enemies)
-            {
-                DisplayNewEncounter(enemy);
-                while(player.Health > 0 && enemy.Health > 0 && GameBools.IsInBattle)
-                {
-                    EnemyBattle(player, enemy);
-                }
-            }
-        }
-
-        private static void EnemyBattle(Player player, Enemy enemy)
-        {
-            Console.WriteLine();
-            DisplayBattleStats(player, enemy);
-            Console.WriteLine();
-
-            string battleChoice;
-            string optionChoice = "";
-            string enemyMove = "";
-
-            // Check if player is stunned and skip turn if true
-            if(!player.Effects.IsStunned)
-            {
-                battleChoice = GetPlayerBattleChoice();
-                optionChoice = HandlePlayerBattleChoice(battleChoice, player, enemy);
-            }
-            else
-            {
-                battleChoice = "Stunned";
-                player.Effects.IsStunned = false;
-            }
-
-            // Quit if player is dead or has run away
-            if(!GameBools.IsInBattle)
-            {
-                return;
-            }
-
-            player.DecrementBuffTurns();
-            player.ApplyOverTimeEffects(enemy);
-
-            // Only execute enemy move if enemy is alive
-            if (enemy.Health >= 0)
-            {
-                enemyMove = enemy.ExecuteAction(player, enemy.GetRandomAction());
-            }
-
-            // Check if enemy is dead and handle death or continue battle
-            if(enemy.Health <= 0)
-            {
-                HandleEnemyDeath(player, enemy);           
-            }
-            else
-            {
-                HandleBattleTurn(player, enemy, battleChoice, optionChoice, enemyMove);
-            }
-        }
-
-        private static string GetPlayerBattleChoice()
-        {
-            return DisplayOptionsMenu(" What would you like to do?", MenuOptions.BattleOptions);
-        }
-
-        private static string HandlePlayerBattleChoice(string choice, Player player, Enemy enemy)
-        {
-            switch (choice)
-            {
-                case "Attack":
-                    return player.ChooseAttack(enemy);
-                case "Rest":
-                    player.Rest();
-                    break;
-                case "Use Item":
-                    if(player.Inventory.Items.Count == 0)
-                    {
-                        Console.WriteLine(" You don't have any potions!");
-                        WaitForInput();
-                        break;
-                    }
-                    string potionChoice = player.ChoosePotion();
-                    player.UsePotion(potionChoice);
-                    return potionChoice;
-                case "Defend":
-                    player.Defend();
-                    break;
-                case "Run Away":
-                    player.RunFromBattle();
-                    break;
-            }
-
-            return "";
-        }
-
-        private static void HandleEnemyDeath(Player player, Enemy enemy)
-        {
-            GameStatistics.KilledEnemies++;
-            player.AddEXP(enemy.EXP);
-
-            // check if enemy is Goblin and get random number between Goblin Base Gold and the gold that the goblin has stolen
-            if (enemy is Goblin goblin)
-            {
-                player.Inventory.AddGold(Randomizer.GetRandomNumber(AllEnemyStatistics.Goblin.Gold, goblin.Gold));
-            }
-            else
-            {
-                player.Inventory.AddGold(enemy.Gold);
-            }
-
-            DisplayEnemyDeath(enemy);
-        }
-
-        private static void HandleBattleTurn(Player player, Enemy enemy, string battleChoice, string optionChoice, string enemyMove)
-        {
-            DisplayRoundResults(player, enemy, battleChoice, optionChoice, enemyMove);
-            player.RegenEndurance();
-            player.ClearDealtDamage();
-            enemy.ClearDealtDamage();
-            WaitForInput();
-            Console.Clear();
-        }
-
-        private static void DisplayRoundResults(Player player, Enemy enemy, string playerMove, string optionChoice, string enemyMove)
+        private static void DisplayRoundResults( Player player, Enemy enemy, string playerMove, string optionChoice, string enemyMove )
         {
             DisplayPlayerMove(player, enemy, playerMove, optionChoice, enemyMove);
             DisplayEnemyMove(player, enemy, enemyMove);
         }
 
-        private static void DisplayPlayerMove(Player player, Enemy enemy, string playerMove, string optionChoice, string enemyMove)
+        private static void DisplayPlayerMove( Player player, Enemy enemy, string playerMove, string optionChoice, string enemyMove )
         {
             switch (playerMove)
             {
@@ -209,7 +28,7 @@ namespace Console_Crawler.GameUtilities.DisplayManager
                     }
                     else
                     {
-                        if(player.Endurance >= player.CurrentWeapon.WeaponStats.EnduranceCost)
+                        if (player.Endurance >= player.CurrentWeapon.WeaponStats.EnduranceCost)
                         {
                             if (optionChoice == "Normal Attack")
                             {
@@ -217,7 +36,7 @@ namespace Console_Crawler.GameUtilities.DisplayManager
                             }
                         }
 
-                        if(player.Endurance >= GameSettings.General.KickEnduranceCost)
+                        if (player.Endurance >= GameSettings.General.KickEnduranceCost)
                         {
                             if (optionChoice == "Kick Attack")
                             {
@@ -225,7 +44,7 @@ namespace Console_Crawler.GameUtilities.DisplayManager
                             }
                         }
 
-                        if(player.Endurance >= player.CurrentWeapon.WeaponStats.SpecialEnduranceCost)
+                        if (player.Endurance >= player.CurrentWeapon.WeaponStats.SpecialEnduranceCost)
                         {
                             if (optionChoice == player.CurrentWeapon.WeaponStats.SpecialAttackName)
                             {
@@ -295,39 +114,39 @@ namespace Console_Crawler.GameUtilities.DisplayManager
                     }
                     break;
                 case "Spit":
-                    if(enemy is Spider spider)
+                    if (enemy is Spider spider)
                     {
-                        if(player.Effects.IsPoisoned)
+                        if (player.Effects.IsPoisoned)
                         {
                             Console.WriteLine($" The {spider.Name} spit at you for {spider.DealtDamage} damage and poisoned you!");
                             //Console.WriteLine($" You took {spider.PoisonDamage} damage from the poison!");
                             Console.WriteLine($" You are poisoned for the next {player.EffectTurns.PoisonTurns} turns!");
                         }
                         else
-                        { 
+                        {
                             Console.WriteLine($" The {spider.Name} spit at you for {spider.DealtDamage} damage!");
                         }
                     }
                     break;
                 case "Steal":
-                    if(enemy is Goblin goblin)
+                    if (enemy is Goblin goblin)
                     {
-                        if(player.Inventory.Gold > 0)
+                        if (player.Inventory.Gold > 0)
                         {
                             Console.WriteLine($" The {goblin.Name} stole {goblin.StealAmount} gold from you!");
                         }
                     }
                     break;
                 case "Backstab":
-                    if(enemy is Assassin assassin)
+                    if (enemy is Assassin assassin)
                     {
                         Console.WriteLine($" The {assassin.Name} backstabbed you for {assassin.DealtDamage} damage!");
                     }
                     break;
                 case "Poison Bite":
-                    if(enemy is GiantSpider giantSpider)
+                    if (enemy is GiantSpider giantSpider)
                     {
-                        if(player.Effects.IsPoisoned)
+                        if (player.Effects.IsPoisoned)
                         {
                             Console.WriteLine($" The {giantSpider.Name} bit you for {giantSpider.DealtDamage} damage and poisoned you!");
                             Console.WriteLine($" You took {giantSpider.PoisonDamage} damage from the poison!");
@@ -340,20 +159,20 @@ namespace Console_Crawler.GameUtilities.DisplayManager
                     }
                     break;
                 case "Webshot":
-                    if(enemy is GiantSpider giantSpider2)
+                    if (enemy is GiantSpider giantSpider2)
                     {
                         Console.WriteLine($" The {giantSpider2.Name} webshot you for {giantSpider2.DealtDamage} damage!");
-                        if(player.Effects.IsStunned)
+                        if (player.Effects.IsStunned)
                         {
                             Console.WriteLine(" The enmey stunned you!");
                         }
                     }
                     break;
                 case "Hellfire Blast":
-                    if(enemy is DemonicSorcerer sorcerer)
+                    if (enemy is DemonicSorcerer sorcerer)
                     {
                         Console.WriteLine($" The {sorcerer.Name} used Hellfire Blast and dealt {sorcerer.DealtDamage} damage!");
-                        if(player.Effects.IsBurning)
+                        if (player.Effects.IsBurning)
                         {
                             Console.WriteLine($" You took {sorcerer.BurnDamage} damage from the burn!");
                             Console.WriteLine($" You are burning for the next {player.EffectTurns.BurnTurns} turns!");
@@ -361,22 +180,22 @@ namespace Console_Crawler.GameUtilities.DisplayManager
                     }
                     break;
                 case "Soulsteal":
-                    if(enemy is DemonicSorcerer sorcerer2)
+                    if (enemy is DemonicSorcerer sorcerer2)
                     {
                         Console.WriteLine($" The {sorcerer2.Name} used Soulsteal and dealt {sorcerer2.DealtDamage} damage and healed itself for {sorcerer2.DealtDamage / 2} health!");
                     }
                     break;
                 case "Dark Pact":
-                    if(enemy is DemonicSorcerer sorcerer3)
+                    if (enemy is DemonicSorcerer sorcerer3)
                     {
                         Console.WriteLine($" The {sorcerer3.Name} used Dark Pact and increased his attack damage by 20% for 10% of its health.");
                     }
                     break;
                 case "Fire Breath":
-                    if(enemy is Dragon dragon)
+                    if (enemy is Dragon dragon)
                     {
                         Console.WriteLine($" The {dragon.Name} used Fire Breath and dealt {dragon.DealtDamage} damage!");
-                        if(player.Effects.IsBurning)
+                        if (player.Effects.IsBurning)
                         {
                             Console.WriteLine($" You took {dragon.BurnDamage} damage from the burn!");
                             Console.WriteLine($" You are burning for the next {player.EffectTurns.BurnTurns} turns!");
@@ -384,17 +203,17 @@ namespace Console_Crawler.GameUtilities.DisplayManager
                     }
                     break;
                 case "Rock Throw":
-                    if(enemy is Dragon dragon2)
+                    if (enemy is Dragon dragon2)
                     {
                         Console.WriteLine($" The {dragon2.Name} used Rock Throw and dealt {dragon2.DealtDamage} damage!");
-                        if(player.Effects.IsStunned)
+                        if (player.Effects.IsStunned)
                         {
                             Console.WriteLine(" The enmey stunned you!");
                         }
                     }
                     break;
                 case "Tailstrike":
-                    if(enemy is Dragon dragon3)
+                    if (enemy is Dragon dragon3)
                     {
                         Console.WriteLine($" The {dragon3.Name} used Tailstrike and dealt {dragon3.DealtDamage} damage!");
                     }
@@ -402,22 +221,22 @@ namespace Console_Crawler.GameUtilities.DisplayManager
             }
         }
 
-        private static void DisplayEnemyDeath(Enemy enemy)
-        { 
+        private static void DisplayEnemyDeath( Enemy enemy )
+        {
             Console.WriteLine($" You have defeated the {enemy.Name}!");
             Console.WriteLine($" You gained {enemy.EXP} experience.");
             Console.WriteLine($" The enemy dropped {enemy.Gold} gold.");
             WaitForInput();
         }
 
-        private static void DisplayNewEncounter(Enemy enemy)
+        private static void DisplayNewEncounter( Enemy enemy )
         {
             Console.Clear();
             DisplayHeader("New Encounter");
             Console.WriteLine($" You have encountered a {enemy.Name}!");
         }
 
-        private static void DisplayBattleStats(Player player, Enemy enemy)
+        private static void DisplayBattleStats( Player player, Enemy enemy )
         {
             Console.WriteLine();
             player.PrintBattleStats();
@@ -425,18 +244,18 @@ namespace Console_Crawler.GameUtilities.DisplayManager
             enemy.PrintBattleStats();
         }
 
-        private static void DisplayEnteredDungeon(string difficulty, int totalEnemis)
+        private static void DisplayEnteredDungeon( string difficulty, int totalEnemis )
         {
-           string pluralOrSingular = totalEnemis > 1 ? "Enemies" : "Enemy";
-           
-           Console.Clear();
-           DisplayHeader($"New Dungeon");
-           Console.WriteLine($" You have entered the {difficulty} Dungeon!");
-           Console.WriteLine($" You have to defeat in total {totalEnemis} {pluralOrSingular} to get through this Dungeon.");
-           WaitForInput();
+            string pluralOrSingular = totalEnemis > 1 ? "Enemies" : "Enemy";
+
+            Console.Clear();
+            DisplayHeader($"New Dungeon");
+            Console.WriteLine($" You have entered the {difficulty} Dungeon!");
+            Console.WriteLine($" You have to defeat in total {totalEnemis} {pluralOrSingular} to get through this Dungeon.");
+            WaitForInput();
         }
 
-        private static void DiplayEnteredRoom(int roomNumber, int totalRooms, int enemiesCount)
+        private static void DiplayEnteredRoom( int roomNumber, int totalRooms, int enemiesCount )
         {
             bool isPlural = enemiesCount > 1;
 
@@ -455,7 +274,7 @@ namespace Console_Crawler.GameUtilities.DisplayManager
             WaitForInput();
         }
 
-        private static void DisplayDungeonVictory(Dungeon dungeon, Player player)
+        private static void DisplayDungeonVictory( Dungeon dungeon, Player player )
         {
             GameBools.IsInMenu = true;
             GameBools.IsInBattle = false;
