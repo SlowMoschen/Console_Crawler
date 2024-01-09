@@ -112,6 +112,12 @@ namespace Console_Crawler.GameUtilities.DisplayManager
                 enemyMove = enemy.ExecuteAction(player, enemy.GetRandomAction());
             }
 
+            if(player.Health <= 0)
+            {
+                HandlePlayerDeath();
+                return;
+            }
+
             // Check if enemy is dead and handle death or continue battle
             if(enemy.Health <= 0)
             {
@@ -193,6 +199,14 @@ namespace Console_Crawler.GameUtilities.DisplayManager
             DisplayEnemyDeath(enemy);
         }
 
+        private static void HandlePlayerDeath()
+        {
+            GameBools.IsInBattle = false;
+            GameBools.IsInMenu = true;
+            DisplayPlayerDeath();
+            WaitForInput();
+        }
+
         private static void HandleBattleTurn(Player player, Enemy enemy, string battleChoice, string optionChoice, string enemyMove)
         {
             DisplayRoundResults(player, enemy, battleChoice, optionChoice, enemyMove);
@@ -202,5 +216,6 @@ namespace Console_Crawler.GameUtilities.DisplayManager
             WaitForInput();
             Console.Clear();
         }
+
     }
 }

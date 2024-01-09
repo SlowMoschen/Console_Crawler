@@ -119,7 +119,6 @@ namespace Console_Crawler.GameUtilities.DisplayManager
                         if (player.Effects.IsPoisoned)
                         {
                             Console.WriteLine($" The {spider.Name} spit at you for {spider.DealtDamage} damage and poisoned you!");
-                            //Console.WriteLine($" You took {spider.PoisonDamage} damage from the poison!");
                             Console.WriteLine($" You are poisoned for the next {player.EffectTurns.PoisonTurns} turns!");
                         }
                         else
@@ -227,6 +226,13 @@ namespace Console_Crawler.GameUtilities.DisplayManager
             Console.WriteLine($" You gained {enemy.EXP} experience.");
             Console.WriteLine($" The enemy dropped {enemy.Gold} gold.");
             WaitForInput();
+        }
+
+        private static void DisplayPlayerDeath()
+        {
+            Console.Clear();
+            DisplayHeader("R.I.P");
+            Console.WriteLine(" You have died!");
         }
 
         private static void DisplayNewEncounter( Enemy enemy )

@@ -219,6 +219,7 @@ namespace Console_Crawler.GameCharacters
                             potion.UsePotion(this);
                             GameStatistics.AddTotalHealingDone(potion.EffectValue);
                             Console.WriteLine($" You used a {potion.Type} and healed for {potion.EffectValue} health.");
+                            Console.WriteLine($" Your Health: {this.Health}");
                             break;
                         case "Strength Potion":
                             potion.UsePotion(this);
