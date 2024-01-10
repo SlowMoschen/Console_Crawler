@@ -1,4 +1,5 @@
-﻿using Console_Crawler.GameVariables;
+﻿using Console_Crawler.GameCharacters;
+using Console_Crawler.GameVariables;
 using NUnit.Framework;
 
 namespace Console_Crawler.Items.Potions.__tests__
@@ -18,6 +19,20 @@ namespace Console_Crawler.Items.Potions.__tests__
             Assert.That(potion.Name, Is.EqualTo("Heal Potion"));
             Assert.That(potion.Description, Is.EqualTo($"Heals the player for {potion.EffectValue} health."));
             Assert.That(potion.Type, Is.EqualTo("Health Potion"));
+        }
+
+        [Test]
+        public void HealPotion_Scaling_Test()
+        {
+            Player player = new Player("test", 1,1,1,10);
+            HealPotion potion = new HealPotion();
+
+            player.AddEXP(100);
+
+            potion.EffectValue = 40 + (int)Math.Pow(player.Level, 2);
+
+            Assert.That(player.Level, Is.EqualTo(2));
+            Assert.That(potion.EffectValue, Is.EqualTo(44));
         }
 
         [Test]

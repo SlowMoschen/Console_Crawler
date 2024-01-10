@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using Console_Crawler.GameVariables.Statistics.PlayerStatistics;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Console_Crawler.GameVariables
 {
@@ -41,7 +37,7 @@ namespace Console_Crawler.GameVariables
 
         internal class ItemEffect
         {
-            public static int HealPotion => 40 + (int)Math.Pow(1, 2);
+            public static int HealPotion => 40 + (int)Math.Pow(PlayerStats.Level, 2);
             public static int StrengthPotion { get; } = 2;
             public static int EndurancePotion { get; } = 50;
         }

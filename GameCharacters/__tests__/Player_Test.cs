@@ -38,6 +38,19 @@ namespace Console_Crawler.GameCharacters.__tests__
         }
 
         [Test]
+        public void Player_EquipWeapon_Override_OldWeapon_Test()
+        {
+            Player player = new Player("TestPlayer", PlayerStats.InitialAttack, PlayerStats.InitialArmor, PlayerStats.InitialStrength, PlayerStats.InitialHealth);
+            Weapon weapon = new Weapon(new WeaponStats(1, 2, 1, 2, 1, 2, 1, 2, "Special Attack"), "TestWeapon");
+            Weapon weapon2 = new Weapon(new WeaponStats(2, 3, 2, 3, 2, 3, 2, 3, "Special Attack"), "TestWeapon2");
+
+            player.EquipWeapon(weapon);
+            player.EquipWeapon(weapon2);
+
+            Assert.That(player.CurrentWeapon, Is.EqualTo(weapon2));
+        }
+
+        [Test]
         public void Player_SetAttackOptions_Test()
         {
             Player player = new Player("TestPlayer", PlayerStats.InitialAttack, PlayerStats.InitialArmor, PlayerStats.InitialStrength, PlayerStats.InitialHealth);
@@ -135,6 +148,9 @@ namespace Console_Crawler.GameCharacters.__tests__
             Assert.That(player.Health, Is.EqualTo(player.MaxHealth));
             Assert.That(player.Armor, Is.EqualTo(PlayerStats.InitialArmor + LevelUpModifers.Armor));
             Assert.That(player.Attack, Is.EqualTo(PlayerStats.InitialAttack + LevelUpModifers.Attack));
+            Assert.That(PlayerStats.Level, Is.EqualTo(2));
+
+            PlayerStats.ResetPlayerStats(); 
         }
 
         [Test]

@@ -1,6 +1,5 @@
 ﻿using Console_Crawler.GameUtilities;
 using Console_Crawler.GameVariables.Statistics.EnemyStatistics.Builder;
-using Console_Crawler.GameVariables.Statistics.EnemyStatistics;
 using Console_Crawler.GameVariables;
 using Console_Crawler.GameVariables.Statistics;
 

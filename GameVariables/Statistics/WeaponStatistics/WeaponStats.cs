@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Console_Crawler.GameVariables.Statistics.WeaponStatistics
+﻿namespace Console_Crawler.GameVariables.Statistics.WeaponStatistics
 {
     internal class WeaponStats(int minBaseDamage, int maxBaseDamage, int minSpecialDamage, int maxSpecialDamage, int minMultiplier, int maxMultiplier, int enduranceCost, int specialEnduranceCost, string? specialAttackName)
     {

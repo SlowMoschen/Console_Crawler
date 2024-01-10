@@ -1,5 +1,4 @@
 ﻿using Console_Crawler.GameCharacters.HostileMobs;
-using Console_Crawler.GameUtilities;
 using Console_Crawler.GameVariables.Statistics;
 using Console_Crawler.GameVariables.Statistics.EnemyStatistics;
 using Console_Crawler.GameVariables.Statistics.PlayerStatistics;

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Console_Crawler.GameCharacters;
+﻿using Console_Crawler.GameCharacters;
 using Console_Crawler.GameUtilities;
 using Console_Crawler.GameVariables;
 using Console_Crawler.GameVariables.Statistics;

@@ -6,8 +6,6 @@ using Console_Crawler.GameVariables;
 using Console_Crawler.Items;
 using Console_Crawler.Items.Potions;
 using Console_Crawler.Weapons;
-using System.Numerics;
-
 
 namespace Console_Crawler.DungeonBuilder
 {

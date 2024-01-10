@@ -1,7 +1,6 @@
 ﻿using Console_Crawler.GameCharacters;
 using Console_Crawler.Items;
 using Console_Crawler.Weapons;
-using NUnit.Framework.Internal.Execution;
 
 namespace Console_Crawler.GameUtilities.DisplayManager
 {

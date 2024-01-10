@@ -1,10 +1,8 @@
-﻿using Console_Crawler.Items.Potions;
+﻿using Console_Crawler.GameCharacters;
+using Console_Crawler.GameVariables.Statistics;
+using Console_Crawler.Items.Potions;
 using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace Console_Crawler.Items.__tests__
 {
@@ -24,5 +22,19 @@ namespace Console_Crawler.Items.__tests__
             Assert.That(potion.MaxQuantity, Is.EqualTo(10));
             Assert.That(potion.EffectValue, Is.EqualTo(10));
         }   
+
+        [Test]
+        public void Potion_UsePotion_Test()
+        {
+            Player player = new Player("TestPlayer", 10, 10, 1.0, 50);
+            Potion potion = new Potion("Test Potion", "Health Potion", "Test Description", 100, 10, 10);
+
+            potion.UsePotion(player);
+
+            Assert.That(player.Health, Is.EqualTo(60));
+            Assert.That(GameStatistics.TotalItemsUsed, Is.EqualTo(1));
+
+            GameStatistics.ResetGameStatistics();
+        }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Console_Crawler.GameCharacters;
+using Console_Crawler.GameVariables.Statistics;
 
 namespace Console_Crawler.Items.Potions
 {
@@ -14,6 +15,8 @@ namespace Console_Crawler.Items.Potions
         {
             if (Quantity > 0)
             {
+                GameStatistics.AddTotalItemUsed();
+
                 switch (Type)
                 {
                     case "Health Potion":

@@ -1,5 +1,4 @@
-﻿
-using Console_Crawler.GameCharacters;
+﻿using Console_Crawler.GameCharacters;
 using Console_Crawler.GameVariables;
 using Console_Crawler.GameVariables.Statistics.PlayerStatistics;
 

@@ -1,5 +1,4 @@
-﻿
-using Console_Crawler.GameCharacters;
+﻿using Console_Crawler.GameCharacters;
 using Console_Crawler.GameCharacters.HostileMobs.Bosses;
 using Console_Crawler.GameCharacters.HostileMobs.MiniBosses;
 using Console_Crawler.Items;

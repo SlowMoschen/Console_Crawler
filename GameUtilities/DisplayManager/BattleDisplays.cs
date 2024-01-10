@@ -5,7 +5,6 @@ using Console_Crawler.GameVariables;
 using Console_Crawler.GameCharacters.HostileMobs.Bosses;
 using Console_Crawler.GameCharacters.HostileMobs.MiniBosses;
 using Console_Crawler.GameCharacters.HostileMobs;
-using System.Numerics;
 
 namespace Console_Crawler.GameUtilities.DisplayManager
 {
@@ -53,7 +52,16 @@ namespace Console_Crawler.GameUtilities.DisplayManager
                     }
                     else
                     {
-                        Console.WriteLine(" You succsessfully defended the attack!");
+                        // Those Attacks can't be defended
+                        if(enemy is Assassin && enemyMove == "Backstab" || enemy is Dragon && enemyMove == "Tailstrike")
+                        {
+                            Console.WriteLine(" You tried to defend the next attack but the enemy is too fast!");
+                        }
+                        else
+                        { 
+                            Console.WriteLine(" You succsessfully defended the attack!");
+                        }
+
                     }
                     break;
                 case "Run":

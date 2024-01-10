@@ -1,12 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using Console_Crawler.GameCharacters;
-using Console_Crawler.GameUtilities;
-using Console_Crawler.GameVariables;
 using Console_Crawler.GameVariables.Statistics.WeaponStatistics;
 
 //Unit Tests for Weapon.cs

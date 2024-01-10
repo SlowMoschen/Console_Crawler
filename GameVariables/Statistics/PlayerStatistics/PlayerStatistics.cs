@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Console_Crawler.GameVariables.Statistics.PlayerStatistics
+﻿namespace Console_Crawler.GameVariables.Statistics.PlayerStatistics
 {
     internal class LevelUpModifers
     {
@@ -27,5 +21,19 @@ namespace Console_Crawler.GameVariables.Statistics.PlayerStatistics
         // Is used to Calculate Enemy and Weapon stats
         public static int Level { get; set; } = 1;
         public static int MaxLevel { get; set; } = 30;
+
+        public static void ResetPlayerStats()
+        {
+            Name = "Player";
+            InitialAttack = 10;
+            InitialStrength = 1.0;
+            InitialArmor = 10;
+            InitialHealth = 100;
+            InitialMaxHealth = 100;
+            EXP = 0;
+            EXPToNextLevel = 100;
+            Level = 1;
+            MaxLevel = 30;
+        }
     }
 }
