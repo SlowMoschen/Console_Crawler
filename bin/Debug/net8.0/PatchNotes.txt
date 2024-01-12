@@ -1,7 +1,7 @@
 Patch 1.2.0:
 
 	New Features:
-		- Implemented a new Feature to save and load the Game.
+		- *!*!* Implemented a new Feature to save and load the Game *!*!*.
 		- Implemented a new Mini Boss: The Goblin King.
 	
 	Potion Changes:

@@ -1,3 +1,7 @@
+Patch 1.2.1:
+
+	-Fixed a bug with Input validation in the Menues.
+
 Patch 1.2.0:
 
 	New Features:

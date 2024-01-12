@@ -53,12 +53,25 @@ namespace Console_Crawler.GameUtilities
             {
                 if(choices.Select(choice => choice.ToLower()).Contains(input))
                 {
-                    return input;
+                    return UpperCaseEveryFirstLetter(input);
                 }
             }
 
             Console.WriteLine(" Input is invalid");
             return GetChoice(message, choices, numbers);
+        }
+
+        private static string UpperCaseEveryFirstLetter(string input)
+        {
+            string[] words = input.Split(' ');
+            string output = "";
+
+            foreach(string word in words)
+            {
+                output += word.First().ToString().ToUpper() + word.Substring(1) + " ";
+            }
+
+            return output.Trim();
         }
     }
 }

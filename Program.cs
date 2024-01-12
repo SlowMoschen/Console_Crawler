@@ -10,7 +10,7 @@ class Program
     static void Main()
     {
         RunDotNetCommand("run");
-        
+
         // Initialize the game
         Player player;
 

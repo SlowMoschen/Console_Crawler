@@ -59,7 +59,7 @@
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>LJQ/x6aEWTDYueGrybqUHq0wLZdwIi0NsdcVkdj/HVw=</dsig:DigestValue>
+      <dsig:DigestValue>EoHG7/KKqeUsJk5Crgsqm9haGvH3KLxyJtIUy5EeTcg=</dsig:DigestValue>
     </hash>
   </file>
   <file name="NUnit3.TestAdapter.pdb" size="52800">
