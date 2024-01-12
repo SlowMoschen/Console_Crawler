@@ -52,6 +52,7 @@ namespace Console_Crawler.Weapons
                 if(target.Effects.IsDefending)
                 {
                     target.Effects.IsDefending = false;
+                    Console.WriteLine($" You tried to use {this.WeaponStats.SpecialAttackName}, but the enemy successfully defended the attack!");
                     return;
                 }
                 else

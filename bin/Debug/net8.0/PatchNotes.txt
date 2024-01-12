@@ -1,3 +1,8 @@
+Patch 1.2.1:
+
+	- Fixed a bug with Input validation in the Menues.
+	- Reworked the Enemy's Move Output in the Console.
+
 Patch 1.2.0:
 
 	New Features:

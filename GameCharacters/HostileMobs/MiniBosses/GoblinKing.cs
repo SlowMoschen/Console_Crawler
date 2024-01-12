@@ -51,34 +51,35 @@ namespace Console_Crawler.GameCharacters.HostileMobs.MiniBosses
                 this.ExecuteAction(target, enemyAction);
                 return;
             }
-            this.LastPerformedAction = this.SpecialAttacks[0].Name;
             this.Attack += EnemyStats.EnrageExtraAttack;
             this.Armor += EnemyStats.EnrageExtraArmor;
             this.IsEnraged = true;
             this.EffectTurns.BuffedTurns = EnemyStats.EnragedTurns;
+            Console.WriteLine($" The Goblin King is enraged! He gains {EnemyStats.EnrageExtraAttack} Attack and {EnemyStats.EnrageExtraArmor} Armor for {EnemyStats.EnragedTurns} turns!");
         }
 
         private void TreasureDrain(Player target)
         {
             int damage = DamageCalculator.CalculateAttackDamage(this.Attack, target.Armor, this.Strength);
-            this.LastPerformedAction = this.SpecialAttacks[1].Name;
 
             if (target.Effects.IsDefending)
             {
                 target.Effects.IsDefending = false;
-
+                Console.WriteLine($" {this.Name} tried to attack you, but you successfully defended the damage!");
             }
             else
             {
                 target.Health -= damage;
                 this.DealtDamage = damage;
                 GameStatistics.AddTotalDamageTaken(damage);
+                Console.WriteLine($" {this.Name} used Treasure Drain at you for {damage} damage.");
             }
 
             if (target.Inventory.Gold >= this.StealAmount)
             {
                 target.Inventory.RemoveGold(this.StealAmount);
                 this.Gold += this.StealAmount;
+                Console.WriteLine($" The Goblin King stole {this.StealAmount} Gold from you!");
             }
             else
             {
@@ -91,6 +92,7 @@ namespace Console_Crawler.GameCharacters.HostileMobs.MiniBosses
                 {
                     Item item = target.Inventory.GetRandomItem();
                     target.Inventory.RemoveItem(item);
+                    Console.WriteLine($" The Goblin King stole your {item.Name}!");
                 }
                 else
                 {
@@ -103,13 +105,14 @@ namespace Console_Crawler.GameCharacters.HostileMobs.MiniBosses
         private void GoldenBarrage(Player target)
         {
             int attackDMG = this.Attack + this.Gold / this.EnemyStats.DamageIncreasePerGold; 
-            this.Gold -= this.Gold / this.EnemyStats.BarrageGoldDecrease;
+            int usedGold = this.Gold / this.EnemyStats.BarrageGoldDecrease;
+            this.Gold -= usedGold;
             int damage = DamageCalculator.CalculateAttackDamage(attackDMG, target.Armor, this.Strength);
-            this.LastPerformedAction = this.SpecialAttacks[2].Name;
 
             if(target.Effects.IsDefending)
             {
                 target.Effects.IsDefending = false;
+                Console.WriteLine($" {this.Name} tried to use Golden Barrage on you, but you successfully defended the damage!");
                 return;
             }
             else
@@ -117,6 +120,7 @@ namespace Console_Crawler.GameCharacters.HostileMobs.MiniBosses
                 target.Health -= damage;
                 this.DealtDamage = damage;
                 GameStatistics.AddTotalDamageTaken(damage);
+                Console.WriteLine($" {this.Name} used Golden Barrage and throws {usedGold} gold at you for {damage} damage.");
             }
         }
 

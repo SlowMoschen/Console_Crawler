@@ -24,6 +24,7 @@ namespace Console_Crawler.GameCharacters.HostileMobs
             if (target.Effects.IsDefending)
             {
                 target.Effects.IsDefending = false;
+                Console.WriteLine($" {this.Name} tried to attack you, but you successfully defended the attack!");
                 return;
             }
             else
@@ -31,9 +32,11 @@ namespace Console_Crawler.GameCharacters.HostileMobs
                 GameStatistics.AddTotalDamageDealt(damage);
                 this.DealtDamage = damage;
                 target.Health -= damage;
+                Console.WriteLine($" {this.Name} used its Slam attack for {damage} damage.");
                 if (Randomizer.GetChance(EnemyStats.StunChance))
                 {
                     target.Effects.IsStunned = true;
+                    Console.WriteLine($" {this.Name} stunned you!");
                 }
             }
         }

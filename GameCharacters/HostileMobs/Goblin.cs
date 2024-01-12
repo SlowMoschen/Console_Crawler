@@ -27,6 +27,7 @@ namespace Console_Crawler.GameCharacters.HostileMobs
             if (target.Effects.IsDefending)
             {
                 target.Effects.IsDefending = false;
+                Console.WriteLine($" {this.Name} tried to attack you, but you successfully defended the damage.");
             }
             else
             {
@@ -39,6 +40,7 @@ namespace Console_Crawler.GameCharacters.HostileMobs
             {
                 target.Inventory.RemoveGold(this.StealAmount);
                 this.Gold += this.StealAmount;
+                Console.WriteLine($" {this.Name} stole {this.StealAmount} Gold from you!");
             }
             else
             {

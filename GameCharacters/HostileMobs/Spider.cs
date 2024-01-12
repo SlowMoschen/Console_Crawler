@@ -33,6 +33,7 @@ namespace Console_Crawler.GameCharacters.HostileMobs
             if (target.Effects.IsDefending)
             {
                 target.Effects.IsDefending = false;
+                Console.WriteLine($" {this.Name} tried to Spit at you, but you successfully defended the attack!");
                 return;
             }
             else
@@ -40,10 +41,12 @@ namespace Console_Crawler.GameCharacters.HostileMobs
                 GameStatistics.AddTotalDamageDealt(damage);
                 this.DealtDamage = damage;  
                 target.Health -= damage;
+                Console.WriteLine($" {this.Name} Spit at you for {damage} damage.");
                 if (Randomizer.GetChance(this.EnemyStats.PoisonChance))
                 {
+                    Console.WriteLine($" {this.Name} poisoned you for {GameSettings.EffectDurations.Poison} turns!");
                     target.Effects.IsPoisoned = true;
-                    target.EffectTurns.PoisonTurns = 3;
+                    target.EffectTurns.PoisonTurns = GameSettings.EffectDurations.Poison;
                 }
             }
         }

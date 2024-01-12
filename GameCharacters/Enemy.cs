@@ -20,8 +20,6 @@ namespace Console_Crawler.GameCharacters
         public int Gold { get; set; } = 0;
         public List<(string Name, Action<Player> Attack)> ?SpecialAttacks { get; set; }
         public EnemyStatistics EnemyStats { get; set; }
-        public string LastPerformedAction { get; set; }
-
         public Enemy(string name, EnemyStatistics enemyStatistics) : base(name, 0, 0, 0, 0)
         {
             this.EnemyStats = enemyStatistics;
@@ -49,9 +47,9 @@ namespace Console_Crawler.GameCharacters
 
         public EnemyAction GetRandomAction()
         {
-            int choice = random.Next(1, 4);
+            int choice = random.Next(0, 3);
 
-            if(choice == 2 && SpecialAttacks?.Count > 0)
+            if(choice == 1 && SpecialAttacks?.Count > 0)
             {
                 return EnemyAction.SpecialAttack;
             }

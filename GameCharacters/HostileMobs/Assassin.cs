@@ -27,6 +27,7 @@ namespace Console_Crawler.GameCharacters.HostileMobs
                 target.Effects.IsDefending = false;
                 this.DealtDamage = damage;
                 target.Health -= damage;
+                Console.WriteLine($" You tried to defend the backstab, but the {this.Name} was to fast and dealt {damage} damage.");
                 return;
             }
             else
@@ -34,7 +35,9 @@ namespace Console_Crawler.GameCharacters.HostileMobs
                 GameStatistics.AddTotalDamageDealt(damage);
                 this.DealtDamage = damage;
                 target.Health -= damage;
+                Console.WriteLine($" {this.Name} backstabbed you for {damage} damage.");
             }
+
         }
     }
 }

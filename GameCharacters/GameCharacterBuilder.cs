@@ -33,17 +33,19 @@ namespace Console_Crawler.GameCharacters
 
         public virtual void NormalAttack(GameCharacter target)
         {
-            Console.WriteLine($"{this.Attack} attack" );
             int damage = DamageCalculator.CalculateAttackDamage(this.Attack, target.Armor, this.Strength);
             if(target.Effects.IsDefending)
             {
                 target.Effects.IsDefending = false;
+                Console.WriteLine($" {this.Name} tried to attack you, but you successfully defended the attack!");
                 return;
             }
             else 
             { 
                 this.DealtDamage = damage;
                 target.Health -= damage;
+
+                Console.WriteLine($" {this.Name} attacked you for {damage} damage.");
 
                 // Add damage to statistics - only counts for enemies because the NormalAttack Method is overriden in Player.cs
                 GameStatistics.AddTotalDamageTaken(damage);
@@ -58,6 +60,7 @@ namespace Console_Crawler.GameCharacters
         public void Defend()
         {
             this.Effects.IsDefending = true;
+            Console.WriteLine($" {this.Name} is defending next turn.");
         }
 
         public virtual void DecrementBuffTurns()

@@ -38,6 +38,7 @@ namespace Console_Crawler.GameCharacters.HostileMobs.MiniBosses
             if (target.Effects.IsDefending)
             {
                 target.Effects.IsDefending = false;
+                Console.WriteLine($" {this.Name} tried to use its Hellfire Blast on you, but you successfully defended the attack!");
                 return;
             }
             else
@@ -45,11 +46,13 @@ namespace Console_Crawler.GameCharacters.HostileMobs.MiniBosses
                 GameStatistics.AddTotalDamageDealt(damage);
                 this.DealtDamage = damage;
                 target.Health -= damage;
+                Console.WriteLine($" {this.Name} used its Hellfire Blast on you for {damage} damage.");
 
                 if (Randomizer.GetChance(this.EnemyStats.BurnChance))
                 {
                     target.Effects.IsBurning = true;
-                    target.EffectTurns.BurnTurns = 3;
+                    target.EffectTurns.BurnTurns = GameSettings.EffectDurations.Burn;
+                    Console.WriteLine($" {this.Name} set you on fire for {GameSettings.EffectDurations.Burn} turns!");
                 }
             }
         }
@@ -62,6 +65,7 @@ namespace Console_Crawler.GameCharacters.HostileMobs.MiniBosses
             if (target.Effects.IsDefending)
             {
                 target.Effects.IsDefending = false;
+                Console.WriteLine($" {this.Name} tried to use its Soulsteal on you, but you successfully defended the attack!");
                 return;
             }
             else
@@ -70,6 +74,7 @@ namespace Console_Crawler.GameCharacters.HostileMobs.MiniBosses
                 this.DealtDamage = damage;
                 target.Health -= damage;
                 this.Health += damage / 2;
+                Console.WriteLine($" {this.Name} used its Soulsteal on you for {damage} damage and healed itself for {damage / 2} health.");
             }
         }
 
@@ -78,6 +83,8 @@ namespace Console_Crawler.GameCharacters.HostileMobs.MiniBosses
         {
             this.Attack += (int)(this.Attack * this.EnemyStats.DarkPacktAttackPercentage);
             this.Health -= (int)(this.Health * this.EnemyStats.DarkPacktHealthPercentage);
+            Console.WriteLine($" {this.Name} used its Dark Pact and increased its attack by {this.EnemyStats.DarkPacktAttackPercentage * 100}% and decreased its health by {this.EnemyStats.DarkPacktHealthPercentage * 100}%.");
+            Console.WriteLine($" {this.Name} now has {this.Health} health and {this.Attack} attack.");
         }
     }
 }

@@ -37,6 +37,7 @@ namespace Console_Crawler.GameCharacters.HostileMobs.MiniBosses
             if (target.Effects.IsDefending)
             {
                 target.Effects.IsDefending = false;
+                Console.WriteLine($" {this.Name} tried to use its poison bite on you, but you successfully defended the attack!");
                 return;
             }
             else
@@ -44,11 +45,13 @@ namespace Console_Crawler.GameCharacters.HostileMobs.MiniBosses
                 GameStatistics.AddTotalDamageDealt(damage);
                 this.DealtDamage = damage;
                 target.Health -= damage;
+                Console.WriteLine($" {this.Name} used its poison bite on you for {damage} damage.");
 
                 if (Randomizer.GetChance(this.EnemyStats.PoisonChance))
                 {
                     target.Effects.IsPoisoned = true;
-                    target.EffectTurns.PoisonTurns = 3;
+                    target.EffectTurns.PoisonTurns = GameSettings.EffectDurations.Poison;
+                    Console.WriteLine($" {this.Name} poisoned you for {GameSettings.EffectDurations.Poison} turns!");
                 }
             }
         }
@@ -60,6 +63,7 @@ namespace Console_Crawler.GameCharacters.HostileMobs.MiniBosses
             if (target.Effects.IsDefending)
             {
                 target.Effects.IsDefending = false;
+                Console.WriteLine($" {this.Name} tried to use its webshot on you, but you successfully defended the attack!");
                 return;
             }
             else
@@ -67,10 +71,12 @@ namespace Console_Crawler.GameCharacters.HostileMobs.MiniBosses
                 GameStatistics.AddTotalDamageDealt(damage);
                 this.DealtDamage = damage;
                 target.Health -= damage;
+                Console.WriteLine($" {this.Name} used its webshot on you for {damage} damage.");
                 
                 if (Randomizer.GetChance(this.EnemyStats.StunChance))
                 {
                     target.Effects.IsStunned = true;
+                    Console.WriteLine($" {this.Name} stunned you!");
                 }
             }
         }

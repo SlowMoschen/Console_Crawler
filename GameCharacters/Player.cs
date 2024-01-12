@@ -82,6 +82,7 @@ namespace Console_Crawler.GameCharacters
                 if(target.Effects.IsDefending)
                 {
                     target.Effects.IsDefending = false;
+                    Console.WriteLine($" You tried to attack {target.Name}, but they successfully defended the attack!");
                     return;
                 }
                 else
@@ -109,6 +110,7 @@ namespace Console_Crawler.GameCharacters
                 if(target.Effects.IsDefending)
                 {
                     target.Effects.IsDefending = false;
+                    Console.WriteLine($" You tried to kick {target.Name}, but they successfully defended the attack!");
                     return;
                 }
                 else

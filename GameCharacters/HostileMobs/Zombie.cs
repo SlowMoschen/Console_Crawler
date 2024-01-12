@@ -24,6 +24,7 @@ namespace Console_Crawler.GameCharacters.HostileMobs
             if(target.Effects.IsDefending)
             {
                 target.Effects.IsDefending = false;
+                Console.WriteLine($" {this.Name} tried to use a Bite attack on you, but you successfully defended the attack!");
                 return;
             }
             else
@@ -32,6 +33,7 @@ namespace Console_Crawler.GameCharacters.HostileMobs
                 this.DealtDamage = damage;
                 target.Health -= damage;
                 this.Health += damage / 2;
+                Console.WriteLine($" {this.Name} used Bite on you for {damage} damage and healed itself for {damage / 2} health.");
             }
         }
 
@@ -43,6 +45,7 @@ namespace Console_Crawler.GameCharacters.HostileMobs
             if(target.Effects.IsDefending)
             {
                 target.Effects.IsDefending = false;
+                Console.WriteLine($" {this.Name} tried to use a Thrash attack on you, but you successfully defended the attack!");
                 return;
             }
             else
@@ -51,6 +54,7 @@ namespace Console_Crawler.GameCharacters.HostileMobs
                 this.DealtDamage = damage;
                 target.Health -= damage;
                 this.Health -= damage / 4;
+                Console.WriteLine($" {this.Name} used Thrash on you for {damage} damage and took {damage / 4} damage itself.");
             }
         }
     }

@@ -107,28 +107,28 @@ namespace Console_Crawler.GameUtilities.DisplayManager
             player.DecrementBuffTurns();
             player.ApplyOverTimeEffects(enemy);
             enemy.DecrementBuffTurns();
+            DisplayPlayerMove(player, enemy, battleChoice, optionChoice);
 
             // Only execute enemy move if enemy is alive
             if (enemy.Health >= 0)
             {
-                enemyMove = enemy.ExecuteAction(player, enemy.GetRandomAction());
-            }
-
-            if(player.Health <= 0)
-            {
-                HandlePlayerDeath();
-                return;
-            }
-
-            // Check if enemy is dead and handle death or continue battle
-            if(enemy.Health <= 0)
-            {
-                HandleEnemyDeath(player, enemy);           
+                EnemyAction random = enemy.GetRandomAction();
+                enemy.ExecuteAction(player, enemy.GetRandomAction());
             }
             else
             {
-                HandleBattleTurn(player, enemy, battleChoice, optionChoice, enemyMove);
+                HandleEnemyDeath(player, enemy);
             }
+
+            if(player.Health > 0)
+            {
+                HandleBattleTurn(player, enemy);
+            }
+            else
+            {
+                HandlePlayerDeath();
+            }
+
         }
 
 
@@ -215,9 +215,8 @@ namespace Console_Crawler.GameUtilities.DisplayManager
             WaitForInput();
         }
 
-        private static void HandleBattleTurn(Player player, Enemy enemy, string battleChoice, string optionChoice, string enemyMove)
+        private static void HandleBattleTurn(Player player, Enemy enemy)
         {
-            DisplayRoundResults(player, enemy, battleChoice, optionChoice, enemyMove);
             player.RegenEndurance();
             player.ClearDealtDamage();
             enemy.ClearDealtDamage();
