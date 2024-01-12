@@ -1,5 +1,7 @@
-﻿using Console_Crawler.GameVariables;
+﻿using Console_Crawler.GameUtilities;
+using Console_Crawler.GameVariables;
 using Console_Crawler.Items;
+using Console_Crawler.Items.Potions;
 
 namespace Console_Crawler.GameCharacters
 {
@@ -46,6 +48,12 @@ namespace Console_Crawler.GameCharacters
                     this.Items.Remove(existingItem);
                 }
             }
+        }
+
+        public Item GetRandomItem()
+        {
+            int randomIndex = Randomizer.GetRandomNumber(this.Items.Count);
+            return this.Items[randomIndex];
         }
 
         public string[] GetAllItemsCount()

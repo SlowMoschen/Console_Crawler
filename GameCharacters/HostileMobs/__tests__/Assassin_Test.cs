@@ -1,4 +1,5 @@
-﻿using Console_Crawler.GameVariables.Statistics.EnemyStatistics;
+﻿using Console_Crawler.GameVariables.Statistics;
+using Console_Crawler.GameVariables.Statistics.EnemyStatistics;
 using Console_Crawler.GameVariables.Statistics.PlayerStatistics;
 using NUnit.Framework;
 
@@ -35,6 +36,7 @@ namespace Console_Crawler.GameCharacters.HostileMobs.__tests__
             assassin.SpecialAttacks[0].Attack(player);
 
             Assert.That(player.Health, Is.LessThan(player.MaxHealth));
+            GameStatistics.ResetGameStatistics();
         }
 
         [Test]
@@ -47,6 +49,7 @@ namespace Console_Crawler.GameCharacters.HostileMobs.__tests__
             assassin.SpecialAttacks[0].Attack(player);
 
             Assert.That(player.Health, Is.LessThan(player.MaxHealth));
+            GameStatistics.ResetGameStatistics();
         }
     }
 }

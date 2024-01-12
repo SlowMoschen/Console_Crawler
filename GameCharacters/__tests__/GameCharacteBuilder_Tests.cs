@@ -1,5 +1,6 @@
 ﻿using Console_Crawler.GameCharacters.HostileMobs;
 using Console_Crawler.GameCharacters.HostileMobs.MiniBosses;
+using Console_Crawler.GameVariables.Statistics;
 using Console_Crawler.GameVariables.Statistics.EnemyStatistics;
 using NUnit.Framework;
 
@@ -29,6 +30,7 @@ namespace Console_Crawler.GameCharacters.__tests__
             gameCharacter.NormalAttack(target);
 
             Assert.That(target.Health, Is.LessThanOrEqualTo(0));
+            GameStatistics.ResetGameStatistics();
         }
 
         [Test]
@@ -41,6 +43,7 @@ namespace Console_Crawler.GameCharacters.__tests__
             gameCharacter.NormalAttack(target);
 
             Assert.That(target.Health, Is.EqualTo(10));
+            GameStatistics.ResetGameStatistics();
         }
 
         [Test]
@@ -65,6 +68,7 @@ namespace Console_Crawler.GameCharacters.__tests__
 
             Assert.That(gameCharacter.Health, Is.EqualTo(5));
             Assert.That(gameCharacter.EffectTurns.PoisonTurns, Is.EqualTo(0));
+            GameStatistics.ResetGameStatistics();
         }
 
         [Test]
@@ -79,6 +83,7 @@ namespace Console_Crawler.GameCharacters.__tests__
 
             Assert.That(gameCharacter.Health, Is.EqualTo(0));
             Assert.That(gameCharacter.EffectTurns.BurnTurns, Is.EqualTo(0));
+            GameStatistics.ResetGameStatistics();
         }
 
         [Test]

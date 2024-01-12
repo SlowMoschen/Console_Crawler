@@ -84,6 +84,7 @@ namespace Console_Crawler.GameCharacters.__tests__
             Assert.That(result, Is.Not.EqualTo(null));
             Assert.That(player.Health, Is.Not.EqualTo(player.MaxHealth));
             Assert.That(GameStatistics.TotalDamageDealt, Is.GreaterThan(0));
+            GameStatistics.ResetGameStatistics();
         }
 
         [Test]
@@ -98,6 +99,7 @@ namespace Console_Crawler.GameCharacters.__tests__
             Assert.That(result, Is.EqualTo("Normal Attack"));
             Assert.That(player.Health, Is.Not.EqualTo(player.MaxHealth));
             Assert.That(GameStatistics.TotalDamageTaken, Is.GreaterThan(0));
+            GameStatistics.ResetGameStatistics();
         }
 
         [Test]

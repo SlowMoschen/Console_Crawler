@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:co.v2="urn:schemas-microsoft-com:clickonce.v2">
-  <asmv1:assemblyIdentity name="Console_Crawler.exe" version="1.1.2.0" publicKeyToken="0000000000000000" language="de-AT" processorArchitecture="msil" type="win32" />
+  <asmv1:assemblyIdentity name="Console_Crawler.exe" version="1.2.0.0" publicKeyToken="0000000000000000" language="de-AT" processorArchitecture="msil" type="win32" />
   <application />
   <entryPoint>
     <assemblyIdentity name="Launcher" version="8.0.0.0" language="neutral" processorArchitecture="msil" />
@@ -53,13 +53,13 @@
       </hash>
     </dependentAssembly>
   </dependency>
-  <file name="Console_Crawler.exe" size="66952786">
+  <file name="Console_Crawler.exe" size="66973266">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>3a7N0wU6h/qcBqdt9fMaYY+mfg+Cgk9hRHYIphLV1W0=</dsig:DigestValue>
+      <dsig:DigestValue>LJQ/x6aEWTDYueGrybqUHq0wLZdwIi0NsdcVkdj/HVw=</dsig:DigestValue>
     </hash>
   </file>
   <file name="NUnit3.TestAdapter.pdb" size="52800">
@@ -71,13 +71,13 @@
       <dsig:DigestValue>UotnuPg5+uPz8+3CbB+gfeqR6uMRr/rxzT0D4zYX7j8=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="PatchNotes.txt" size="1441">
+  <file name="PatchNotes.txt" size="1765">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>n2JBaJjkL/2XS94dxm6DrMPqgqIjPf2nBufrK9T0FiY=</dsig:DigestValue>
+      <dsig:DigestValue>ZrsM8zRA9RJnW2V2ginL1jpr0aSwsBiBKD0XnBovqKs=</dsig:DigestValue>
     </hash>
   </file>
   <file name="testhost.x86.exe" size="140328">

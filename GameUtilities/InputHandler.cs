@@ -51,7 +51,7 @@ namespace Console_Crawler.GameUtilities
             }
             else
             {
-                if(choices.Contains(input))
+                if(choices.Select(choice => choice.ToLower()).Contains(input))
                 {
                     return input;
                 }

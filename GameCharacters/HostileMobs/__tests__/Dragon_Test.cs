@@ -1,4 +1,5 @@
 ﻿using Console_Crawler.GameCharacters.HostileMobs.Bosses;
+using Console_Crawler.GameVariables.Statistics;
 using Console_Crawler.GameVariables.Statistics.EnemyStatistics;
 using Console_Crawler.GameVariables.Statistics.PlayerStatistics;
 using NUnit.Framework;
@@ -42,6 +43,7 @@ namespace Console_Crawler.GameCharacters.HostileMobs.__tests__
             dragon.SpecialAttacks[0].Attack(player);
 
             Assert.That(player.Health, Is.LessThan(player.MaxHealth));
+            GameStatistics.ResetGameStatistics();
         }
 
         [Test]
@@ -57,6 +59,7 @@ namespace Console_Crawler.GameCharacters.HostileMobs.__tests__
 
             Assert.That(player.Effects.IsBurning, Is.EqualTo(true));
             Assert.That(player.EffectTurns.BurnTurns, Is.EqualTo(3));
+            GameStatistics.ResetGameStatistics();
         }
 
         [Test]
@@ -68,6 +71,7 @@ namespace Console_Crawler.GameCharacters.HostileMobs.__tests__
             dragon.SpecialAttacks[1].Attack(player);
 
             Assert.That(player.Health, Is.LessThan(player.MaxHealth));
+            GameStatistics.ResetGameStatistics();
         }
 
         [Test]
@@ -82,6 +86,7 @@ namespace Console_Crawler.GameCharacters.HostileMobs.__tests__
             }
 
             Assert.That(player.Effects.IsStunned, Is.EqualTo(true));
+            GameStatistics.ResetGameStatistics();
         }
 
         [Test]
@@ -93,6 +98,7 @@ namespace Console_Crawler.GameCharacters.HostileMobs.__tests__
             dragon.SpecialAttacks[2].Attack(player);
 
             Assert.That(player.Health, Is.LessThan(player.MaxHealth));
+            GameStatistics.ResetGameStatistics();
         }
 
         [Test]
@@ -106,6 +112,7 @@ namespace Console_Crawler.GameCharacters.HostileMobs.__tests__
 
             Assert.That(player.Health, Is.LessThan(player.MaxHealth));
             Assert.That(player.Effects.IsDefending, Is.EqualTo(false));
+            GameStatistics.ResetGameStatistics();
         }
     }
 }

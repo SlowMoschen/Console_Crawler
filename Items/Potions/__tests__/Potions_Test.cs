@@ -1,5 +1,7 @@
 ﻿using Console_Crawler.GameCharacters;
 using Console_Crawler.GameVariables;
+using Console_Crawler.GameVariables.Statistics;
+using Console_Crawler.GameVariables.Statistics.PlayerStatistics;
 using NUnit.Framework;
 
 namespace Console_Crawler.Items.Potions.__tests__
@@ -33,6 +35,8 @@ namespace Console_Crawler.Items.Potions.__tests__
 
             Assert.That(player.Level, Is.EqualTo(2));
             Assert.That(potion.EffectValue, Is.EqualTo(44));
+            PlayerStats.ResetPlayerStats();
+            GameStatistics.ResetGameStatistics();
         }
 
         [Test]

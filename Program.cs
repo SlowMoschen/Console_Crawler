@@ -2,18 +2,32 @@
 using Console_Crawler.GameUtilities;
 using Console_Crawler.GameUtilities.DisplayManager;
 using Console_Crawler.GameVariables;
-using System;
+using Console_Crawler.GameVariables.Statistics;
 using System.Diagnostics;
-using System.Linq;
 
 class Program
 {
-    static void Main(string[] args)
+    static void Main()
     {
         RunDotNetCommand("run");
-
+        
         // Initialize the game
-        Player player = DisplayManager.InitializePlayerFromPreGameMenu();
+        Player player;
+
+        SaveGame saveGame = SaveGameManager.LoadGameFromFile();
+
+        if(saveGame != null)
+        {
+            DisplayManager.DisplayLoadSuccess();
+            player = saveGame.Player;
+            GameStatistics.SetSavedGameStatistics(saveGame.GameStatistics);
+            DisplayManager.GreetPlayerBack(player);
+        }
+        else
+        {
+            player = DisplayManager.InitializePlayerFromPreGameMenu();
+        }
+
         GameBools.IsGameRunning = true;
         GameBools.IsInMenu = true;
 
@@ -51,6 +65,16 @@ class Program
                 case "Game Infos":
                     GameBools.IsInMenu = false;
                     GameBools.IsInTutorial = true;
+                    break;
+                case "Save Game":
+                    if(SaveGameManager.SaveGameToFile(player))
+                    {
+                        DisplayManager.DisplaySaveSuccess();
+                    }
+                    else
+                    {
+                        DisplayManager.DisplaySaveFailure();
+                    }
                     break;
             }
         }

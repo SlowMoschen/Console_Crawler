@@ -89,6 +89,22 @@ namespace Console_Crawler.GameVariables.Statistics.EnemyStatistics
             darkPacktHealthPercentage: 0.1
             );
 
+        public static GoblinKingStatistics GoblinKing = new GoblinKingStatistics(
+            baseAttack: 30,
+            baseArmor: 20,
+            strength: 1.0,
+            baseHealth: 600,
+            baseEXP: 200,
+            Gold: 50,
+            stealAmount: 10,
+            enrageExtraAttack: 40,
+            enrageExtraArmor: 20,
+            enragedTurns: 3,
+            itemStealChance: 13.33,
+            damageIncreasePerGold: 10,
+            barrageGoldDecrease: 10
+            );
+
         //**
         //** Bosses
         //**

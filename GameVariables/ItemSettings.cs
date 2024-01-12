@@ -7,7 +7,7 @@ namespace Console_Crawler.GameVariables
     {
         internal class ItemMaxQuantity
         {
-            public static int HealPotion { get; } = 5;
+            public static int HealPotion { get; } = 10;
             public static int StrengthPotion { get; } = 3;
             public static int EndurancePotion { get; } = 5;
         }

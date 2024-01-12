@@ -27,34 +27,22 @@ namespace Console_Crawler.GameCharacters.HostileMobs
             if (target.Effects.IsDefending)
             {
                 target.Effects.IsDefending = false;
-
-                if(target.Inventory.Gold >= this.StealAmount)
-                { 
-                    target.Inventory.RemoveGold(this.StealAmount);
-                    this.Gold += this.StealAmount;
-                }
-                else
-                {
-                    Console.WriteLine(" The Goblin found no Gold to steal!");
-                }
-
-                return;
             }
             else
             {
                 target.Health -= damage;
                 this.DealtDamage = damage;
                 GameStatistics.AddTotalDamageDealt(damage);
+            }
 
-                if (target.Inventory.Gold >= this.StealAmount)
-                {
-                    target.Inventory.RemoveGold(this.StealAmount);
-                    this.Gold += this.StealAmount;
-                }
-                else
-                {
-                    Console.WriteLine(" The Goblin found no Gold to steal!");
-                }
+            if (target.Inventory.Gold >= this.StealAmount)
+            {
+                target.Inventory.RemoveGold(this.StealAmount);
+                this.Gold += this.StealAmount;
+            }
+            else
+            {
+                Console.WriteLine(" The Goblin found no Gold to steal!");
             }
         }
     }

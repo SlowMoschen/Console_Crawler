@@ -1,4 +1,5 @@
-﻿using Console_Crawler.GameVariables.Statistics.EnemyStatistics;
+﻿using Console_Crawler.GameVariables.Statistics;
+using Console_Crawler.GameVariables.Statistics.EnemyStatistics;
 using Console_Crawler.GameVariables.Statistics.PlayerStatistics;
 using NUnit.Framework;
 
@@ -48,6 +49,7 @@ namespace Console_Crawler.GameCharacters.HostileMobs.__tests__
             goblin.SpecialAttacks[0].Attack(player);
 
             Assert.That(player.Inventory.Gold, Is.EqualTo(0));
+            GameStatistics.ResetGameStatistics();
         }
     }
 }

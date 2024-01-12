@@ -4,6 +4,7 @@ using Console_Crawler.DungeonBuilder;
 using Console_Crawler.GameVariables.Statistics;
 using Console_Crawler.GameCharacters.HostileMobs;
 using Console_Crawler.GameVariables.Statistics.EnemyStatistics;
+using Console_Crawler.GameCharacters.HostileMobs.MiniBosses;
 
 namespace Console_Crawler.GameUtilities.DisplayManager
 {
@@ -42,7 +43,7 @@ namespace Console_Crawler.GameUtilities.DisplayManager
                 if(AllEnemiesDeafeated(room))
                 {
                     DisplayRoomVictory();
-                    GameStatistics.SurviedRooms++;
+                    GameStatistics.AddSurviedRoom();
                 }
             }
             
@@ -105,6 +106,7 @@ namespace Console_Crawler.GameUtilities.DisplayManager
 
             player.DecrementBuffTurns();
             player.ApplyOverTimeEffects(enemy);
+            enemy.DecrementBuffTurns();
 
             // Only execute enemy move if enemy is alive
             if (enemy.Health >= 0)
@@ -190,20 +192,15 @@ namespace Console_Crawler.GameUtilities.DisplayManager
 
         private static void HandleEnemyDeath(Player player, Enemy enemy)
         {
-            GameStatistics.KilledEnemies++;
+            GameStatistics.AddKilledEnemy();
             player.AddEXP(enemy.EXP);
-            int goldAmount = enemy.Gold;
 
-            // check if enemy is Goblin and get random number between Goblin Base Gold and the gold that the goblin has stolen
-            if (enemy is Goblin goblin)
-            {
-                goldAmount = Randomizer.GetRandomNumber(goblin.Gold, AllEnemyStatistics.Goblin.Gold);
-                player.Inventory.AddGold(goldAmount);
-            }
-            else
-            {
-                player.Inventory.AddGold(goldAmount);
-            }
+            // check if enemy is Goblin or GoblinKing and get random number between Goblin Base Gold and the gold that the goblin has stolen - or just get the gold if not a goblin
+            int goldAmount = enemy is Goblin
+                ? Randomizer.GetRandomNumber(AllEnemyStatistics.Goblin.Gold, enemy.Gold) 
+                :enemy is GoblinKing
+                    ? Randomizer.GetRandomNumber(AllEnemyStatistics.Goblin.Gold, enemy.Gold)
+                    : enemy.Gold;
 
             DisplayEnemyDeath(enemy, goldAmount);
         }
@@ -213,7 +210,7 @@ namespace Console_Crawler.GameUtilities.DisplayManager
             GameBools.IsInBattle = false;
             GameBools.IsInMenu = true;
             GameBools.IsDead = true;
-            GameStatistics.TotalDeaths++;
+            GameStatistics.AddTotalDeath();
             DisplayPlayerDeath();
             WaitForInput();
         }

@@ -32,7 +32,7 @@ In order to reach the end of a dungeon and collect the reward chest, all enemies
 
 #### Future Features
 new features probaly will need a while to be implemented
-- Posibility to save and load Gamescores
+- ~~Posibility to save and load Gamescores~~
 - Extra Items
 - Extra Enemies / Bosses
 

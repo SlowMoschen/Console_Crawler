@@ -1,4 +1,6 @@
-﻿namespace Console_Crawler.GameUtilities.DisplayManager
+﻿using System.Diagnostics;
+
+namespace Console_Crawler.GameUtilities.DisplayManager
 {
     internal partial class DisplayManager
     {
@@ -7,6 +9,14 @@
             Console.WriteLine();
             Console.WriteLine($" {message}");
             Console.ReadKey();
+        }
+
+        public static void WaitForXSeconds( int seconds )
+        {
+            Stopwatch stopwatch = new Stopwatch();
+            stopwatch.Start();
+            while (stopwatch.Elapsed.Seconds < seconds) { }
+            stopwatch.Stop();
         }
 
 
@@ -62,6 +72,27 @@
             Console.Write(new string('#', progressBars));
             Console.Write(new string('.', progressBarLength - progressBars));
             Console.Write("]\n");
+        }
+
+        public static void DisplaySaveSuccess()
+        {
+            Console.WriteLine();
+            Console.WriteLine(" Saving successfull!");
+            WaitForInput();
+        }
+
+        public static void DisplaySaveFailure()
+        {
+            Console.WriteLine();
+            Console.WriteLine(" Saving failed!");
+            WaitForInput();
+        }
+
+        public static void DisplayLoadSuccess()
+        {
+            Console.WriteLine();
+            Console.WriteLine(" Loading successfull!");
+            WaitForXSeconds(1);
         }
     }
 }

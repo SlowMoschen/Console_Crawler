@@ -3,6 +3,7 @@ using Console_Crawler.GameCharacters.HostileMobs;
 using Console_Crawler.GameCharacters.HostileMobs.Bosses;
 using Console_Crawler.GameCharacters.HostileMobs.MiniBosses;
 using Console_Crawler.GameVariables.Statistics;
+using Console_Crawler.GameVariables.Statistics.PlayerStatistics;
 
 namespace Console_Crawler.GameCharacters
 {
@@ -25,7 +26,7 @@ namespace Console_Crawler.GameCharacters
         {
             public int PoisonTurns { get; set; } = 0;
             public int BurnTurns { get; set; } = 0;
-            public int StrenghtBuffTurns { get; set; } = 0;
+            public int BuffedTurns { get; set; } = 0;
         }
         public EffectsBools Effects { get; set; } = new EffectsBools();
         public AllEffectTurns EffectTurns { get; set; } = new AllEffectTurns();
@@ -58,6 +59,23 @@ namespace Console_Crawler.GameCharacters
         {
             this.Effects.IsDefending = true;
         }
+
+        public virtual void DecrementBuffTurns()
+        {
+            if (this.EffectTurns.BuffedTurns > 0)
+            {
+                this.EffectTurns.BuffedTurns--;
+
+                if (this.EffectTurns.BuffedTurns == 0)
+                {
+                    this.ResetBuffedStats();
+                }
+            }
+        }
+
+        // This Method will be overriden in Child Classes - will reset the stats that are buffed by the StrenghtBuff
+        public virtual void ResetBuffedStats()
+        {}
 
         public void ApplyOverTimeEffects(GameCharacter? enemy = null)
         {

@@ -123,6 +123,7 @@ namespace Console_Crawler.GameCharacters.__tests__
             inventory.AddGold(10);
             GameBools.RanAway = true;
             inventory.RemoveGold();
+            GameBools.RanAway = false;
 
             //Assert
             Assert.That(inventory.Gold, Is.EqualTo(5));
@@ -154,7 +155,7 @@ namespace Console_Crawler.GameCharacters.__tests__
             string maxPotions = inventory.CalculateMaxPotionsPurchaseable(potion);
 
             //Assert
-            Assert.That(Int32.Parse(maxPotions), Is.EqualTo(5));
+            Assert.That(Int32.Parse(maxPotions), Is.EqualTo(100 / potion.Price));
         }
 
         [Test]
@@ -170,7 +171,7 @@ namespace Console_Crawler.GameCharacters.__tests__
             string maxPotions = inventory.CalculateMaxPotionsPurchaseable(potion);
 
             //Assert
-            Assert.That(Int32.Parse(maxPotions), Is.EqualTo(4));
+            Assert.That(Int32.Parse(maxPotions), Is.EqualTo(100 / potion.Price));
         }
 
         [Test]

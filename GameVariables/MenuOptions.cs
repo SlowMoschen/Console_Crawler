@@ -11,7 +11,7 @@ namespace Console_Crawler.GameVariables
         }.Where(option => option != null).ToArray();
         public static string[] BattleOptions { get; } = { "Attack", "Rest", "Use Item", "Defend", "Run Away" };
         public static string[]? AttackOptions { get; set; }
-        public static string[] MainMenuOptions { get; } = { "Enter Dungeon", "Shop", "Inventory", "Stats", "Game Infos" };
+        public static string[] MainMenuOptions { get; } = { "Enter Dungeon", "Shop", "Inventory", "Stats", "Game Infos", "Save Game" };
         public static string[] ShopMenuOptions { get; } = { "Buy", "Exit Shop" };
         public static string[] ShopItems { get; } = { "Heal Potion", "Strength Potion", "Endurance Potion", "Go Back" };
         public static string[] InventoryMenuOptions { get; } = { "Use Item", "Exit Inventory" };

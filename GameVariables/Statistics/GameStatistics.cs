@@ -1,8 +1,11 @@
-﻿namespace Console_Crawler.GameVariables.Statistics
+﻿
+using Console_Crawler.GameUtilities;
+
+namespace Console_Crawler.GameVariables.Statistics
 {
     internal class GameStatistics
     {
-        public static string Version { get; } = "1.1.1";
+        public static string Version { get; } = "1.2.0";
         public static int SurviedRooms { get; set; } = 0;
         public static int SurviedDungeons { get; set; } = 0;
         public static int KilledEnemies { get; set; } = 0;
@@ -15,6 +18,22 @@
         public static int TotalRests { get; set; } = 0;
         public static int TotalItemsUsed { get; set; } = 0;
         public static int TotalItemsBought { get; set; } = 0;
+
+        public static void SetSavedGameStatistics(SavedGameStats savedGameStats)
+        {
+            SurviedRooms = savedGameStats.SurviedRooms;
+            SurviedDungeons = savedGameStats.SurviedDungeons;
+            KilledEnemies = savedGameStats.KilledEnemies;
+            TotalEXP = savedGameStats.TotalEXP;
+            TotalGold = savedGameStats.TotalGold;
+            TotalDamageDealt = savedGameStats.TotalDamageDealt;
+            TotalDamageTaken = savedGameStats.TotalDamageTaken;
+            TotalHealingDone = savedGameStats.TotalHealingDone;
+            TotalDeaths = savedGameStats.TotalDeaths;
+            TotalRests = savedGameStats.TotalRests;
+            TotalItemsUsed = savedGameStats.TotalItemsUsed;
+            TotalItemsBought = savedGameStats.TotalItemsBought;
+        }
 
         public static void ResetGameStatistics()
         {

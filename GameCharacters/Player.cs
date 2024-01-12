@@ -33,17 +33,9 @@ namespace Console_Crawler.GameCharacters
             this.SetAttackOptions();
         }
 
-        public void DecrementBuffTurns()
+        public override void ResetBuffedStats()
         {
-            if(this.EffectTurns.StrenghtBuffTurns > 0)
-            {
-                this.EffectTurns.StrenghtBuffTurns--;
-
-                if(this.EffectTurns.StrenghtBuffTurns == 0)
-                {
-                    this.Strength = PlayerStats.InitialStrength;
-                }
-            }
+            this.Strength = PlayerStats.InitialStrength;
         }
 
         public void Revive()
@@ -298,9 +290,9 @@ namespace Console_Crawler.GameCharacters
 
         private void PrintEffectStatuses()
         {
-            if (this.EffectTurns.StrenghtBuffTurns > 0)
+            if (this.EffectTurns.BuffedTurns > 0)
             {
-                Console.WriteLine($" Strength is buffed for {this.EffectTurns.StrenghtBuffTurns} turns");
+                Console.WriteLine($" Strength is buffed for {this.EffectTurns.BuffedTurns} turns");
             }
 
             if (this.Effects.IsPoisoned && this.EffectTurns.PoisonTurns > 0)

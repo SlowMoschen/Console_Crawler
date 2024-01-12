@@ -174,6 +174,47 @@ namespace Console_Crawler.GameUtilities.DisplayManager
                         Console.WriteLine($" The {sorcerer3.Name} used Dark Pact and increased his attack damage by 20% for 10% of its health.");
                     }
                     break;
+                case "Enrage":
+                    if (enemy is GoblinKing goblinKing)
+                    {
+                        if(goblinKing.LastPerformedAction == "Enrage")
+                        {
+                            Console.WriteLine($" The {goblinKing.Name} used Enrage and increased its attack by {goblinKing.EnemyStats.EnrageExtraAttack} and  its armor by {goblinKing.EnemyStats.EnrageExtraArmor} for {goblinKing.EnemyStats.EnragedTurns} turns!");
+                        }
+
+                        if (goblinKing.LastPerformedAction == "Treasure Drain")
+                        {
+                            Console.WriteLine($" The {goblinKing.Name} used Treasure Drain and dealt {goblinKing.DealtDamage} damage!");
+
+                            if (player.Inventory.Gold > 0)
+                            {
+                                Console.WriteLine($" The {goblinKing.Name} stole {goblinKing.StealAmount} gold from you!");
+                            }
+                        }
+
+                        if (goblinKing.LastPerformedAction == "Golden Barrage")
+                        {
+                            Console.WriteLine($" The {goblinKing.Name} used Golden Barrage and throwed {goblinKing.Gold / goblinKing.EnemyStats.BarrageGoldDecrease} gold and dealt {goblinKing.DealtDamage} damage with it!");
+                        }
+                    }
+                    break;
+                case "Treasure Drain":
+                    if (enemy is GoblinKing goblinKing2)
+                    {
+                        Console.WriteLine($" The {goblinKing2.Name} used Treasure Drain and dealt {goblinKing2.DealtDamage} damage!");
+
+                        if (player.Inventory.Gold > 0)
+                        {
+                            Console.WriteLine($" The {goblinKing2.Name} stole {goblinKing2.StealAmount} gold from you!");
+                        }
+                    }
+                    break;
+                case "Golden Barrage":
+                    if (enemy is GoblinKing goblinKing3)
+                    {
+                        Console.WriteLine($" The {goblinKing3.Name} used Golden Barrage and throwed {goblinKing3.Gold / goblinKing3.EnemyStats.BarrageGoldDecrease} gold and dealt {goblinKing3.DealtDamage} damage with it!");
+                    }
+                    break;
                 case "Fire Breath":
                     if (enemy is Dragon dragon)
                     {
@@ -269,7 +310,7 @@ namespace Console_Crawler.GameUtilities.DisplayManager
             GameBools.IsInMenu = true;
             GameBools.IsInBattle = false;
             GameBools.IsDungeonCleared = false;
-            GameStatistics.SurviedDungeons++;
+            GameStatistics.AddSurviedDungeon();
             Console.Clear();
             DisplayHeader("Dungeon Victory");
             Console.WriteLine(" You have defeated all enemies in this dungeon!");

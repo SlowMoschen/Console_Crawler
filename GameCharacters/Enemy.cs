@@ -20,6 +20,7 @@ namespace Console_Crawler.GameCharacters
         public int Gold { get; set; } = 0;
         public List<(string Name, Action<Player> Attack)> ?SpecialAttacks { get; set; }
         public EnemyStatistics EnemyStats { get; set; }
+        public string LastPerformedAction { get; set; }
 
         public Enemy(string name, EnemyStatistics enemyStatistics) : base(name, 0, 0, 0, 0)
         {

@@ -24,6 +24,15 @@ namespace Console_Crawler.GameUtilities.DisplayManager
             GetPlayerStartingWeapon(player);
             return player;
         }
+
+        public static void GreetPlayerBack(Player player)
+        {
+            Console.Clear();
+            DiplayGameLogo();
+            Console.WriteLine($" Welcome back {player.Name}!");
+            WaitForInput();
+        }
+
         public static void DiplayGameLogo()
         {
             Console.Clear();

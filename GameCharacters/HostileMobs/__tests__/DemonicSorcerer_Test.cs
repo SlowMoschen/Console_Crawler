@@ -1,4 +1,5 @@
 ﻿using Console_Crawler.GameCharacters.HostileMobs.MiniBosses;
+using Console_Crawler.GameVariables.Statistics;
 using Console_Crawler.GameVariables.Statistics.EnemyStatistics;
 using Console_Crawler.GameVariables.Statistics.PlayerStatistics;
 using NUnit.Framework;
@@ -40,6 +41,7 @@ namespace Console_Crawler.GameCharacters.HostileMobs.__tests__
             sorcerer.SpecialAttacks[0].Attack(player);
 
             Assert.That(player.Health, Is.LessThan(player.MaxHealth));
+            GameStatistics.ResetGameStatistics();
         }
 
         [Test]
@@ -55,6 +57,7 @@ namespace Console_Crawler.GameCharacters.HostileMobs.__tests__
 
             Assert.That(player.Effects.IsBurning, Is.EqualTo(true));
             Assert.That(player.EffectTurns.BurnTurns, Is.EqualTo(3));
+            GameStatistics.ResetGameStatistics();
         }
 
         [Test]
@@ -67,6 +70,7 @@ namespace Console_Crawler.GameCharacters.HostileMobs.__tests__
 
             Assert.That(player.Health, Is.LessThan(player.MaxHealth));
             Assert.That(sorcerer.Health, Is.GreaterThan(AllEnemyStatistics.DemonicSorcerer.BaseHealth));
+            GameStatistics.ResetGameStatistics();
         }
 
         [Test]
@@ -79,6 +83,7 @@ namespace Console_Crawler.GameCharacters.HostileMobs.__tests__
 
             Assert.That(sorcerer.Health, Is.LessThan(AllEnemyStatistics.DemonicSorcerer.BaseHealth));
             Assert.That(sorcerer.Attack, Is.GreaterThan(AllEnemyStatistics.DemonicSorcerer.BaseAttack));
+            GameStatistics.ResetGameStatistics();
         }
     }
 }

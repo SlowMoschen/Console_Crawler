@@ -1,4 +1,5 @@
 ﻿using Console_Crawler.GameVariables;
+using Console_Crawler.GameVariables.Statistics;
 using Console_Crawler.GameVariables.Statistics.PlayerStatistics;
 using Console_Crawler.GameVariables.Statistics.WeaponStatistics;
 using Console_Crawler.Weapons;
@@ -66,12 +67,12 @@ namespace Console_Crawler.GameCharacters.__tests__
         public void Player_DecrementBuffTurns_Test()
         {
             Player player = new Player("TestPlayer", PlayerStats.InitialAttack, PlayerStats.InitialArmor, PlayerStats.InitialStrength, PlayerStats.InitialHealth);
-            player.EffectTurns.StrenghtBuffTurns = 1;
+            player.EffectTurns.BuffedTurns = 1;
             player.Strength = 10;
 
             player.DecrementBuffTurns();
 
-            Assert.That(player.EffectTurns.StrenghtBuffTurns, Is.EqualTo(0));
+            Assert.That(player.EffectTurns.BuffedTurns, Is.EqualTo(0));
             Assert.That(player.Strength, Is.EqualTo(PlayerStats.InitialStrength));
         }
 
@@ -86,6 +87,8 @@ namespace Console_Crawler.GameCharacters.__tests__
 
             Assert.That(player.Health, Is.EqualTo(50 + GameSettings.General.RestHealthRegen));
             Assert.That(player.Endurance, Is.EqualTo(50 + GameSettings.General.RestEnduranceRegen));
+            Assert.That(GameStatistics.TotalRests, Is.EqualTo(1));
+            GameStatistics.ResetGameStatistics();
         }
 
         [Test]
@@ -97,6 +100,7 @@ namespace Console_Crawler.GameCharacters.__tests__
             player.NormalAttack(target);
 
             Assert.That(target.Health, Is.EqualTo(100 - player.CurrentWeapon.AttackDamage));
+            GameStatistics.ResetGameStatistics();
         }
 
         [Test]
@@ -120,6 +124,7 @@ namespace Console_Crawler.GameCharacters.__tests__
             player.UseSpecialAttack(target);
 
             Assert.That(target.Health, Is.LessThan(100));
+            GameStatistics.ResetGameStatistics();
         }
 
         [Test]
@@ -161,6 +166,7 @@ namespace Console_Crawler.GameCharacters.__tests__
             player.AddEXP(50);
 
             Assert.That(player.EXP, Is.EqualTo(50));
+            GameStatistics.ResetGameStatistics();
         }
     }
 }

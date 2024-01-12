@@ -36,7 +36,7 @@ namespace Console_Crawler.DungeonBuilder
                 
                 if(difficulty == "Dev")
                 {
-                    enemies.Add(GetNormalEnemy("Assassin"));
+                    enemies.Add(GetNormalEnemy("Zombie"));
                     break;
                 }
 
@@ -106,10 +106,14 @@ namespace Console_Crawler.DungeonBuilder
             }
         }
 
-        private static Enemy GetMiniBoss()
+        private static Enemy GetMiniBoss(string miniBossType = "")
         {
-            string[] miniBossTypes = DungeonSettings.MiniBossTypes;
-            string miniBossType = miniBossTypes[Randomizer.GetRandomNumber(miniBossTypes.Length)];
+            // If no miniBossType is specified, get a random miniBossType
+            if(miniBossType == "")
+            {
+                string[] miniBossTypes = DungeonSettings.MiniBossTypes;
+                miniBossType = miniBossTypes[Randomizer.GetRandomNumber(miniBossTypes.Length)];
+            }
 
             switch (miniBossType)
             {
@@ -122,6 +126,11 @@ namespace Console_Crawler.DungeonBuilder
                     return new DemonicSorcerer(
                         name: "Demonic Sorcerer",
                         enemyStatistics: AllEnemyStatistics.DemonicSorcerer
+                        );
+                case "Goblin King":
+                    return new GoblinKing(
+                        name: "Goblin King",
+                        enemyStatistics: AllEnemyStatistics.GoblinKing
                         );
                 default:
                     return new GiantSpider(
