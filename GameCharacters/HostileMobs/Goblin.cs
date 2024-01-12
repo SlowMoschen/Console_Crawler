@@ -34,6 +34,7 @@ namespace Console_Crawler.GameCharacters.HostileMobs
                 target.Health -= damage;
                 this.DealtDamage = damage;
                 GameStatistics.AddTotalDamageDealt(damage);
+                Console.WriteLine($" {this.Name} attacked you for {damage} damage.");
             }
 
             if (target.Inventory.Gold >= this.StealAmount)

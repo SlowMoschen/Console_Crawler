@@ -61,6 +61,8 @@ namespace Console_Crawler.GameCharacters
             {
                 this.Endurance = this.MaxEndurance;
             }
+
+            Console.WriteLine($" You rested and gained {GameSettings.General.RestHealthRegen} health and {GameSettings.General.RestEnduranceRegen + GameSettings.General.RoundEnduranceRegen} endurance!");
         }
 
         public void RegenEndurance()
@@ -83,6 +85,7 @@ namespace Console_Crawler.GameCharacters
                 {
                     target.Effects.IsDefending = false;
                     Console.WriteLine($" You tried to attack {target.Name}, but they successfully defended the attack!");
+                    this.Endurance -= this.CurrentWeapon.WeaponStats.EnduranceCost;
                     return;
                 }
                 else
@@ -111,6 +114,7 @@ namespace Console_Crawler.GameCharacters
                 {
                     target.Effects.IsDefending = false;
                     Console.WriteLine($" You tried to kick {target.Name}, but they successfully defended the attack!");
+                    this.Endurance -= GameSettings.General.KickEnduranceCost;
                     return;
                 }
                 else
@@ -258,6 +262,7 @@ namespace Console_Crawler.GameCharacters
                 GameBools.IsInBattle = false;
                 GameBools.RanAway = true;
                 GameBools.IsInMenu = true;
+                DisplayManager.WaitForInput();
             }
             return;
         }

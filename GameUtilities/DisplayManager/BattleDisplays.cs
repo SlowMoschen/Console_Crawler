@@ -7,55 +7,6 @@ namespace Console_Crawler.GameUtilities.DisplayManager
 {
     internal partial class DisplayManager
     {
-
-        private static void DisplayRoundResults( Player player, Enemy enemy, string playerMove, string optionChoice)
-        {
-            DisplayPlayerMove(player, enemy, playerMove, optionChoice);
-        }
-
-        private static void DisplayPlayerMove( Player player, Enemy enemy, string playerMove, string optionChoice )
-        {
-            switch (playerMove)
-            {
-                case "Attack":
-                    break;
-                case "Rest":
-                    Console.WriteLine($" You rested and gained {GameSettings.General.RestHealthRegen} health and {GameSettings.General.RestEnduranceRegen + GameSettings.General.RoundEnduranceRegen} endurance!");
-                    break;
-                case "Use Potion":
-                    Console.WriteLine($" You used a {optionChoice}!");
-                    if (optionChoice == "Health Potion")
-                    {
-                        Console.WriteLine($" You gained {ItemSettings.ItemEffect.HealPotion} health!");
-                    }
-                    if (optionChoice == "Strength Potion")
-                    {
-                        Console.WriteLine(" Your next attacks will deal double the damage!");
-                    }
-                    if (optionChoice == "Endurance Potion")
-                    {
-                        Console.WriteLine($" You gained {ItemSettings.ItemEffect.EndurancePotion} endurance!");
-                    }
-                    break;
-                case "Defend":
-                    if (player.Effects.IsDefending)
-                    {
-                        Console.WriteLine(" You are Defending the next attack!");
-                    }
-                    else
-                    { 
-                        Console.WriteLine(" You successfully defended the attack!");
-                    }
-                    break;
-                case "Run":
-                    Console.WriteLine(" You ran away from the battle!");
-                    break;
-                case "Stunned":
-                    Console.WriteLine(" You are stunned and can't do anything!");
-                    break;
-            }
-        }
-
         private static void DisplayEnemyDeath( Enemy enemy, int goldAmount )
         {
             Console.WriteLine($" You have defeated the {enemy.Name}!");

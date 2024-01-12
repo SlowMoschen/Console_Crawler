@@ -45,6 +45,12 @@ namespace Console_Crawler.GameCharacters
             return baseStat + level * scaleRating;
         }
 
+        public override void Defend()
+        {
+            base.Defend();
+            Console.WriteLine($" {this.Name} is defending the next attack!");
+        }
+
         public EnemyAction GetRandomAction()
         {
             int choice = random.Next(0, 3);

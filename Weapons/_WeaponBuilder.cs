@@ -53,6 +53,7 @@ namespace Console_Crawler.Weapons
                 {
                     target.Effects.IsDefending = false;
                     Console.WriteLine($" You tried to use {this.WeaponStats.SpecialAttackName}, but the enemy successfully defended the attack!");
+                    player.Endurance -= this.WeaponStats.SpecialEnduranceCost;
                     return;
                 }
                 else

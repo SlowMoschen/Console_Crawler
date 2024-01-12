@@ -83,18 +83,16 @@ namespace Console_Crawler.GameUtilities.DisplayManager
             Console.WriteLine();
 
             string battleChoice;
-            string optionChoice = "";
-            string enemyMove = "";
 
             // Check if player is stunned and skip turn if true
             if(!player.Effects.IsStunned)
             {
                 battleChoice = GetPlayerBattleChoice();
-                optionChoice = HandlePlayerBattleChoice(battleChoice, player, enemy);
+                HandlePlayerBattleChoice(battleChoice, player, enemy);
             }
             else
             {
-                battleChoice = "Stunned";
+                Console.WriteLine(" You are stunned and can't move!");
                 player.Effects.IsStunned = false;
             }
 
@@ -107,7 +105,6 @@ namespace Console_Crawler.GameUtilities.DisplayManager
             player.DecrementBuffTurns();
             player.ApplyOverTimeEffects(enemy);
             enemy.DecrementBuffTurns();
-            DisplayPlayerMove(player, enemy, battleChoice, optionChoice);
 
             // Only execute enemy move if enemy is alive
             if (enemy.Health >= 0)
@@ -167,6 +164,8 @@ namespace Console_Crawler.GameUtilities.DisplayManager
                     {
                         Console.WriteLine(" You don't have any potions!");
                         WaitForInput();
+                        Console.Clear();
+                        EnemyBattle(player, enemy);
                         break;
                     }
                     string potionChoice = player.ChoosePotion();

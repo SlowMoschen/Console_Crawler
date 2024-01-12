@@ -1,5 +1,6 @@
 Patch 1.2.1:
 
+	- Fixed a bug where the Enemy could do nothing.
 	- Fixed a bug with Input validation in the Menues.
 	- Reworked the Enemy's Move Output in the Console.
 

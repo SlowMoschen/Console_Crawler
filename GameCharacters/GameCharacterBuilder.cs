@@ -57,10 +57,9 @@ namespace Console_Crawler.GameCharacters
             this.DealtDamage = 0;
         }
 
-        public void Defend()
+        public virtual void Defend()
         {
             this.Effects.IsDefending = true;
-            Console.WriteLine($" {this.Name} is defending next turn.");
         }
 
         public virtual void DecrementBuffTurns()
