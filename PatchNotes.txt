@@ -4,6 +4,7 @@ Patch 1.2.1:
 	- Fixed a bug with Input validation in the Menues.
 	- Fixed a bug where after trying to use an Item in Battle, even if the Player had no Items, the round would continue without a player choice.
 	- Reworked the Enemy's Move Output in the Console.
+	- Reworked the Player's Move Output in the Console.
 
 Patch 1.2.0:
 
