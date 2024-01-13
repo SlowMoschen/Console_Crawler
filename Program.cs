@@ -47,10 +47,10 @@ class Program
                     GameBools.IsInBattle = true;
                     DisplayManager.StartDungeon(player);
                     break;
-                case "Shop":
+                case "Shopping District":
                     GameBools.IsInMenu = false;
                     GameBools.IsInShop = true;
-                    DisplayManager.DisplayShopMenu(player);
+                    DisplayManager.DisplayAllShops(player);
                     break;
                 case "Inventory":
                     GameBools.IsInMenu = false;
@@ -65,6 +65,7 @@ class Program
                 case "Game Infos":
                     GameBools.IsInMenu = false;
                     GameBools.IsInTutorial = true;
+                    DisplayManager.DisplayGameInfosMenu();
                     break;
                 case "Save Game":
                     if(SaveGameManager.SaveGameToFile(player))

@@ -50,5 +50,21 @@ namespace Console_Crawler.Weapons.__tests__
             //Assert
             Assert.That(player.Endurance, Is.EqualTo(95));
         }
+
+        [Test]
+        public void Weapon_Level_Constructor_Test()
+        {
+           Player player = new Player("TestPlayer", 1, 1, 1.0, 1);
+           player.AddEXP(100);
+           player.AddEXP(200);
+           player.AddEXP(300);
+
+           Assert.That(player.Level, Is.EqualTo(4));
+
+           Sword sword = new Sword();
+            
+           Assert.That(sword.AttackDamage, Is.InRange(42, 50));
+           Assert.That(sword.SpecialAttackDamage, Is.InRange(55, 60));
+        }
     }
 }

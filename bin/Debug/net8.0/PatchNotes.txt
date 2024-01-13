@@ -1,5 +1,15 @@
+Patch 1.3.0:
+
+	New Features:
+		- Implemented the Shopping District.
+		- Implemented a Renewal Resavoir in the Shoppping District to get full Health and Endurance back for an amount of Gold.
+
+	- Fixed a bug where the Game would crash when the Player would try to enter the Gameinfos in the Main Menu.
+	- Added information about the Shopping District in the Tutorial.
+
 Patch 1.2.2:
 
+	- Fixed a bug where the Game would crash when fighting the Goblin King or a Goblin.
 	- Fixed a bug where the gold would not be applied after Enemy death.
 
 Patch 1.2.1:

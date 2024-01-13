@@ -11,11 +11,17 @@ namespace Console_Crawler.GameVariables
         }.Where(option => option != null).ToArray();
         public static string[] BattleOptions { get; } = { "Attack", "Rest", "Use Item", "Defend", "Run Away" };
         public static string[]? AttackOptions { get; set; }
-        public static string[] MainMenuOptions { get; } = { "Enter Dungeon", "Shop", "Inventory", "Stats", "Game Infos", "Save Game" };
-        public static string[] ShopMenuOptions { get; } = { "Buy", "Exit Shop" };
-        public static string[] ShopItems { get; } = { "Heal Potion", "Strength Potion", "Endurance Potion", "Go Back" };
+        public static string[] MainMenuOptions { get; } = { "Enter Dungeon", "Shopping District", "Inventory", "Stats", "Game Infos", "Save Game" };
         public static string[] InventoryMenuOptions { get; } = { "Use Item", "Exit Inventory" };
         public static string[] StatsMenuOptions { get; } = { $"{PlayerStats.Name} Statistics", "Game Statistics", "Exit Stats" };
-        public static string[] GameInfosMenuOptions { get; } = { "Gameplay", "Battle", "Items", "Weapons", "Enemies", "Credits", "All", "Exit Game Infos" };
+        public static string[] GameInfosMenuOptions { get; } = { "Gameplay", "Battle", "Shopping District", "Items", "Weapons", "Enemies", "Credits", "All", "Exit Game Infos" };
+
+        public class ShopMenues
+        {
+            public static string[] AllShops { get; } = { "Galen's Renewal Resavoir", "Talia's Potion Shop", "Leave Shopping District" };
+            public static string[] ShopMenuOptions { get; } = { "Buy", "Exit Shop" };
+            public static string[] PotionShopItems { get; } = { "Heal Potion", "Strength Potion", "Endurance Potion", "Go Back" };
+            public static string[] RenewalResavoirItems { get; } = { "Renew Yourself", "Go Back" };
+        }
     }
 }

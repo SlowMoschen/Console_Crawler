@@ -1,4 +1,5 @@
-﻿using Console_Crawler.GameVariables.Statistics.PlayerStatistics;
+﻿using Console_Crawler.GameCharacters;
+using Console_Crawler.GameVariables.Statistics.PlayerStatistics;
 using System.Reflection;
 
 namespace Console_Crawler.GameVariables
@@ -14,18 +15,43 @@ namespace Console_Crawler.GameVariables
 
         internal class ItemPrice
         {
-            public static int HealPotion { get; } = 15;
-            public static int StrengthPotion { get; } = 35;
-            public static int EndurancePotion { get; } = 25;
+            public class Potions
+            { 
+                public static int HealPotion { get; } = 15;
+                public static int EndurancePotion { get; } = 25;
+                public static int StrengthPotion { get; } = 35;
+            }
 
-            //Method to store all the prices in an array
-            public static string[] GetAllItemPrices()
+            public class RenewalResavoir
             {
-                PropertyInfo[] properties = typeof(ItemPrice).GetProperties();
+                public static int CalculateRenewalPrice(Player player)
+                { 
+                    int missingHealth = CalculateMissingStat(player.Health, player.MaxHealth);
+                    int missingEndurance = CalculateMissingStat(player.Endurance, player.MaxEndurance);
+
+                    return CalculatePotionPrice(missingStat: missingHealth, potionEffect: ItemEffect.HealPotion, potionPrice: Potions.HealPotion) + CalculatePotionPrice(missingStat: missingEndurance, potionEffect: ItemEffect.EndurancePotion, potionPrice: Potions.EndurancePotion);
+                }
+
+                private static int CalculateMissingStat(int currentStat, int maxStat)
+                {
+                    return maxStat - currentStat;
+                }
+
+                private static int CalculatePotionPrice(int missingStat, int potionEffect, int potionPrice)
+                {
+                    int potionsNeeded = missingStat / potionEffect;
+                    return potionsNeeded * potionPrice;
+                }
+            }
+
+            //Method to store all Item Prices wich are asked for in the Shop
+            public static string[] GetAllItemPrices(Type askedPrices)
+            {
+                PropertyInfo[] properties = askedPrices.GetProperties();
 
                 List<string> prices = new List<string>();
                 foreach (PropertyInfo property in properties) {
-                   prices.Add(property.GetValue(null).ToString() + "G");
+                   prices.Add(property.GetValue(null, null).ToString() + "G");
                 }
 
                 //Add empty String for the Exit option

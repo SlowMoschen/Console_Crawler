@@ -16,26 +16,23 @@ namespace Console_Crawler.GameUtilities.DisplayManager
             return DisplayOptionsMenu("What would you like to do?", MenuOptions.MainMenuOptions);
         }
 
-        public static void DisplayShopMenu(Player player)
+        public static void DisplayAllShops(Player player)
         {
             while (GameBools.IsInShop)
             {
                 Console.Clear();
-                DisplayHeader("Shop");
-                string shopMenuChoice = DisplayOptionsMenu("What would you like to do?", MenuOptions.ShopMenuOptions);
+                DisplayHeader("Shopping District");
+                string shopChoice = DisplayOptionsMenu("What would you like to do?", MenuOptions.ShopMenues.AllShops);
 
-                switch (shopMenuChoice)
+                switch (shopChoice)
                 {
-                    case "Buy":
-                         
-                        if(player.Inventory.Gold < 0)
-                        {
-                            Console.WriteLine(" You don't have enough gold to buy anything.");
-                        }
-
-                        DisplayBuyingShop(player);
+                    case "Talia's Potion Shop":
+                        DisplayShopMenu(player, shopChoice);
                         break;
-                    case "Exit Shop":
+                    case "Galen's Renewal Resavoir":
+                        DisplayRenewalResavoir(player, shopChoice);
+                        break;
+                    case "Leave Shopping District":
                         GameBools.IsInShop = false;
                         GameBools.IsInMenu = true;
                         break;
@@ -112,6 +109,9 @@ namespace Console_Crawler.GameUtilities.DisplayManager
                         break;
                     case "Battle":
                         DisplayBattleInfos();
+                        break;
+                    case "Shopping District":
+                        DisplayShoppingDistrictInfos();
                         break;
                     case "Items":
                         DisplayItemInfos();

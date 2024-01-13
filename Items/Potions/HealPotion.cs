@@ -7,7 +7,7 @@ namespace Console_Crawler.Items.Potions
         public HealPotion() : base("", "", "", 0, ItemSettings.ItemMaxQuantity.HealPotion, 0)
         {
             this.EffectValue = ItemSettings.ItemEffect.HealPotion;
-            this.Price = ItemSettings.ItemPrice.HealPotion;
+            this.Price = ItemSettings.ItemPrice.Potions.HealPotion;
             this.Name = "Heal Potion";
             this.Description = $"Heals the player for {this.EffectValue} health.";
             this.Type = "Health Potion";

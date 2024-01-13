@@ -72,11 +72,11 @@ namespace Console_Crawler.GameUtilities.DisplayManager
             Array.Resize(ref itemsCount, itemsCount.Length + 1);
             itemsCount[itemsCount.Length - 1] = "";
 
-            string itemChoice = DisplayOptionsMenu(" What would you like to buy?", itemNames, itemsCount);
+            string itemChoice = DisplayOptionsMenu(" What would you like to use?", itemNames, itemsCount);
 
             if (itemChoice == "Go Back")
             {
-                DisplayShopMenu(player);
+                DisplayInventoryMenu(player);
                 return "";
             }
 

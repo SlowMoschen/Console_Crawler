@@ -15,6 +15,8 @@ namespace Console_Crawler.GameUtilities.DisplayManager
             Console.Clear();
             DisplayBattleInfos();
             Console.Clear();
+            DisplayShoppingDistrictInfos();
+            Console.Clear();
             DisplayItemInfos();
             Console.Clear();
             DisplayWeaponInfos();
@@ -98,6 +100,30 @@ namespace Console_Crawler.GameUtilities.DisplayManager
             WaitForInput();
         }
 
+        private static void DisplayShoppingDistrictInfos()
+        {
+            DisplayHeader("Shopping District Infos");
+            Console.WriteLine();
+            Console.WriteLine(" The Shopping District is where you can buy useful items for the battle or restore your health and endurance for gold.");
+            Console.WriteLine();
+            Console.WriteLine(" Shopping District:");
+            Console.WriteLine();
+            Console.WriteLine("     Talia's Potion Shop:");
+            Console.WriteLine();
+            Console.WriteLine($"        You can buy potions here to heal, increase your strength or to regenerate your endurance.");
+            Console.WriteLine($"        You can buy a maximum of {ItemSettings.ItemMaxQuantity.HealPotion} Heal Potions.");
+            Console.WriteLine($"        You can buy a maximum of {ItemSettings.ItemMaxQuantity.EndurancePotion} Endurance Potions.");
+            Console.WriteLine($"        You can buy a maximum of {ItemSettings.ItemMaxQuantity.StrengthPotion} Strength Potions.");
+            Console.WriteLine();
+            Console.WriteLine("     Galen's Renewal Resavoir:");
+            Console.WriteLine();
+            Console.WriteLine($"        You can renew yourself here for gold.");
+            Console.WriteLine($"        You will be fully healed and your Endurance will be restored.");
+            Console.WriteLine("         The Price will be roughly calculated on your missing Health and Endurance.");
+            Console.WriteLine();    
+            WaitForInput();
+        }
+
         private static void DisplayItemInfos()
         {
             DisplayHeader("Items Infos");
@@ -109,17 +135,17 @@ namespace Console_Crawler.GameUtilities.DisplayManager
             Console.WriteLine($"        The healing is scaling with the Playerlevel.");
             Console.WriteLine();
             Console.WriteLine($"        Heals you for {ItemSettings.ItemEffect.HealPotion} health.");
-            Console.WriteLine($"        Costs {ItemSettings.ItemPrice.HealPotion} gold.");
+            Console.WriteLine($"        Costs {ItemSettings.ItemPrice.Potions.HealPotion} gold.");
             Console.WriteLine();
             Console.WriteLine("     Strength Potion:");
             Console.WriteLine();
             Console.WriteLine($"        Increases your strength for {GameSettings.EffectDurations.StrengthPotion} turns.");
-            Console.WriteLine($"        Costs {ItemSettings.ItemPrice.StrengthPotion} gold.");
+            Console.WriteLine($"        Costs {ItemSettings.ItemPrice.Potions.StrengthPotion} gold.");
             Console.WriteLine();
             Console.WriteLine("     Endurance Potion:");
             Console.WriteLine();
             Console.WriteLine($"        Regenerates {ItemSettings.ItemEffect.StrengthPotion} endurance.");
-            Console.WriteLine($"        Costs {ItemSettings.ItemPrice.EndurancePotion} gold.");
+            Console.WriteLine($"        Costs {ItemSettings.ItemPrice.Potions.EndurancePotion} gold.");
             WaitForInput();
         }
 

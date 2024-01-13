@@ -7,7 +7,7 @@ namespace Console_Crawler.Items.Potions
         public EndurancePotion() : base("", "", "", 0, ItemSettings.ItemMaxQuantity.EndurancePotion, 0)
         {
             EffectValue = ItemSettings.ItemEffect.EndurancePotion;
-            Price = ItemSettings.ItemPrice.EndurancePotion;
+            Price = ItemSettings.ItemPrice.Potions.EndurancePotion;
             Name = "Endurance Potion";
             Description = $"Gives you {this.EffectValue} endurance.";
             Type = "Endurance Potion";
