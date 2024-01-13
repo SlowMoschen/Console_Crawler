@@ -1,3 +1,7 @@
+Patch 1.2.2:
+
+	- Fixed a bug where the gold would not be applied after Enemy death.
+
 Patch 1.2.1:
 
 	- Fixed a bug where the Enemy could do nothing.

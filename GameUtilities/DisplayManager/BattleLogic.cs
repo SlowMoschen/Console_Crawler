@@ -196,10 +196,12 @@ namespace Console_Crawler.GameUtilities.DisplayManager
 
             // check if enemy is Goblin or GoblinKing and get random number between Goblin Base Gold and the gold that the goblin has stolen - or just get the gold if not a goblin
             int goldAmount = enemy is Goblin
-                ? Randomizer.GetRandomNumber(AllEnemyStatistics.Goblin.Gold, enemy.Gold) 
+                ? Randomizer.GetRandomNumber(enemy.Gold, AllEnemyStatistics.Goblin.Gold) 
                 :enemy is GoblinKing
-                    ? Randomizer.GetRandomNumber(AllEnemyStatistics.Goblin.Gold, enemy.Gold)
+                    ? Randomizer.GetRandomNumber(enemy.Gold, AllEnemyStatistics.GoblinKing.Gold)
                     : enemy.Gold;
+            
+            player.Inventory.AddGold(goldAmount);
 
             DisplayEnemyDeath(enemy, goldAmount);
         }
