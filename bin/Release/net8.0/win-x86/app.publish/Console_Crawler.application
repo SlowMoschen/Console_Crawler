@@ -7,14 +7,14 @@
     <framework targetVersion="4.5" profile="Full" supportedRuntime="4.0.30319" />
   </compatibleFrameworks>
   <dependency>
-    <dependentAssembly dependencyType="install" codebase="Application Files\Console_Crawler_1_3_1_0\Console_Crawler.dll.manifest" size="4653">
+    <dependentAssembly dependencyType="install" codebase="Application Files\Console_Crawler_1_3_1_0\Console_Crawler.dll.manifest" size="5151">
       <assemblyIdentity name="Console_Crawler.exe" version="1.3.1.0" publicKeyToken="0000000000000000" language="de-AT" processorArchitecture="msil" type="win32" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>GmB/lUtQPaj8wKfZ8NNsLwLGa/2Z2Ni1X0GbWHFcfBE=</dsig:DigestValue>
+        <dsig:DigestValue>dT3LQ2Gt1EbCos4U989cfVrrslC9u/rocouk3u8LqQ4=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
