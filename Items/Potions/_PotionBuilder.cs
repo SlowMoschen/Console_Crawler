@@ -17,7 +17,7 @@ namespace Console_Crawler.Items.Potions
             {
                 GameStatistics.AddTotalItemUsed();
 
-                switch (Type)
+                switch (Name)
                 {
                     case "Health Potion":
                         target.Health += EffectValue;

@@ -1,0 +1,77 @@
+Patch 1.3.1:
+	
+	- Implemented current gold display in Renewal Resavoir.
+	- Fixed a bug where the Weapon would not be set properly when loading a Game.
+	- Fixed a bug where the Potions were'nt set properly when loading a Game and cannot be used.
+
+Patch 1.3.0:
+
+	New Features:
+		- Implemented the Shopping District.
+		- Implemented a Renewal Resavoir in the Shoppping District to get full Health and Endurance back for an amount of Gold.
+
+	- Fixed a bug where the Game would crash when the Player would try to enter the Gameinfos in the Main Menu.
+	- Added information about the Shopping District in the Tutorial.
+
+Patch 1.2.2:
+
+	- Fixed a bug where the Game would crash when fighting the Goblin King or a Goblin.
+	- Fixed a bug where the gold would not be applied after Enemy death.
+
+Patch 1.2.1:
+
+	- Fixed a bug where the Enemy could do nothing.
+	- Fixed a bug with Input validation in the Menues.
+	- Fixed a bug where after trying to use an Item in Battle, even if the Player had no Items, the round would continue without a player choice.
+	- Reworked the Enemy's Move Output in the Console.
+	- Reworked the Player's Move Output in the Console.
+
+Patch 1.2.0:
+
+	New Features:
+		- *!*!* Implemented a new Feature to save and load the Game *!*!*.
+		- Implemented a new Mini Boss: The Goblin King.
+	
+	Potion Changes:
+		- Changed the maximum amount of Healing Potions from 5 to 10.
+
+	- Inputs are now case insensitive.
+
+
+
+Patch 1.1.2:
+	- Fixed a Bug where Healing Potions would not scale correctly.
+	- Fixed a Bug where using a Potion would not count for the overall Gamestatistics.
+	- Fixed Console Output for Assassin's Backstab and Dragons Tailstrike.
+
+Patch 1.1.1:
+
+	New Features:
+		- Added a new feature to stay in buying menu after buying an item.
+		- Added a new feature to leave the Use Item menu in the Inventory.
+
+    Enemy changes:
+		- Goblins Attackdamage was increased from 5 to 10.
+		- Zombies Attackdamage was increased from 10 to 12.
+		- Spiders Attackdamage was increased from 10 to 20.
+
+	- Fixed a bug for the Enemy's scaling system.
+	- Fixed a bug where an Item would be completely removed from the Inventory when it was used.
+	- Fixed a bug where the Game would crash when trying to exit the buying menu in the shop.
+	- Added information about Healing Potions scaling in the tutorial.
+
+
+Patch 1.1.0:
+
+	New Features:
+		- Implemented Player's Core Stats in the Main Menu and Inventory Menu.
+		- Added a new Header and sub-Header System for better looks and differentiation.
+
+	- Fixed a bug where the Game would crash when a Player would collect Gold from a Goblin.
+	- Fixed a bug with the Goblin's Gold System.
+	- Fixed a bug where an Item would not be removed from the Inventory when it was used.
+
+Patch 1.0.8:
+
+	- Fixed a bug where the Player would not be revived correctly.
+	- Fixed a bug where the Attackchoice would not be printed out correctly.

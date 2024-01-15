@@ -21,7 +21,7 @@ namespace Console_Crawler.GameUtilities.DisplayManager
         {
             Console.Clear();
             DisplaySubHeader("Use Item");
-            player.PrintStats();
+            player.PrintCoreStats();
 
             if(player.Inventory.Items.Count == 0)
             {
@@ -61,18 +61,7 @@ namespace Console_Crawler.GameUtilities.DisplayManager
 
         private static string GetInventoryItemChoice(Player player)
         {
-            string[] itemsCount = player.Inventory.GetAllItemsCount();
-            string[] itemNames = player.Inventory.GetAllItemsTypes();
-
-            // add Exit option to the end of the names array
-            Array.Resize(ref itemNames, itemNames.Length + 1);
-            itemNames[itemNames.Length - 1] = "Go back";
-
-            // add empty string to the end of the count array
-            Array.Resize(ref itemsCount, itemsCount.Length + 1);
-            itemsCount[itemsCount.Length - 1] = "";
-
-            string itemChoice = DisplayOptionsMenu(" What would you like to use?", itemNames, itemsCount);
+            string itemChoice = player.ChoosePotion();
 
             if (itemChoice == "Go Back")
             {

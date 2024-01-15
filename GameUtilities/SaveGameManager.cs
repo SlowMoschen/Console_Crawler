@@ -1,5 +1,8 @@
 ﻿using Console_Crawler.GameCharacters;
 using Console_Crawler.GameVariables.Statistics;
+using Console_Crawler.Items;
+using Console_Crawler.Items.Potions;
+using Console_Crawler.GameUtilities.DisplayManager;
 using Newtonsoft.Json;
 
 namespace Console_Crawler.GameUtilities
@@ -129,6 +132,28 @@ namespace Console_Crawler.GameUtilities
             }
         }
 
-        
+        public static void CastInventoryItemsToPlayer( Player player, SaveGame saveGame )
+        {
+            List<Item> itemsToAdd = new List<Item>();
+            foreach (var item in saveGame.Player.Inventory.Items.ToList())
+            {
+                if (item.Type == "Potion")
+                {
+                    Item potion = DisplayManager.DisplayManager.GenerateItem(item.Name);
+                    for (int i = 1; i <= item.Quantity; i++)
+                    {
+                        itemsToAdd.Add(potion);
+                    }
+                }
+
+                //remove item from SaveGame Inventory
+                saveGame.Player.Inventory.Items.Remove(item);
+            }
+
+            foreach (var item in itemsToAdd)
+            {
+                player.Inventory.AddItem(item);
+            }
+        }
     }
 }

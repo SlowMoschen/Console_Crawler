@@ -10,7 +10,7 @@ namespace Console_Crawler.Items.Potions
             Price = ItemSettings.ItemPrice.Potions.EndurancePotion;
             Name = "Endurance Potion";
             Description = $"Gives you {this.EffectValue} endurance.";
-            Type = "Endurance Potion";
+            Type = "Potion";
         }
     }
 }

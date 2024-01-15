@@ -92,6 +92,7 @@ namespace Console_Crawler.GameUtilities.DisplayManager
             Console.WriteLine();
             Console.WriteLine($" Renewal Price: {renewalPrice} gold");
             Console.WriteLine();
+            Console.WriteLine($" Your Gold: {player.Inventory.Gold} gold");
             player.PrintCoreStats();
             
             string itemChoice = GetShopItemChoice(shopChoice);
@@ -196,12 +197,12 @@ namespace Console_Crawler.GameUtilities.DisplayManager
             }
         }
 
-        private static Item GenerateItem(string itemChoice)
+        public static Item GenerateItem(string itemChoice)
         {
             switch (itemChoice)
             {
-                case "Heal Potion":
-                    return new HealPotion();
+                case "Health Potion":
+                    return new HealthPotion();
                 case "Strength Potion":
                     return new StrengthPotion();
                 case "Endurance Potion":

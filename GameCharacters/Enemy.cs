@@ -1,5 +1,7 @@
 ﻿using Console_Crawler.GameVariables.Statistics.PlayerStatistics;
 using Console_Crawler.GameVariables.Statistics.EnemyStatistics.Builder;
+using Console_Crawler.GameCharacters.HostileMobs.Bosses;
+using Console_Crawler.GameCharacters.HostileMobs;
 
 // This is the base class for all game Enemies
 // Cannot be used directly - must be inherited from - because the stats will be set in the constructor of the inherited class
@@ -92,6 +94,15 @@ namespace Console_Crawler.GameCharacters
                     move = ExecuteSpecialAttack(target);
                     break;
                 case EnemyAction.Defend:
+
+                    // Stone Golems and Dragons cannot defend
+                    if(this is StoneGolem || this is Dragon)
+                    {
+                        this.NormalAttack(target);
+                        move = "Normal Attack";
+                        break;
+                    }
+
                     this.Defend();
                     move = "Defend";
                     break;

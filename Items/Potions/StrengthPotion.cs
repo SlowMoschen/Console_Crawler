@@ -10,7 +10,7 @@ namespace Console_Crawler.Items.Potions
             Price = ItemSettings.ItemPrice.Potions.StrengthPotion;
             Name = "Strength Potion";
             Description = "Your next attacks will deal double the damage";
-            Type = "Strength Potion";
+            Type = "Potion";
         }
     }
 }

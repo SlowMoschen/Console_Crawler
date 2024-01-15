@@ -20,7 +20,7 @@ namespace Console_Crawler.GameVariables
         {
             public static string[] AllShops { get; } = { "Galen's Renewal Resavoir", "Talia's Potion Shop", "Leave Shopping District" };
             public static string[] ShopMenuOptions { get; } = { "Buy", "Exit Shop" };
-            public static string[] PotionShopItems { get; } = { "Heal Potion", "Strength Potion", "Endurance Potion", "Go Back" };
+            public static string[] PotionShopItems { get; } = { "Health Potion", "Strength Potion", "Endurance Potion", "Go Back" };
             public static string[] RenewalResavoirItems { get; } = { "Renew Yourself", "Go Back" };
         }
     }

@@ -150,12 +150,13 @@ namespace Console_Crawler.GameUtilities.DisplayManager
             return dungeon.Rooms.All(room => room.Enemies.All(enemy => enemy.Health <= 0));
         }
 
-        private static string HandlePlayerBattleChoice(string choice, Player player, Enemy enemy)
+        private static void HandlePlayerBattleChoice(string choice, Player player, Enemy enemy)
         {
             switch (choice)
             {
                 case "Attack":
-                    return player.ChooseAttack(enemy);
+                    player.ChooseAttack(enemy);
+                    break;
                 case "Rest":
                     player.Rest();
                     break;
@@ -177,7 +178,7 @@ namespace Console_Crawler.GameUtilities.DisplayManager
                     }
 
                     player.UsePotion(potionChoice);
-                    return potionChoice;
+                    break;
                 case "Defend":
                     player.Defend();
                     break;
@@ -185,8 +186,6 @@ namespace Console_Crawler.GameUtilities.DisplayManager
                     player.RunFromBattle();
                     break;
             }
-
-            return "";
         }
 
         private static void HandleEnemyDeath(Player player, Enemy enemy)

@@ -12,22 +12,22 @@ namespace Console_Crawler.Items.Potions.__tests__
         [Test]
         public void HealPotion_Constructor_Test()
         {
-            HealPotion potion = new HealPotion();
+            HealthPotion potion = new HealthPotion();
 
             Assert.That(potion.Quantity, Is.EqualTo(1));
             Assert.That(potion.EffectValue, Is.EqualTo(ItemSettings.ItemEffect.HealPotion));
             Assert.That(potion.MaxQuantity, Is.EqualTo(ItemSettings.ItemMaxQuantity.HealPotion));
             Assert.That(potion.Price, Is.EqualTo(ItemSettings.ItemPrice.Potions.HealPotion));
-            Assert.That(potion.Name, Is.EqualTo("Heal Potion"));
+            Assert.That(potion.Name, Is.EqualTo("Health Potion"));
             Assert.That(potion.Description, Is.EqualTo($"Heals the player for {potion.EffectValue} health."));
-            Assert.That(potion.Type, Is.EqualTo("Health Potion"));
+            Assert.That(potion.Type, Is.EqualTo("Potion"));
         }
 
         [Test]
         public void HealPotion_Scaling_Test()
         {
             Player player = new Player("test", 1,1,1,10);
-            HealPotion potion = new HealPotion();
+            HealthPotion potion = new HealthPotion();
 
             player.AddEXP(100);
 
@@ -49,7 +49,7 @@ namespace Console_Crawler.Items.Potions.__tests__
             Assert.That(potion.Price, Is.EqualTo(ItemSettings.ItemPrice.Potions.EndurancePotion));
             Assert.That(potion.Name, Is.EqualTo("Endurance Potion"));
             Assert.That(potion.Description, Is.EqualTo($"Gives you {potion.EffectValue} endurance."));
-            Assert.That(potion.Type, Is.EqualTo("Endurance Potion"));
+            Assert.That(potion.Type, Is.EqualTo("Potion"));
         }
 
         [Test]
@@ -62,7 +62,7 @@ namespace Console_Crawler.Items.Potions.__tests__
             Assert.That(potion.Price, Is.EqualTo(ItemSettings.ItemPrice.Potions.StrengthPotion));
             Assert.That(potion.Name, Is.EqualTo("Strength Potion"));
             Assert.That(potion.Description, Is.EqualTo("Your next attacks will deal double the damage"));
-            Assert.That(potion.Type, Is.EqualTo("Strength Potion"));
+            Assert.That(potion.Type, Is.EqualTo("Potion"));
         }
         
     }

@@ -83,7 +83,7 @@ namespace Console_Crawler.GameCharacters.__tests__
             inventory.AddItem(item2);
 
             //Assert
-            Assert.That(inventory.GetItemQuantity("Test"), Is.EqualTo(2));
+            Assert.That(inventory.GetItemQuantity("TestItem"), Is.EqualTo(2));
         }
 
         [Test]
@@ -148,7 +148,7 @@ namespace Console_Crawler.GameCharacters.__tests__
         {
             //Arrange
             PlayerInventory inventory = new PlayerInventory();
-            HealPotion potion = new HealPotion();
+            HealthPotion potion = new HealthPotion();
 
             //Act
             inventory.AddGold(100);
@@ -163,7 +163,7 @@ namespace Console_Crawler.GameCharacters.__tests__
         {
             //Arrange
             PlayerInventory inventory = new PlayerInventory();
-            HealPotion potion = new HealPotion();
+            HealthPotion potion = new HealthPotion();
 
             //Act
             inventory.AddGold(100);
@@ -179,7 +179,7 @@ namespace Console_Crawler.GameCharacters.__tests__
         {
             //Arrange
             PlayerInventory inventory = new PlayerInventory();
-            HealPotion potion = new HealPotion();
+            HealthPotion potion = new HealthPotion();
 
             //Act
             inventory.AddGold(0);

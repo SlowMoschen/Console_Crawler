@@ -3,6 +3,7 @@ using Console_Crawler.GameUtilities;
 using Console_Crawler.GameUtilities.DisplayManager;
 using Console_Crawler.GameVariables;
 using Console_Crawler.GameVariables.Statistics;
+using Console_Crawler.GameVariables.Statistics.PlayerStatistics;
 using System.Diagnostics;
 
 class Program
@@ -20,7 +21,10 @@ class Program
         {
             DisplayManager.DisplayLoadSuccess();
             player = saveGame.Player;
+            SaveGameManager.CastInventoryItemsToPlayer(player, saveGame);
+            player.SetAttackOptions();
             GameStatistics.SetSavedGameStatistics(saveGame.GameStatistics);
+            PlayerStats.Level = player.Level;
             DisplayManager.GreetPlayerBack(player);
         }
         else
@@ -37,6 +41,7 @@ class Program
             {
                 player.Revive();
             }
+            Console.WriteLine(AppDomain.CurrentDomain.BaseDirectory);
 
             string menuChoice = DisplayManager.DisplayMainMenu(player);
 

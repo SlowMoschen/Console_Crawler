@@ -18,8 +18,8 @@ namespace Console_Crawler.GameVariables
             public class Potions
             { 
                 public static int HealPotion { get; } = 15;
-                public static int EndurancePotion { get; } = 25;
                 public static int StrengthPotion { get; } = 35;
+                public static int EndurancePotion { get; } = 25;
             }
 
             public class RenewalResavoir

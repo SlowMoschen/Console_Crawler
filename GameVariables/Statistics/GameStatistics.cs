@@ -5,7 +5,7 @@ namespace Console_Crawler.GameVariables.Statistics
 {
     internal class GameStatistics
     {
-        public static string Version { get; } = "1.3.0";
+        public static string Version { get; } = "1.3.1";
         public static int SurviedRooms { get; set; } = 0;
         public static int SurviedDungeons { get; set; } = 0;
         public static int KilledEnemies { get; set; } = 0;

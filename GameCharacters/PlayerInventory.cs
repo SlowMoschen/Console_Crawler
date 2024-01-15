@@ -16,14 +16,14 @@ namespace Console_Crawler.GameCharacters
             Gold = 0;
         }
 
-        public Item? GetExistingItem(string itemType)
+        public Item? GetExistingItem(string itemName)
         {
-            return this.Items.FirstOrDefault(i => i.Type == itemType);
+            return this.Items.FirstOrDefault(i => i.Name == itemName);
         }
 
         public void AddItem(Item item)
         {
-            var existingItem = GetExistingItem(item.Type);
+            var existingItem = GetExistingItem(item.Name);
 
             if(existingItem != null)
             {
@@ -37,7 +37,7 @@ namespace Console_Crawler.GameCharacters
 
         public void RemoveItem(Item item)
         {
-            var existingItem = GetExistingItem(item.Type);
+            var existingItem = GetExistingItem(item.Name);
 
             if(existingItem != null)
             {
@@ -62,7 +62,7 @@ namespace Console_Crawler.GameCharacters
 
             foreach(var item in this.Items)
             {
-                items.Add(GetItemQuantity(item.Type).ToString());
+                items.Add(GetItemQuantity(item.Name).ToString());
             }
 
             return items.ToArray();

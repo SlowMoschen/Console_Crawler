@@ -27,7 +27,7 @@ namespace Console_Crawler.Items.__tests__
         public void Potion_UsePotion_Test()
         {
             Player player = new Player("TestPlayer", 10, 10, 1.0, 50);
-            Potion potion = new Potion("Test Potion", "Health Potion", "Test Description", 100, 10, 10);
+            Potion potion = new Potion("Health Potion", "Health Potion", "Test Description", 100, 10, 10);
 
             potion.UsePotion(player);
 

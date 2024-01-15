@@ -48,13 +48,13 @@ namespace Console_Crawler.DungeonBuilder
             switch (chestItem)
             {
                 case "Heal Potion":
-                    return new HealPotion();
+                    return new HealthPotion();
                 case "Strength Potion":
                     return new StrengthPotion();
                 case "Endurance Potion":
                     return new EndurancePotion();
                 default:
-                    return new HealPotion();
+                    return new HealthPotion();
             }
         }
 

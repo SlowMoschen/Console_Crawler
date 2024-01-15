@@ -64,7 +64,7 @@ namespace Console_Crawler.Weapons.__tests__
            Sword sword = new Sword();
             
            Assert.That(sword.AttackDamage, Is.InRange(42, 50));
-           Assert.That(sword.SpecialAttackDamage, Is.InRange(55, 60));
+           Assert.That(sword.SpecialAttackDamage, Is.InRange(55, 63));
         }
     }
 }

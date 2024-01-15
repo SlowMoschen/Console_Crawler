@@ -2,9 +2,9 @@
 using Console_Crawler.GameUtilities;
 using Console_Crawler.GameVariables;
 using Console_Crawler.Items;
+using Console_Crawler.Items.Potions;
 using Console_Crawler.GameVariables.Statistics.PlayerStatistics;
 using Console_Crawler.GameVariables.Statistics;
-using Console_Crawler.Items.Potions;
 using Console_Crawler.GameUtilities.DisplayManager;
 
 namespace Console_Crawler.GameCharacters
@@ -212,11 +212,12 @@ namespace Console_Crawler.GameCharacters
 
             if (item != null)
             {
-                if(item is Potion)
+                if(item.Type == "Potion")
                 {
+                    //cast Item to Potion
                     Potion potion = (Potion)item;
                     
-                    switch(potion.Type)
+                    switch(potion.Name)
                     {
                         case "Health Potion":
                             potion.UsePotion(this);
@@ -235,6 +236,10 @@ namespace Console_Crawler.GameCharacters
                     }
                     this.Inventory.RemoveItem(potion);
                 }
+                else
+                {
+                    Console.WriteLine(" You can't use this item!");
+                }
             }
             else
             {
@@ -245,9 +250,17 @@ namespace Console_Crawler.GameCharacters
         public string ChoosePotion()
         {
            string[] itemsCount = this.Inventory.GetAllItemsCount();
-           string[] itemNames = this.Inventory.GetAllItemsTypes();
+           string[] itemNames = this.Inventory.GetAllItemsNames();
 
-           return InputHandler.GetChoice(" Which potion would you like to use?", itemNames, itemsCount);
+            // add Exit option to the end of the names array
+            Array.Resize(ref itemNames, itemNames.Length + 1);
+            itemNames[itemNames.Length - 1] = "Go Back";
+
+            // add empty string to the end of the count array
+            Array.Resize(ref itemsCount, itemsCount.Length + 1);
+            itemsCount[itemsCount.Length - 1] = "";
+
+            return InputHandler.GetChoice(" Which potion would you like to use?", itemNames, itemsCount);
         }
 
         public void RunFromBattle()

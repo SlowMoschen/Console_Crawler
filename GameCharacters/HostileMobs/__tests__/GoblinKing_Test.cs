@@ -64,7 +64,7 @@ namespace Console_Crawler.GameCharacters.HostileMobs.__tests__
             Player player = new Player("TestPlayer", PlayerStats.InitialAttack, PlayerStats.InitialArmor, PlayerStats.InitialStrength, PlayerStats.InitialHealth);
 
             player.Inventory.AddGold(100);
-            player.Inventory.AddItem(new HealPotion());
+            player.Inventory.AddItem(new HealthPotion());
 
             goblinKing.EnemyStats.ItemStealChance = 100;
 
