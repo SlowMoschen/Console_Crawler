@@ -180,6 +180,7 @@ namespace Console_Crawler.GameCharacters
                 this.Health = this.MaxHealth;
                 this.Endurance = this.MaxEndurance;
                 Console.WriteLine(" You leveled up!");
+                Console.WriteLine($" You are now level {this.Level}!");
             }
         }
 

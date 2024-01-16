@@ -60,7 +60,7 @@
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>HiNxWViveFiqg0PADOds1fMmF8EE/vN2KDDFLesIKUs=</dsig:DigestValue>
+      <dsig:DigestValue>57HiWG26yPd757Ysm1e1qsuE6YHO+lYrUHv1UDRPtFc=</dsig:DigestValue>
     </hash>
   </file>
   <file name="icons8-dungeon-32.ico" size="4286">
@@ -81,13 +81,13 @@
       <dsig:DigestValue>UotnuPg5+uPz8+3CbB+gfeqR6uMRr/rxzT0D4zYX7j8=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="PatchNotes.txt" size="2940">
+  <file name="PatchNotes.txt" size="3110">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>RLR6uW+xM2QTCQZS/Zt0ylTs2d11taPWogL9zS5lCO0=</dsig:DigestValue>
+      <dsig:DigestValue>B48G8NhP9LKlg94AMhBsEQFzGR9melFO/J/QL4sy9FY=</dsig:DigestValue>
     </hash>
   </file>
   <file name="testhost.x86.exe" size="140328">

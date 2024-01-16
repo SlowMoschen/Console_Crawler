@@ -39,7 +39,7 @@ namespace Console_Crawler.GameVariables.Statistics.EnemyStatistics
             );
 
         public static Builder.EnemyStatistics Assassin = new Builder.EnemyStatistics(
-            baseAttack: 20,
+            baseAttack: 15,
             baseArmor: 5,
             strength: 1.0,
             baseHealth: 100,
@@ -51,7 +51,7 @@ namespace Console_Crawler.GameVariables.Statistics.EnemyStatistics
             baseAttack: 20,
             baseArmor: 35,
             strength: 1.0,
-            baseHealth: 300,
+            baseHealth: 210,
             baseEXP: 50,
             Gold: 20,
             stunChance: 20
@@ -77,9 +77,9 @@ namespace Console_Crawler.GameVariables.Statistics.EnemyStatistics
 
         public static DemonicSorcererStatistics DemonicSorcerer = new DemonicSorcererStatistics(
             baseAttack: 35,
-            baseArmor: 10,
+            baseArmor: 5,
             strength: 1.0,
-            baseHealth: 500,
+            baseHealth: 400,
             baseEXP: 200,
             Gold: 50,
             baseHellFireBlastDamage: 20,
@@ -110,18 +110,18 @@ namespace Console_Crawler.GameVariables.Statistics.EnemyStatistics
         //**
 
         public static DragonStatistics Dragon = new DragonStatistics(
-            baseAttack: 150,
+            baseAttack: 50,
             baseArmor: 35,
-            strength: 1.5,
-            baseHealth: 1200,
-            baseEXP: 1200,
+            strength: 1.0,
+            baseHealth: 650,
+            baseEXP: 200,
             Gold: 350,
-            fireBreathDamage: 35,
+            fireBreathDamage: 25,
             burnDamage: 10,
             burnChance: 33,
-            rockThrowDamage: 30,
+            rockThrowDamage: 20,
             stunChance: 25,
-            tailStrikeDamage: 45
+            tailStrikeDamage: 30
             );
     }
 }

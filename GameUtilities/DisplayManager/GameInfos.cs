@@ -75,6 +75,9 @@ namespace Console_Crawler.GameUtilities.DisplayManager
             Console.WriteLine("     You can choose between different options in the Main Menu");
             Console.WriteLine("     You can enter the Dungeon, view your stats, view your inventory or go to the Shop");
             Console.WriteLine("     You can buy potions in the Shop to heal, increase your strength or increase your endurance");
+            Console.WriteLine("     You can also restore your health and endurance in the Shop for gold");
+            Console.WriteLine();
+            Console.WriteLine("     You will be able to save your Gamestate in the Main Menu");
             WaitForInput();
         }
 

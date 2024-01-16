@@ -27,10 +27,10 @@ namespace Console_Crawler.GameCharacters.HostileMobs.Bosses
         public override void SetStats()
         {
             base.SetStats();
-            this.FireBreathDamage = this.EnemyStats.FireBreathDamage;
-            this.RockThrowDamage = this.EnemyStats.RockThrowDamage;
-            this.TailStrikeDamage = this.EnemyStats.TailStrikeDamage;
-            this.BurnDamage = this.EnemyStats.BurnDamage;
+            this.FireBreathDamage = CalculateStat(this.EnemyStats.FireBreathDamage, GameSettings.EnemyScaling.AttackScaling, GameSettings.EnemyScaling.ScalingIntervals.AttackInterval);
+            this.RockThrowDamage = CalculateStat(this.EnemyStats.RockThrowDamage, GameSettings.EnemyScaling.AttackScaling, GameSettings.EnemyScaling.ScalingIntervals.AttackInterval);
+            this.TailStrikeDamage = CalculateStat(this.EnemyStats.TailStrikeDamage, GameSettings.EnemyScaling.AttackScaling, GameSettings.EnemyScaling.ScalingIntervals.AttackInterval);
+            this.BurnDamage = CalculateStat(this.EnemyStats.BurnDamage, GameSettings.EnemyScaling.BurnScaling, GameSettings.EnemyScaling.ScalingIntervals.BurnInterval);
         }
 
         //Fire Breath - Has a chance to burn the player
