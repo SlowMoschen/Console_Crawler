@@ -60,7 +60,7 @@
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>57HiWG26yPd757Ysm1e1qsuE6YHO+lYrUHv1UDRPtFc=</dsig:DigestValue>
+      <dsig:DigestValue>kiKSmSanANTh3dcX5qLvOtuvms+8TG+uG9oquQUHEko=</dsig:DigestValue>
     </hash>
   </file>
   <file name="icons8-dungeon-32.ico" size="4286">

@@ -29,7 +29,7 @@ namespace Console_Crawler.GameVariables
                     int missingHealth = CalculateMissingStat(player.Health, player.MaxHealth);
                     int missingEndurance = CalculateMissingStat(player.Endurance, player.MaxEndurance);
 
-                    return CalculatePotionPrice(missingStat: missingHealth, potionEffect: ItemEffect.HealPotion, potionPrice: Potions.HealPotion) + CalculatePotionPrice(missingStat: missingEndurance, potionEffect: ItemEffect.EndurancePotion, potionPrice: Potions.EndurancePotion);
+                    return CalculatePotionPrice(missingStat: missingHealth, potionEffect: ItemEffect.HealPotion, potionPrice: Potions.HealPotion) + CalculatePotionPrice(missingStat: missingEndurance, potionEffect: ItemEffect.EndurancePotion, potionPrice: Potions.EndurancePotion) / 2;
                 }
 
                 private static int CalculateMissingStat(int currentStat, int maxStat)
